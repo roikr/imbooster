@@ -1,0 +1,26 @@
+"CancelButton" = "Non";
+"DoneButton" = "Done";
+"BuyButton" = "Acheter - %@";
+"UpgradeButton" = "Mettre à jour - %@";
+
+"ProductsRequestMessage" = "Recherche des informations sur le produit en cours, cela peut prendre quelques minutes...";
+"BuyProductMessage" = "Buy this content now?";
+"ProductNotAvailiableMessage" = "Sorry, this product is not availiable at the moment.";
+"PurchaseAuthrizationMessage" = "Téléchargement du nouveau contenu en cours, cela peut prendre quelques minutes...";
+"StoreProcessMessage" = "Achat en cours, merci de patienter, cela peut prendre quelques minutes...";
+"StoreConfirmationTitle" = "Confirmation";
+"StoreConfirmationMessage" = "Votre achat à été effectué!";
+
+"WelcomeTitle" = "Bienvenue sur IMBooster Lite Edition.";
+"WelcomeMessage" = "Decouvrez toujours plus de contenu, chaque semaine, en telechargeant la version complète!";
+
+"NoInternetTitle" = "Non connecté à Internet";
+"NoInternetMessage" = "Assurez vous que vous êtes connecté à Internet";
+
+"NoServerTitle" = "Oops";
+"NoServerMessage" = "Sorry, but our server can't be reached right now. Please try again soon.";
+
+"RestoreTitle" = "Contacting iTunes...";
+"RestoreMessage" = "Your purchases are being restored and will appear shortly.";
+
+"NotificationTitle" = "New from IMBooster";

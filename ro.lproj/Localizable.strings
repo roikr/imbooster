@@ -1,0 +1,26 @@
+"CancelButton" = "Nu, multumesc";
+"DoneButton" = "Done";
+"BuyButton" = "Pret - %@";
+"UpgradeButton" = "Upgrade - %@";
+
+"ProductsRequestMessage" = "Se descarca informatiile produsului, va rugam asteptati...";
+"BuyProductMessage" = "Buy this content now?";
+"ProductNotAvailiableMessage" = "Sorry, this product is not availiable at the moment.";
+"PurchaseAuthrizationMessage" = "Se incarca continutul nou, va rugam asteptati...";
+"StoreProcessMessage" = "Va rugam asteptati procesarea comenzii...";
+"StoreConfirmationTitle" = "Confirmare";
+"StoreConfirmationMessage" = "Comanda dumneavoastra a fost trimisa cu succes!";
+
+"WelcomeTitle" = "Bine ai venit pe versiunea IMBooster Lite";
+"WelcomeMessage" = "Poti obtine continut nou oricand doresti daca descarci versiunea completa.";
+
+"NoInternetTitle" = "Lipsa conexiune Internet";
+"NoInternetMessage" = "Te rugam sa te asiguri ca esti conectat la Internet";
+
+"NoServerTitle" = "Oops";
+"NoServerMessage" = "Sorry, but our server can't be reached right now. Please try again soon.";
+
+"RestoreTitle" = "Contacting iTunes...";
+"RestoreMessage" = "Your purchases are being restored and will appear shortly.";
+
+"NotificationTitle" = "New from IMBooster";

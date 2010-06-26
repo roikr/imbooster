@@ -43,6 +43,7 @@
 
 
 + (LocalStorage*) localStorage;
++ (void)unzipPrecache;
 + (void)initCache;
 + (void)clearCache;
 - (void)arrangeAssets:(NSArray *)assets;

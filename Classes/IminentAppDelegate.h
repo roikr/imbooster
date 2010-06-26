@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 #import	"CacheResource.h"
-#import "AuthenticateConnection.h"
+//#import "AuthenticateConnection.h"
 #import "XMLParser.h"
 #include <AudioToolbox/AudioToolbox.h>
 #import "ZoozzMacros.h"
@@ -31,7 +31,7 @@ extern NSString *const kUpgradeProductIdentifier;
 
 
 
-@interface IminentAppDelegate : NSObject <UIApplicationDelegate,CacheResourceDelegate,AuthenticateConnectionDelegate,XMLParserDelegate,UINavigationControllerDelegate,SKPaymentTransactionObserver> {
+@interface IminentAppDelegate : NSObject <UIApplicationDelegate,XMLParserDelegate,UINavigationControllerDelegate> { //AuthenticateConnectionDelegate,SKPaymentTransactionObserver,CacheResourceDelegate
 	UIWindow *window;
 	
 	UINavigationController *navigationController;
@@ -43,29 +43,29 @@ extern NSString *const kUpgradeProductIdentifier;
 		
 	UIImageView *imageView;
 
-	MyOverlayView *overlayView;
-	VideoPlayer *videoPlayer;
+	//MyOverlayView *overlayView;
+	//VideoPlayer *videoPlayer;
 	
-	BOOL bLoggedIn;
+	//BOOL bLoggedIn;
 	BOOL bDisplayed;
-	BOOL bStartCacheWinks;
+	//BOOL bStartCacheWinks;
 	
 	SystemSoundID	soundFileObject;
 	
-	NSThread *secondaryThread;
+	//NSThread *secondaryThread;
 	
-	NSMutableArray *cacheWinks;
-	NSMutableArray *cachingWinks;
+	//NSMutableArray *cacheWinks;
+	//NSMutableArray *cachingWinks;
 	
-	StoreViewController *store;
+	//StoreViewController *store;
 	
-	BOOL bStoreObserved;
+	//BOOL bStoreObserved;
 	
-	NSString *APNToken;
+	//NSString *APNToken;
 	
-	NSString *notifiedProduct;
+	//NSString *notifiedProduct;
 	
-	NSString * lastNotificationIdentifier;
+	//NSString * lastNotificationIdentifier;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -75,46 +75,48 @@ extern NSString *const kUpgradeProductIdentifier;
 @property (nonatomic, retain) CatalogViewController * catalog;
 @property (nonatomic, retain) HelpViewController *help;
 
-@property BOOL bLoggedIn;
+//@property BOOL bLoggedIn;
 @property BOOL bDisplayed;
 
 
-@property (nonatomic, retain) IBOutlet MyOverlayView *overlayView;
+//@property (nonatomic, retain) IBOutlet MyOverlayView *overlayView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
 @property (nonatomic, retain) LocalStorage * localStorage;
-@property (nonatomic, retain) VideoPlayer *videoPlayer;
+//@property (nonatomic, retain) VideoPlayer *videoPlayer;
 
 
 @property (readonly)	SystemSoundID	soundFileObject;
-@property (nonatomic, retain) NSThread *secondaryThread;
-@property (nonatomic, retain) NSMutableArray *cacheWinks;
-@property (nonatomic, retain) NSMutableArray *cachingWinks;
+//@property (nonatomic, retain) NSThread *secondaryThread;
+//@property (nonatomic, retain) NSMutableArray *cacheWinks;
+//@property (nonatomic, retain) NSMutableArray *cachingWinks;
 
-@property (nonatomic, retain) StoreViewController *store;
+//@property (nonatomic, retain) StoreViewController *store;
 
-@property (nonatomic, retain) NSString *APNToken;
+//@property (nonatomic, retain) NSString *APNToken;
 
-@property (nonatomic, retain) NSString *notifiedProduct;
-@property (nonatomic, retain) NSString *lastNotificationIdentifier;
+//@property (nonatomic, retain) NSString *notifiedProduct;
+//@property (nonatomic, retain) NSString *lastNotificationIdentifier;
 
 
 - (void)playClickSound;
 - (void)bringHelp;
 - (void)gotoGallery;
 - (void)gotoKeyboard;
-- (BOOL) launchVideo:(NSURL *)theUrl;
 
-- (void)purchaseWithProduct:(NSString *)identifier;
-- (void)closeStore;
-- (void)restoreTransactions;
+
+//- (BOOL) launchVideo:(NSURL *)theUrl;
+
+//- (void)purchaseWithProduct:(NSString *)identifier;
+//- (void)closeStore;
+//- (void)restoreTransactions;
 
 - (void)addEvent:(ZoozzEvent*)event;
-- (void)sendEvents;
+//- (void)sendEvents;
 
-- (ZoozzViewType) getCurrentView;
-- (void)notificationWithAction:(ZoozzNotificationActionType)action;
+//- (ZoozzViewType) getCurrentView;
+//- (void)notificationWithAction:(ZoozzNotificationActionType)action;
 
 
 @end

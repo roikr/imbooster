@@ -18,8 +18,8 @@
 @synthesize lockedBadgeView;
 @synthesize newBadgeView;
 @synthesize asset;
-@synthesize cacheAsset;
-@synthesize activityView;
+//@synthesize cacheAsset;
+//@synthesize activityView;
 
 - (id)initWithAsset:(Asset*)theAsset {
 	if (self = [super init]) {
@@ -32,11 +32,11 @@
 		keyboardButton.clipsToBounds = YES;
 		[keyboardButton addTarget:appDelegate.messages action:@selector(addEmoticon:) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:keyboardButton];
-		bThumbAdded = NO;
-		[self performSelector:@selector(updateThumbView) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
+		//bThumbAdded = NO;
+		//[self performSelector:@selector(updateThumbView) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
 		// I don't want to call subsequent pages because I don't see them, so no need to load from server - in the gallery it is different
 		//[self performSelector:@selector(loadResources) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
-		
+		[self updateThumbView];
 		
 		if (asset.bLocked) {
 			UIImage *image = [UIImage imageNamed:@"keyboard-lock.png"];
@@ -73,7 +73,7 @@
 
 
 
-
+/*
 - (void)loadResources {
 	if (!asset.bThumbCached || (asset.contentType!=CacheResourceWink && !asset.bContentCached)) {
 		IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -90,11 +90,11 @@
 	}
 	[self updateThumbView];
 }
-
+*/
 - (void)updateThumbView {
 	
 	// this function can be called several times so I want to check I didn't add the thumb yet
-	if (asset.bThumbCached && !bThumbAdded)  {
+	if (asset.bThumbCached )  { // && !bThumbAdded
 		if (asset.thumbImage==nil) {
 			
 			NSData * data = [NSData dataWithContentsOfFile:[CacheResource cacheResourcePathWithResourceType:CacheResourceThumb WithIdentifier:asset.identifier]];
@@ -102,11 +102,11 @@
 		}
 		
 		[self performSelectorOnMainThread:@selector(addThumb) withObject:nil waitUntilDone:NO];
-		bThumbAdded = YES;
+		//bThumbAdded = YES;
 	}
 	
 	
-	
+	/*
 	if (asset.bThumbCached && (asset.bContentCached || asset.contentType==CacheResourceWink))  {
 		if (activityView != nil) {
 			//[self stopActivity];
@@ -114,13 +114,14 @@
 		}
 				
 	} 
+	 */
 	
 	
 }
 
 
 
-
+/*
 - (void)startActivity {
 	self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	//activityView.frame = CGRectMake(0,0, 50, 50);
@@ -142,11 +143,11 @@
 }
 
 
+*/
 
 
 
-
-
+/*
 - (void)CacheAssetDidFailLoading:(CacheAsset *)theCacheAsset {
 	ZoozzLog(@"KeyView - CacheResourceDidFailLoading");
 	//ZoozzLog(@"asset %@(%@), section: %u, category: %u fail loading.",identifier,cacheResource.resourceType == CacheResourceThumb ? @"thumb" : @"content",section,category);	
@@ -164,9 +165,10 @@
 		[cacheAsset release];
 		self.cacheAsset = nil;
 	}
-	
+
 	
 }
+
 
 - (void)cancelLoad {	
 	if (cacheAsset) {
@@ -174,13 +176,14 @@
 		cacheAsset.delegate = nil;
 		[cacheAsset release];
 		self.cacheAsset = nil;
-		/*
-		 if ([self activity]) {
-		 [self performSelectorOnMainThread:@selector(stopActivity) withObject:nil waitUntilDone:NO];
-		 }
-		 */
+		//
+//		 if ([self activity]) {
+//		 [self performSelectorOnMainThread:@selector(stopActivity) withObject:nil waitUntilDone:NO];
+//		 }
+//		 
 	}
 }
+ */
 
 - (void)dealloc {
 	// if thumb or content didn't release before, let them finish loading but nil their delegate
@@ -189,11 +192,11 @@
 	[keyboardButton release];
 	[lockedBadgeView release];
 	[newBadgeView release];
-	[activityView release];
+	//[activityView release];
 	
 	
-	if (cacheAsset)
-		cacheAsset.delegate = nil;
+	//if (cacheAsset)
+//		cacheAsset.delegate = nil;
 	
     [super dealloc];
 }

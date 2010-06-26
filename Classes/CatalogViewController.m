@@ -200,7 +200,7 @@
 	
 	if (selectedAsset.bLocked) {
 		
-		[appDelegate purchaseWithProduct:selectedAsset.productIdentifier];
+		//[appDelegate purchaseWithProduct:selectedAsset.productIdentifier];
 	
 	} else {
 		[self cancelLoadOfSection:currentSection];

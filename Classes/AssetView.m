@@ -21,9 +21,9 @@
 @synthesize lockedBadgeView;
 @synthesize newBadgeView;
 @synthesize preview;
-@synthesize activityView;
+//@synthesize activityView;
 @synthesize asset;
-@synthesize cacheAsset;
+//@synthesize cacheAsset;
 
 
 - (id)initWithAsset:(Asset*)theAsset {
@@ -57,10 +57,10 @@
 		[theView release];
 		[self addSubview:imageView];
 		
-		IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
+		//IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
 		// here I call to load from server because it is only the requested cells - the update is in the end of loadResources
-		[self performSelector:@selector(loadResources) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
-		
+		//[self performSelector:@selector(loadResources) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
+		[self updateThumbView];
 		
 		if (theAsset.bLocked) {
 			UIImageView * newItemView = [[UIImageView alloc] initWithFrame:CGRectMake(13,24, 50, 50)];
@@ -103,7 +103,7 @@
 	[appDelegate.catalog deselectAsset];
 	
 	// enable selection for locked items only if store is accessible via connection
-	if (!asset.bLocked || appDelegate.bLoggedIn) {
+	if (!asset.bLocked ) {  // || appDelegate.bLoggedIn
 		[appDelegate.catalog selectAsset:self.asset withButton:button];
 	}
 	
@@ -111,12 +111,12 @@
 	[appDelegate addEvent:[ZoozzEvent galleryPreviewWithAsset:self.asset]];
 	
 	switch (asset.contentType) {
-		case CacheResourceWink: {
-			// double check because I check before enabling the button
-			if (asset.bContentCached) {
-				[appDelegate.videoPlayer initAndPlayMovie:[NSURL fileURLWithPath:[CacheResource cacheResourcePathWithResourceType:asset.contentType WithIdentifier:asset.identifier]]];
-			}
-		} break;
+		//case CacheResourceWink: {
+//			// double check because I check before enabling the button
+//			if (asset.bContentCached) {
+//				[appDelegate.videoPlayer initAndPlayMovie:[NSURL fileURLWithPath:[CacheResource cacheResourcePathWithResourceType:asset.contentType WithIdentifier:asset.identifier]]];
+//			}
+//		} break;
 		case CacheResourceEmoticon: {
 			if (asset.bContentCached) {
 				button.userInteractionEnabled = NO;
@@ -131,10 +131,10 @@
 				
 				
 				NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-				NSString * dataPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"URLCache"]; 
+				NSString * dataPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"data"]; 
 				
 				[preview loadHTMLString:[@"<html><body style='margin-left:0px;margin-top:0px;background-color:transparent'><img style='width:50px;height:50px;background-color:transparent' src='content/" stringByAppendingString:
-										 [asset.identifier stringByAppendingString:@"'/></body></html>"]] baseURL:[NSURL fileURLWithPath:dataPath isDirectory:YES]];
+										 [asset.identifier stringByAppendingString:@".gif'/></body></html>"]] baseURL:[NSURL fileURLWithPath:dataPath isDirectory:YES]];
 				
 				preview.hidden = NO;
 				imageView.hidden = YES;
@@ -178,7 +178,7 @@
 }
 
 
-
+/*
 - (void)loadResources {
 	if (!asset.bThumbCached || !asset.bContentCached) {
 		IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -194,7 +194,7 @@
 	}
 	[self updateThumbView];
 }
-
+*/
 - (void)updateThumbView {
 	
 	
@@ -209,6 +209,7 @@
 		[self performSelectorOnMainThread:@selector(addThumb) withObject:nil waitUntilDone:NO];
 	}
 	
+	/*
 	if (asset.bThumbCached && asset.bContentCached)  {
 		if (activityView != nil) {
 			[self performSelectorOnMainThread:@selector(stopActivity) withObject:nil waitUntilDone:NO];
@@ -216,12 +217,12 @@
 		}
 		
 	} 
-	
+	*/
 	
 }
 
 
-
+/*
 - (void)startActivity {
 	self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	//activityView.frame = CGRectMake(0,0, 50, 50);
@@ -242,10 +243,10 @@
 	galleryButton.userInteractionEnabled = YES;
 }
 
+*/
 
 
-
-
+/*
 
 - (void)CacheAssetDidFailLoading:(CacheAsset *)theCacheAsset {
 	ZoozzLog(@"KeyView - CacheResourceDidFailLoading");
@@ -273,14 +274,14 @@
 		cacheAsset.delegate = nil;
 		[cacheAsset release];
 		self.cacheAsset = nil;
-		/*
-		 if ([self activity]) {
-		 [self performSelectorOnMainThread:@selector(stopActivity) withObject:nil waitUntilDone:NO];
-		 }
-		 */
+		
+		 //if ([self activity]) {
+//		 [self performSelectorOnMainThread:@selector(stopActivity) withObject:nil waitUntilDone:NO];
+//		 }
+		 
 	}
 }
-
+*/
 - (void)dealloc {
 	// if thumb or content didn't release before, let them finish loading but nil their delegate
 	// do I need to release it here or on the thread ?
@@ -290,10 +291,10 @@
 	[lockedBadgeView release];
 	[newBadgeView release];
 	[preview release];
-	[activityView release];
+	//[activityView release];
 	
-	if (cacheAsset)
-		cacheAsset.delegate = nil;
+	//if (cacheAsset)
+//		cacheAsset.delegate = nil;
 	
     [super dealloc];
 }

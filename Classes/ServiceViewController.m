@@ -254,17 +254,17 @@
 
 - (void)setCurrentCategory:(NSUInteger)cat {
 	
-	GalleryViewController *category = [viewControllers objectAtIndex:cat];
-	IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[category performSelector:@selector(loadAssets) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
+	//GalleryViewController *category = [viewControllers objectAtIndex:cat];
+	//IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+	//[category performSelector:@selector(loadAssets) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
 	ZoozzLog(@"CatalogViewController - setCurrentCategory: %u (sec: %u)",cat,sectionNumber);
 }
 
 - (void)cancelLoadOfCategory:(NSUInteger)cat {
 	GalleryViewController *category = [viewControllers objectAtIndex:cat];
 	if ((NSNull *)category != [NSNull null]) {
-		IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
-		[category performSelector:@selector(cancelLoadAssets) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
+		//IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+		//[category performSelector:@selector(cancelLoadAssets) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
 	}
 	ZoozzLog(@"ServiceViewController - cancelLoadOfPage: %u (sec: %u)",cat,sectionNumber);
 	

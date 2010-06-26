@@ -63,10 +63,10 @@ enum {
 
 - (void)copyResources {
 	
-	[CacheResource copyWithResourceType:CacheResourceThumb withIdentifier:identifier];
+	//[CacheResource copyWithResourceType:CacheResourceThumb withIdentifier:identifier];
 	bThumbCached = [CacheResource doesAssetCachedWithResourceType:CacheResourceThumb withIdentifier:identifier];
 	
-	[CacheResource copyWithResourceType:contentType withIdentifier:identifier];
+	//[CacheResource copyWithResourceType:contentType withIdentifier:identifier];
 	bContentCached = [CacheResource doesAssetCachedWithResourceType:contentType withIdentifier:identifier];
 }
 

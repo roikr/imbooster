@@ -49,6 +49,7 @@
 	self.assets = [NSMutableArray array];
 }
 
+/*
 - (void)loadAssets {
 	for (AssetView *assetView in assets ) {
 		[assetView loadResources];
@@ -60,7 +61,7 @@
 		[assetView cancelLoad];
 	}
 }
-
+*/
 
 - (void)viewDidUnload {
 	ZoozzLog(@"GallertViewController - viewDidUnload - section: %u, category: %u",sectionNumber,categoryNumber );

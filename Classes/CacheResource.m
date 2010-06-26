@@ -7,7 +7,7 @@
 //
 
 #import "CacheResource.h"
-#import "ZoozzConnection.h"
+//#import "ZoozzConnection.h"
 #import "IminentAppDelegate.h"
 #import "LocalStorage.h"
 
@@ -21,10 +21,11 @@
 @synthesize delegate;
 @synthesize filePath;
 @synthesize resourceType;
-@synthesize connection;
+//@synthesize connection;
 @synthesize identifier;
-@synthesize transaction;
+//@synthesize transaction;
 
+/*
 - (id) initWithResouceType:(CacheResourceType)aResourceType withObject:(id)object delegate:(id<CacheResourceDelegate>)theDelegate {
 	if (self = [super init]) {
 		self.delegate = theDelegate;
@@ -67,8 +68,9 @@
 	
 	return self;
 }
+*/
 
-
+/*
 
 + (void) copyWithResourceType:(CacheResourceType)aResourceType withIdentifier:(NSString*)identifier {
 		
@@ -149,6 +151,35 @@
 	return precache;
 }
 
+*/
++ (NSString*)cacheResourcePathWithResourceType:(CacheResourceType)aResourceType WithIdentifier:(NSString *)identifier {
+	NSString * theFilePath = nil;
+	
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	
+	switch (aResourceType) {
+		case CacheResourceLibrary:
+			theFilePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"data/library.xml"];
+			break;
+			
+		case CacheResourceThumb: 
+			theFilePath = [NSString stringWithFormat:@"%@/data/thumb/%@.gif",[paths objectAtIndex:0],identifier];
+			//theFilePath = [path stringByAppendingPathComponent:[@"thumb" stringByAppendingPathComponent:identifier]];
+			break;
+		case CacheResourceEmoticon: 
+			theFilePath = [NSString stringWithFormat:@"%@/data/content/%@.gif",[paths objectAtIndex:0],identifier];
+			//theFilePath = [path stringByAppendingPathComponent:[@"content" stringByAppendingPathComponent:identifier]];
+			break;
+			
+		default:
+			break;
+	}
+	
+	return theFilePath;
+}
+
+
+/*
 + (NSString*)cacheResourcePathWithResourceType:(CacheResourceType)aResourceType WithIdentifier:(NSString *)identifier {
 	NSString * theFilePath = nil;
 	
@@ -175,7 +206,7 @@
 	
 	return theFilePath;
 }
-
+*/
 
 
 + (BOOL) doesAssetCachedWithResourceType:(CacheResourceType)aResourceType withIdentifier:(NSString*)identifier {
@@ -194,7 +225,7 @@
  ------------------------------------------------------------------------
  URLCacheConnectionDelegate protocol methods
  ------------------------------------------------------------------------
- */
+ 
 
 #pragma mark -
 #pragma mark ZoozzConnectionDelegate methods
@@ -236,18 +267,17 @@
 			
 		} break;
 			
-			/*
-			 case ZoozzAsset: {
-			 switch (statusCode) {
-			 case HTTPStatusCodeOK:
-			 ZoozzLog(@"connectionDidFinish - ZoozzAsset: HTTPStatusCodeOK, data length: %u",[receivedData length]);
-			 break;
-			 default:
-			 break;
-			 }
-			 
-			 }
-			 */
+			
+			 //case ZoozzAsset: {
+//			 switch (statusCode) {
+//			 case HTTPStatusCodeOK:
+//			 ZoozzLog(@"connectionDidFinish - ZoozzAsset: HTTPStatusCodeOK, data length: %u",[receivedData length]);
+//			 break;
+//			 default:
+//			 break;
+//			 }
+//			 
+//			 }
 			
 		default:
 			break;
@@ -267,16 +297,16 @@
 		}
 		
 	}
-	/*
-	else if ([theConnection.theResponse statusCode] != HTTPStatusCodeNotModified) {
-		if ([[NSFileManager defaultManager] fileExistsAtPath:filePath] == YES) {
-			NSError * error = nil;
-			if (![[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]) {
-				//URLCacheAlertWithError(error);
-			}
-		}
-	}
-	 */
+	
+	//else if ([theConnection.theResponse statusCode] != HTTPStatusCodeNotModified) {
+//		if ([[NSFileManager defaultManager] fileExistsAtPath:filePath] == YES) {
+//			NSError * error = nil;
+//			if (![[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]) {
+//				//URLCacheAlertWithError(error);
+//			}
+//		}
+//	}
+	 
 	
 	[self.delegate CacheResourceDidFinishLoading:self];
 	
@@ -293,15 +323,15 @@
 		self.connection = nil;
 	}
 }
-
+*/
 - (void)dealloc {
 	//no need to release connection because it released on its delegate ?
-	if (connection) {
-		connection.delegate = nil;
-	}
+	//if (connection) {
+//		connection.delegate = nil;
+//	}
 	[filePath release];
 	[identifier release];
-	[transaction release];
+	//[transaction release];
 	[super dealloc];
 }
 

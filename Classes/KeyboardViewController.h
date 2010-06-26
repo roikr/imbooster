@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSMutableArray *keys;
 
 - (id)initWithSectionNumber:(int) sec withPageNumber:(int)page;
-- (void)loadKeys;
-- (void)cancelLoadKeys;
+//- (void)loadKeys;
+//- (void)cancelLoadKeys;
 
 @end

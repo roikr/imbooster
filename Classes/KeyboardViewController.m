@@ -68,7 +68,7 @@
 	//appDelegate.messages.currentPage = pageNumber;
 }
 
-
+/*
 - (void)loadKeys {
 	for (KeyView *key in keys) {
 		[key loadResources];
@@ -81,7 +81,7 @@
 	}
 }
 
-
+*/
 
 
 

@@ -251,17 +251,17 @@
 
 - (void)setCurrentPage:(NSUInteger)page {
 	
-	KeyboardViewController *keyboard = [viewControllers objectAtIndex:page];
-	IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[keyboard performSelector:@selector(loadKeys) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
+	//KeyboardViewController *keyboard = [viewControllers objectAtIndex:page];
+	//IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+	//[keyboard performSelector:@selector(loadKeys) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
 	ZoozzLog(@"SubCategoryViewController - setCurrentPage: %u (sec: %u)",page,sectionNumber);
 }
 
 - (void)cancelLoadOfPage:(NSUInteger)page {
 	KeyboardViewController *keyboard = [viewControllers objectAtIndex:page];
 	if ((NSNull *)keyboard != [NSNull null]) {
-		IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
-		[keyboard performSelector:@selector(cancelLoadKeys) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
+		//IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+		//[keyboard performSelector:@selector(cancelLoadKeys) onThread:appDelegate.secondaryThread withObject:nil waitUntilDone:NO];
 	}
 	ZoozzLog(@"SubCategoryViewController - cancelLoadOfPage: %u (sec: %u)",page,sectionNumber);
 	

@@ -326,10 +326,10 @@
 			
 			switch (asset.contentType) {
 				case CacheResourceEmoticon: 
-					text = [text stringByAppendingString:[NSString stringWithFormat:@"<img src='content/%@'/>",asset.identifier]];
+					text = [text stringByAppendingString:[NSString stringWithFormat:@"<img src='content/%@.gif'/>",asset.identifier]];
 					break;
 				case CacheResourceWink: 
-					text = [text stringByAppendingString:[NSString stringWithFormat:@"<a><img src='thumb/%@'/></a>",asset.identifier]];
+					text = [text stringByAppendingString:[NSString stringWithFormat:@"<a><img src='thumb/%@.gif'/></a>",asset.identifier]];
 					break;
 				default:
 					break;
@@ -349,7 +349,7 @@
 	//ZoozzLog(@"%@",text);
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	[webView loadHTMLString:text baseURL:[NSURL fileURLWithPath:[[paths objectAtIndex:0] stringByAppendingPathComponent:@"URLCache"] isDirectory:YES]];	
+	[webView loadHTMLString:text baseURL:[NSURL fileURLWithPath:[[paths objectAtIndex:0] stringByAppendingPathComponent:@"data"] isDirectory:YES]];	
 	
 	
 }	
@@ -380,7 +380,7 @@
 	
 	if (asset.bLocked) {
 		
-		[appDelegate  purchaseWithProduct:asset.productIdentifier];
+		//[appDelegate  purchaseWithProduct:asset.productIdentifier];
 	} else 
 	 [self addAsset:asset];
 	//ZoozzLog(@"button's rect: %f %f",button.bounds.size.width,button.bounds.size.height);
@@ -522,6 +522,7 @@
 
 -(void)action:(id)sender {
 	
+	/*
 	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
 	[appDelegate addEvent:[ZoozzEvent send]];
 	if (appDelegate.localStorage.sessionID==nil) {
@@ -532,11 +533,11 @@
 		else 
 			NoInternetAlert();
 	} else {
-		
+		*/
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"MMS",@"Email",nil];
 		[actionSheet showInView:self.view];
 		[actionSheet release];
-	}
+	//}
 }
 
 

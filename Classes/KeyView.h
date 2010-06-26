@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CacheAsset.h"
+//#import "CacheAsset.h"
 
 
 @class Asset;
-@interface KeyView : UIView<CacheAssetDelegate> {
+@interface KeyView : UIView { // <CacheAssetDelegate>
 	UIButton *keyboardButton;
 	UIImageView *lockedBadgeView;
 	UIImageView *newBadgeView;
-	UIActivityIndicatorView *activityView;
+	//UIActivityIndicatorView *activityView;
 	
 	Asset *asset;
-	CacheAsset *cacheAsset;
+	//CacheAsset *cacheAsset;
 	
-	BOOL bThumbAdded;
+	//BOOL bThumbAdded;
 	
 }
 
@@ -28,16 +28,16 @@
 @property (nonatomic, retain) UIImageView *lockedBadgeView;
 @property (nonatomic, retain) UIImageView *newBadgeView;
 @property (nonatomic, retain) Asset *asset;
-@property (nonatomic, retain) CacheAsset *cacheAsset;
-@property (nonatomic, retain) UIActivityIndicatorView *activityView;
+//@property (nonatomic, retain) CacheAsset *cacheAsset;
+//@property (nonatomic, retain) UIActivityIndicatorView *activityView;
 
 - (id)initWithAsset:(Asset*)theAsset;
-- (void)cancelLoad;
+//- (void)cancelLoad;
 - (void)addThumb;
 - (void)updateThumbView;
-- (void)loadResources;
+//- (void)loadResources;
 
-- (void)startActivity;
-- (void)stopActivity;
+//- (void)startActivity;
+//- (void)stopActivity;
 
 @end

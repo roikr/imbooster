@@ -19,7 +19,7 @@
 #import "LocalStorage.h"
 #import "VideoPlayer.h"
 
-#import "ZoozzConnection.h"
+//#import "ZoozzConnection.h"
 #import "Utilities.h"
 
 #import "Section.h"
@@ -67,19 +67,22 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 
 @interface IminentAppDelegate (PrivateMethods)
-- (void)login;
-- (void)loginDidFailed;
-- (void)loadLibraryWithTransaction:(SKPaymentTransaction *)transaction;
+
+//- (void)login;
+//- (void)loginDidFailed;
+//- (void)loadLibraryWithTransaction:(SKPaymentTransaction *)transaction;
 - (void)parseLibrary;
-- (void)threadMain;
-- (void)startCachingWinks;
-- (void)stopCachingWinks;
+//- (void)threadMain;
+//- (void)startCachingWinks;
+//- (void)stopCachingWinks;
+
 - (void)updateCurrentViews;
 
+/*
 - (void)failedTransaction:(SKPaymentTransaction *)transaction;
 - (void)authenticateTransaction:(SKPaymentTransaction *)transaction;
 - (void)authenticateTrial:(NSString *)identifier;
-
+*/
 
 @end
 
@@ -90,40 +93,40 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 @synthesize catalog;
 @synthesize messages;
 
-@synthesize overlayView;
-@synthesize videoPlayer;
+//@synthesize overlayView;
+//@synthesize videoPlayer;
 
 @synthesize imageView;
 
 @synthesize localStorage;
 
-@synthesize bLoggedIn;
+//@synthesize bLoggedIn;
 @synthesize bDisplayed;
 
 @synthesize help;
 @synthesize soundFileObject;
-@synthesize secondaryThread;
-@synthesize cacheWinks;
-@synthesize cachingWinks;
+//@synthesize secondaryThread;
+//@synthesize cacheWinks;
+//@synthesize cachingWinks;
 
-@synthesize store;
-@synthesize APNToken;
-@synthesize notifiedProduct;
-@synthesize lastNotificationIdentifier;
+//@synthesize store;
+//@synthesize APNToken;
+//@synthesize notifiedProduct;
+//@synthesize lastNotificationIdentifier;
 
 
 - (void)dealloc {
-	[secondaryThread release];
-	[videoPlayer release];
+	//[secondaryThread release];
+	//[videoPlayer release];
 	[messages release];
 	[catalog release];
 	[help release];
 	[navigationController release];
    	[window release];
-	[cacheWinks release];
-	[cacheWinks release];
-	[APNToken release];
-	[notifiedProduct release];
+	//[cacheWinks release];
+	//[cacheWinks release];
+	//[APNToken release];
+	//[notifiedProduct release];
 	AudioServicesDisposeSystemSoundID (self.soundFileObject);
 		
 	[super dealloc];
@@ -133,6 +136,8 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 	enableEmoji();
+	
+	[LocalStorage unzipPrecache];
 		
 #ifdef _ADMOB
 	[self performSelectorInBackground:@selector(reportAppOpenToAdMob) withObject:nil];
@@ -141,9 +146,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[window makeKeyAndVisible];
 	
-	bLoggedIn = NO;
-	bDisplayed = NO;
-	bStoreObserved = NO;
+	//bLoggedIn = NO;
+	//bDisplayed = NO;
+	//bStoreObserved = NO;
 	
 	//notificationAlert = NO; // just to know if the alert is previewed to avoid store on notification on startup
 	
@@ -177,7 +182,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		[localStorage archive];
 	}
 	
-	
+	/*
 	if (isConnected() && !localStorage.cookieInstalled) {  
 		localStorage.cookieInstalled = YES;
 		[localStorage archive];
@@ -186,7 +191,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		
 		return YES;
 	}
-	
+	*/
 /*
 #ifdef _IMBoosterFree
 	if (!localStorage.firstLaunch) {
@@ -198,8 +203,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 */
 	
 	
-	videoPlayer = [[VideoPlayer alloc] init];
+	//videoPlayer = [[VideoPlayer alloc] init];
 		
+	/*
 	NSURL * url = (NSURL *)[launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
 	if (url && [[url host] isEqualToString:@"reply"]) {
 		
@@ -249,12 +255,13 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		} 
 		
 	}
-	
-	
+	*/
+	[self parseLibrary];
 	return YES;
 	
 }
 
+/*
 - (void)notificationWithAction:(ZoozzNotificationActionType)action {
 	switch ([self getCurrentView]) {
 		case ZoozzViewKeyboard: {
@@ -322,7 +329,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	} else
 		[self loginDidFailed];
 }
+*/
 
+/*
 #pragma mark Zoozz application states
 
 -(void) login {
@@ -398,9 +407,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	[authenticateConnection release];
 }
 
+*/
 
-
-- (void)loadLibraryWithTransaction:(SKPaymentTransaction *)transaction {
+//- (void)loadLibraryWithTransaction:(SKPaymentTransaction *)transaction {
 	/*
 	if (!bDisplayed && [[NSUserDefaults standardUserDefaults] boolForKey:@"precache_library_identifier"]) {
 		NSError * error = nil;
@@ -423,6 +432,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	}
 	 */
 
+/*
 #ifdef _SETTINGS
 	if (!bDisplayed && [[NSUserDefaults standardUserDefaults] boolForKey:@"clear_library_identifier"]) {
 		localStorage.libraryDate = nil;
@@ -433,9 +443,10 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[[CacheResource alloc] initWithResouceType:CacheResourceLibrary withObject:transaction delegate:self];
 }
+ */
 
 
-
+/*
 #pragma mark CacheResource delegate methods
 
 - (void)CacheResourceDidFailLoading:(CacheResource *)cacheResource {
@@ -513,7 +524,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[cacheResource release];
 }
-
+*/
 
 -(void) parseLibrary {
 	[[XMLParser alloc] parse:[NSData dataWithContentsOfFile:[CacheResource cacheResourcePathWithResourceType:CacheResourceLibrary WithIdentifier:nil]] withDelegate:self];
@@ -538,32 +549,33 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		[window sendSubviewToBack:imageView];
 		imageView.hidden = YES;
 		
-		self.secondaryThread = [[NSThread alloc] initWithTarget:self selector:@selector(threadMain) object:nil];
-		[secondaryThread start];
+		//self.secondaryThread = [[NSThread alloc] initWithTarget:self selector:@selector(threadMain) object:nil];
+		//[secondaryThread start];
 	
 		[window addSubview:[navigationController view]];
 		
 		
-#ifdef _SETTINGS
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"reload_library_identifier"]) {
-			localStorage.libraryDate = nil;
-			[self loadLibraryWithTransaction:nil];
-		}
-
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"request_trial_identifier"]) {
-			[self authenticateTrial:kUpgradeProductIdentifier];
-		}
-#endif
+//#ifdef _SETTINGS
+//		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"reload_library_identifier"]) {
+//			localStorage.libraryDate = nil;
+//			[self loadLibraryWithTransaction:nil];
+//		}
+//
+//		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"request_trial_identifier"]) {
+//			[self authenticateTrial:kUpgradeProductIdentifier];
+//		}
+//#endif
 		
 	} else {
 		[messages clearView];
 		[catalog clearView];
-		[self performSelector:@selector(stopCachingWinks) onThread:secondaryThread withObject:nil waitUntilDone:YES];
+		//[self performSelector:@selector(stopCachingWinks) onThread:secondaryThread withObject:nil waitUntilDone:YES];
 		[localStorage arrangeAssets:theParser.assets];
-		[self performSelector:@selector(startCachingWinks) onThread:secondaryThread withObject:nil waitUntilDone:NO];
+		//[self performSelector:@selector(startCachingWinks) onThread:secondaryThread withObject:nil waitUntilDone:NO];
 		[self updateCurrentViews];
 	}
 	
+	/*
 	if (bLoggedIn && !bStoreObserved) {
 		bStoreObserved = YES;
 		// if we didn't restored transaction we put the observer here to get lost purchased
@@ -578,7 +590,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 			self.notifiedProduct = nil;
 			
 		}
-
+*/
 		/*
 		if ([defaults boolForKey:@"restore_purchases_identifier"]) {
 			[storeManager.observer restoreTransactions];
@@ -588,7 +600,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 			
 		}
 		 */
-	}
+	//}
 	
 	
 
@@ -615,6 +627,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 }
 
+/*
 # pragma mark secondary Thread
 - (void)doFireTimer:(NSTimer *)timer {
     
@@ -633,18 +646,18 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	
 	NSRunLoop* myRunLoop = [NSRunLoop currentRunLoop];
-	/*
-	 // Create a run loop observer and attach it to the run loop.
-	 CFRunLoopObserverContext  context = {0, self, NULL, NULL, NULL};
-	 CFRunLoopObserverRef    observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
-	 kCFRunLoopAllActivities, YES, 0, &myRunLoopObserver, &context);
-	 
-	 if (observer)
-	 {
-	 CFRunLoopRef    cfLoop = [myRunLoop getCFRunLoop];
-	 CFRunLoopAddObserver(cfLoop, observer, kCFRunLoopDefaultMode);
-	 }
-	 */
+	//
+//	 // Create a run loop observer and attach it to the run loop.
+//	 CFRunLoopObserverContext  context = {0, self, NULL, NULL, NULL};
+//	 CFRunLoopObserverRef    observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
+//	 kCFRunLoopAllActivities, YES, 0, &myRunLoopObserver, &context);
+//	 
+//	 if (observer)
+//	 {
+//	 CFRunLoopRef    cfLoop = [myRunLoop getCFRunLoop];
+//	 CFRunLoopAddObserver(cfLoop, observer, kCFRunLoopDefaultMode);
+//	 }
+//	 
     // Create and schedule the timer.
     [NSTimer scheduledTimerWithTimeInterval:1 target:self
 								   selector:@selector(doFireTimer:) userInfo:nil repeats:YES];
@@ -710,8 +723,10 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	[cacheWinks removeAllObjects];
 }
 
+*/
 
 
+/*
 #pragma mark Store
 
 - (void)purchaseWithProduct:(NSString *)identifier
@@ -798,7 +813,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[[AuthenticateConnection alloc] initWithTransaction:transaction delegate:self];
 }
-
+*/
 
 /*
 - (void)completeTransactions {
@@ -828,6 +843,8 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 */
 
+/*
+
 - (void)restoreTransactions {
 	localStorage.libraryDate = nil; // hack for ensure that server always return update library (even if we ONLY removed products)
 	[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
@@ -851,10 +868,11 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	[store release];
 	self.store = nil;
 }
-
+*/
 #pragma mark Events
 
 - (void)addEvent:(ZoozzEvent*)event {
+	/*
 	if (!localStorage.events) {
 		localStorage.events = [NSMutableArray arrayWithCapacity:10];
 	}
@@ -864,9 +882,11 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	if ([localStorage.events count] >= 10 || event.eventType == ZoozzBuyEvent || event.eventType == ZoozzNotificationEvent || event.eventType == ZoozzSendEvent) {
 		[self sendEvents];
 	}
+	 */
 }
 
 - (void)sendEvents {
+	/*
 	if (isConnected() && localStorage.events && [localStorage.events count]) {
 		NSString *msg=@"<?xml version='1.0' encoding='utf-8' ?><events>\n";
 		for (ZoozzEvent *event in localStorage.events) {
@@ -878,6 +898,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		[localStorage.events removeAllObjects];
 		//[localStorage archive]; // doesn't archive events
 	}
+	 */
 }
 
 #pragma mark more
@@ -949,6 +970,8 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	return ZoozzViewGallery;
 }
 
+
+/*
 - (BOOL) launchVideo:(NSURL *)theUrl
 {   
 	//alert(@"url", [theUrl description]);
@@ -993,7 +1016,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	return YES;
 }
 
-
+*/
 
 #pragma mark AddMob
 

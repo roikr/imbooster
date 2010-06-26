@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CacheAsset.h"
+//#import "CacheAsset.h"
 
 
 @class Asset;
-@interface AssetView : UIView<CacheAssetDelegate> {
+@interface AssetView : UIView { //<CacheAssetDelegate>
 	UIButton *galleryButton;
 	UIImageView *imageView;
 	UIImageView *lockedBadgeView;
 	UIImageView *newBadgeView;
 	UIWebView *preview;
 	
-	UIActivityIndicatorView *activityView;
+	//UIActivityIndicatorView *activityView;
 	Asset *asset;
-	CacheAsset *cacheAsset;
+	//CacheAsset *cacheAsset;
 	
 	
 	
@@ -33,8 +33,8 @@
 @property (nonatomic,retain) UIWebView *preview;
 
 @property (nonatomic, retain) Asset *asset;
-@property (nonatomic, retain) CacheAsset *cacheAsset;
-@property (nonatomic, retain) UIActivityIndicatorView *activityView;
+//@property (nonatomic, retain) CacheAsset *cacheAsset;
+//@property (nonatomic, retain) UIActivityIndicatorView *activityView;
 
 - (id)initWithAsset:(Asset*)theAsset;
 - (void)stopPreview:(NSTimer*)theTimer;
@@ -42,10 +42,10 @@
 
 - (void)addThumb;
 - (void)updateThumbView;
-- (void)loadResources;
-- (void)cancelLoad;
+//- (void)loadResources;
+//- (void)cancelLoad;
 
-- (void)startActivity;
-- (void)stopActivity;
+//- (void)startActivity;
+//- (void)stopActivity;
 
 @end

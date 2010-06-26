@@ -12,6 +12,7 @@
 #import "Category.h"
 #import "Utilities.h"
 #import "ZoozzMacros.h"
+#import "ZipArchive.h"
 
 
 @implementation LocalStorage
@@ -32,6 +33,47 @@
 @synthesize assetsByUnichar;
 @synthesize assetsByIdentifier;
 
+
++ (void)unzipPrecache {
+	
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	if (!documentsDirectory) {
+		ZoozzLog(@"Documents directory not found!");
+		return ;
+	}
+	
+	
+	
+	if (![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"]]) { // roikr: first time run check for release
+		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"zip" inDirectory:@"precache"];
+		
+		if (precache) {
+			ZoozzLog(@"unzipping precache");
+			
+			ZipArchive *zip = [[ZipArchive alloc] init];
+			[zip UnzipOpenFile:precache];
+			[zip UnzipFileTo:[paths objectAtIndex:0] overWrite:YES];
+			[zip UnzipCloseFile];
+		} 
+		/*
+		 else {
+		 NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"data"];
+		 NSError * error = nil;
+		 if (![[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]) {
+		 URLCacheAlertWithError(error);
+		 return;
+		 }
+		 
+		 
+		 }
+		 */
+		
+		
+	}
+}
 
 
 + (LocalStorage*) localStorage 

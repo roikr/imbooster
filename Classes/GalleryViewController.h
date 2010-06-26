@@ -13,5 +13,5 @@
 @property (nonatomic, retain) NSMutableArray *assets;
 
 - (id)initWithSectionNumber:(int)sec withCategoryNumber:(int)cat;
-- (void)loadAssets;
+//- (void)loadAssets;
 @end

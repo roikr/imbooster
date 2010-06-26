@@ -10,7 +10,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MessageUI/MFMessageComposeViewController.h>
 
-#import "ZoozzConnection.h"
+//#import "ZoozzConnection.h"
 
 @class CatalogViewController,Asset;
 

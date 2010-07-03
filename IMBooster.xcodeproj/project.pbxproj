@@ -43,6 +43,7 @@
 		E448ED5B10F141EE003C61A0 /* ZoozzEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E448ED5A10F141EE003C61A0 /* ZoozzEvent.m */; };
 		E4491EB011BB7E1200BD26EE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4491EAF11BB7E1200BD26EE /* Icon.png */; };
 		E4491EB711BB804500BD26EE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E4491EB611BB804500BD26EE /* Default.png */; };
+		E44972EC11D9FA2F00C86C02 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44972EB11D9FA2F00C86C02 /* MobileCoreServices.framework */; };
 		E44A237110C151170028F730 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A237010C151170028F730 /* SystemConfiguration.framework */; };
 		E44D6FF110EA499200964A59 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A6A86A10C437DE00913CF8 /* StoreViewController.m */; };
 		E44D706710EA71BB00964A59 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E44D706610EA71BB00964A59 /* ContentView.m */; };
@@ -149,6 +150,7 @@
 		E49E1C1D10C48B0F00E00BE4 /* keyboard-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = E49E1C1C10C48B0F00E00BE4 /* keyboard-lock.png */; };
 		E49E1C2210C48C2D00E00BE4 /* navigator.png in Resources */ = {isa = PBXBuildFile; fileRef = E49E1C2110C48C2D00E00BE4 /* navigator.png */; };
 		E49E1D4510C4A56E00E00BE4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E49E1D4310C4A56E00E00BE4 /* Localizable.strings */; };
+		E4B442B611DFCF6D006C0D26 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B442B511DFCF6D006C0D26 /* iAd.framework */; };
 		E4BBB08410C5763000A8E357 /* CatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07C10C5763000A8E357 /* CatalogViewController.xib */; };
 		E4BBB08510C5763000A8E357 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07D10C5763000A8E357 /* GalleryViewController.xib */; };
 		E4BBB08610C5763000A8E357 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07E10C5763000A8E357 /* HelpViewController.xib */; };
@@ -330,6 +332,7 @@
 		E448ED5A10F141EE003C61A0 /* ZoozzEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoozzEvent.m; sourceTree = "<group>"; };
 		E4491EAF11BB7E1200BD26EE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E4491EB611BB804500BD26EE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E44972EB11D9FA2F00C86C02 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E44A237010C151170028F730 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E44D706510EA71BB00964A59 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
 		E44D706610EA71BB00964A59 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
@@ -355,6 +358,7 @@
 		E49E1D4410C4A56E00E00BE4 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4A6A86910C437DE00913CF8 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		E4A6A86A10C437DE00913CF8 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		E4B442B511DFCF6D006C0D26 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		E4BBB07C10C5763000A8E357 /* CatalogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogViewController.xib; sourceTree = "<group>"; };
 		E4BBB07D10C5763000A8E357 /* GalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 		E4BBB07E10C5763000A8E357 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				E4C2FC2E11204FC100BD2FB6 /* AudioToolbox.framework in Frameworks */,
 				E4C2FC2F11204FC100BD2FB6 /* SystemConfiguration.framework in Frameworks */,
 				E4DF64AB11D679A900A14CC2 /* libz.dylib in Frameworks */,
+				E44972EC11D9FA2F00C86C02 /* MobileCoreServices.framework in Frameworks */,
+				E4B442B611DFCF6D006C0D26 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +568,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E44972EB11D9FA2F00C86C02 /* MobileCoreServices.framework */,
 				E44A237010C151170028F730 /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -571,6 +578,7 @@
 				E4D2589F10A8D8C10057C07C /* StoreKit.framework */,
 				E4E8F81910C0802400603DA6 /* AudioToolbox.framework */,
 				E4DF64AA11D679A900A14CC2 /* libz.dylib */,
+				E4B442B511DFCF6D006C0D26 /* iAd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

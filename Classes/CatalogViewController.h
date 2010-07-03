@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
 @class Asset;
 
@@ -25,6 +26,8 @@
 	
 	UIView *catalogView;
 	UIView *toolbar;
+	
+	ADBannerView *adView;
 }
 
 
@@ -35,6 +38,7 @@
 @property NSUInteger currentSection;
 @property (nonatomic, retain) IBOutlet UIView * catalogView;
 @property (nonatomic, retain) IBOutlet UIView * toolbar;
+@property (nonatomic, retain) IBOutlet ADBannerView *adView;
 
 - (IBAction)action:(id)sender;
 - (IBAction)gotoKeyboard:(id)sender;
@@ -44,5 +48,5 @@
 - (void)selectSection:(id)sender;
 - (void)clearView;
 - (void)updateWinksViews;
-
+- (void)hideAd;
 @end

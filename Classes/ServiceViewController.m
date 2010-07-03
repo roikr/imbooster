@@ -177,7 +177,7 @@
 	IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate.catalog deselectAsset];
 	
-	[self cancelLoadOfCategory:pageControl.currentPage];
+	//[self cancelLoadOfCategory:pageControl.currentPage];
 	
     pageControl.currentPage = page;
 	
@@ -260,6 +260,7 @@
 	ZoozzLog(@"CatalogViewController - setCurrentCategory: %u (sec: %u)",cat,sectionNumber);
 }
 
+/*
 - (void)cancelLoadOfCategory:(NSUInteger)cat {
 	GalleryViewController *category = [viewControllers objectAtIndex:cat];
 	if ((NSNull *)category != [NSNull null]) {
@@ -271,7 +272,7 @@
 	
 }
 
-
+*/
 
 
 @end

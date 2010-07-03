@@ -104,6 +104,7 @@ extern NSString *const kUpgradeProductIdentifier;
 - (void)bringHelp;
 - (void)gotoGallery;
 - (void)gotoKeyboard;
+- (void)restorePurchases;
 
 
 //- (BOOL) launchVideo:(NSURL *)theUrl;

@@ -1018,6 +1018,14 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 */
 
+#pragma mark AppStore
+- (void)restorePurchases {
+	ZoozzLog(@"restore purchases here");
+	[messages hideAd];
+	//[catalog hideAd];
+}
+	
+
 #pragma mark AddMob
 
 - (void)reportAppOpenToAdMob {

@@ -11,12 +11,16 @@
 
 @synthesize webView;
 @synthesize backItem;
+@synthesize restoreItem;
+@synthesize adView;
 
 
 - (void)dealloc
 {
 	[webView release];
 	[backItem release];
+	[restoreItem release];
+	[adView release];
 	[super dealloc];
 }
 
@@ -49,6 +53,8 @@
 	
 	self.backItem= nil;	
 	self.webView = nil;
+	self.restoreItem = nil;
+	self.adView = nil;
 }
 
 - (IBAction)back:(id)sender {
@@ -56,6 +62,10 @@
 	[appDelegate.navigationController dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)restore:(id)sender {
+	IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[appDelegate restorePurchases];
+}
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

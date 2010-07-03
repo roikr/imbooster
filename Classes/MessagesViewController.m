@@ -18,19 +18,26 @@
 #import "Utilities.h"
 #import "ZoozzEvent.h"
 
+#import <MobileCoreServices/UTCoreTypes.h> // for kUTTypeGIF and kUTTypePNG
+
 @interface MessagesViewController (PrivateMethods)
-- (void)cancelLoadOfSection:(NSUInteger)sec;
+//- (void)cancelLoadOfSection:(NSUInteger)sec;
 - (void)loadScrollViewWithPage:(int)page;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 - (void) updateWebViewWithString:(NSString*)str;
 //- (NSString *)stringToWeb:(NSString *)str;
 - (NSString*)fix:(NSString*)str;
 
+- (NSString *) getMessage;
+- (NSString *) pasteMessageToPasteboard;
+
+
 @end
 
 
 @implementation MessagesViewController
 
+@synthesize containerView;
 @synthesize messagesView;
 @synthesize keyboardView;
 @synthesize webView;
@@ -41,6 +48,7 @@
 @synthesize keybToEmosButton;
 @synthesize currentSection;
 @synthesize toolbar;
+@synthesize adView;
 
 
 /*
@@ -119,6 +127,8 @@
 	
 	self.currentSection = self.currentSection; // // need for reload current subviews after unload - for memory warning, currentSection will call setCurrentPage;
 	
+	
+	
 }
 
 
@@ -141,6 +151,9 @@
 	self.webView = nil;
 	self.keybToEmosButton = nil;
 	self.toolbar = nil;
+	self.containerView = nil;
+	self.adView = nil;
+	
 	
 }
 
@@ -149,14 +162,19 @@
 	[viewControllers release];
 	[messagesView release];
 	[keyboardView release];
+	[adView release];
 	[webView release];
 	[emoji release];
 	[keybToEmosButton release];
 	[toolbar release];
+	[containerView release];
 	[super dealloc];
 }
 
-
+- (void)hideAd {
+	adView.hidden = YES;
+	containerView.frame = CGRectMake(0, 0, 320, 200);
+}
 
 - (void)selectSection:(id)sender {
 	UIButton * button = (UIButton *)sender;
@@ -169,15 +187,17 @@
 	
 }
 
+/*
 - (void)cancelLoadOfSection:(NSUInteger)sec {
 	SubCategoryViewController *controller = [viewControllers objectAtIndex:sec];
     if ((NSNull *)controller != [NSNull null]) {
 		[controller cancelLoadOfPage:controller.currentPage];
 	}
 }	
+ */
 
 - (void)setCurrentSection:(NSUInteger)sec {
-	[self cancelLoadOfSection:currentSection];
+	//[self cancelLoadOfSection:currentSection];
 	    
 	currentSection = sec;
 	
@@ -246,7 +266,7 @@
 
 
 - (IBAction)gotoGallery:(id)sender {
-	[self cancelLoadOfSection:currentSection];
+	//[self cancelLoadOfSection:currentSection];
 	[messagesView resignFirstResponder];
 	self.keybToEmosButton.selected = NO;
 	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -617,6 +637,86 @@
 	return text;
 }
 
+-(NSString *) pasteMessageToPasteboard {
+	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
+	
+	NSString * str = appDelegate.localStorage.message;// messagesView.text;
+	if (!str)
+		str=@"";
+	
+	NSString * token = [appDelegate.localStorage token];
+	
+	str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"];
+	NSArray * arr = [str componentsSeparatedByCharactersInSet:emoji];
+	NSString * text = @"<font>";
+	
+	NSMutableArray *parr = [NSMutableArray array];
+	
+	if ([arr count] >0 ) {
+		int j = 0;
+		NSString * temp = [arr objectAtIndex:0];
+		text = [text stringByAppendingString:temp];
+		j+= [temp length];
+		
+		for (int i=1; i<[arr count]; i++) {
+			Asset * asset = [appDelegate.localStorage.assetsByUnichar objectForKey:[NSString stringWithFormat:@"%u",[str characterAtIndex:j]]];
+			
+			switch (asset.contentType) {
+				case CacheResourceEmoticon: {
+					//text = [text stringByAppendingString:[NSString stringWithFormat:@"<a href='%@/reply?%@'><img border='0' src='%@/content/%@?%@'/></a>",kZoozzURL,token,kZoozzURL,asset.identifier,token]];
+					
+					NSString *path = [CacheResource cacheResourcePathWithResourceType:CacheResourceEmoticon WithIdentifier:asset.identifier];
+					
+					
+					[parr addObject:[NSDictionary dictionaryWithObject:[UIImage imageWithContentsOfFile:path] forKey:(NSString *)kUTTypeGIF]];
+					
+					
+					
+					 
+					
+				}break;
+				case CacheResourceWink: {
+					
+					NSString *content = [NSString stringWithFormat:@"%@/content/%@?%@#IWBACNT%@",kZoozzURL,asset.identifier,token,asset.originalID];
+					NSString *thumb = [NSString stringWithFormat:@"%@/content/t/%@?%@",kZoozzURL,asset.identifier,token];
+					uint k = arc4random() % 3 + 1;
+					NSString *topImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-top.png' style='display: block; margin: 0'/>",kZoozzURL,k];
+					NSString *leftImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-left.png' style='display: block; margin: 0'/>",kZoozzURL,k];
+					NSString *contentLink = [NSString stringWithFormat:@"<a href='%@' style='display: block'><img border='0' style='display: block; width: 50px; height: 50px' src='%@' alt='click to play animation!'/></a>",content,thumb]; 
+					NSString *rightImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-right.png' style='display: block; margin: 0'/>",kZoozzURL,k];
+					NSString *bottomLink = [NSString stringWithFormat:@"<a href='%@' style='display: block'><img border='0' src='%@/pages/imbooster/img/email-pins-%u-bottom.png' style='display: block; margin: 0'/></a>",content,kZoozzURL,k];
+					NSString *wink = [NSString stringWithFormat:@"<table width='80' height='104' cellpadding='0' cellspacing='0'><tr height='25'><td colspan='3'>%@</td></tr><tr height='50'><td width='11'>%@</td><td width='50'>%@</td><td width='19'>%@</td></tr><tr height='29'><td colspan='3'>%@</td></tr></table>",
+														topImage,leftImage,contentLink,rightImage,bottomLink];
+					
+					text = [text stringByAppendingString:wink];
+					
+					
+					
+				}
+					break;
+				default:
+					break;
+			}
+			
+			j++;
+			NSString * temp = [arr objectAtIndex:i];
+			
+			text = [text stringByAppendingString:temp];
+			j+= [temp length];
+			
+			//[parr addObject:[NSDictionary dictionaryWithObject:[[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"] forKey:(NSString *)kUTTypePNG]];
+			
+		}
+		
+	}
+	
+	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+	pasteboard.items = parr;
+	
+	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply?%@'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL,token]];
+	return text;
+}
+
 #pragma mark -
 #pragma mark Compose Mail
 
@@ -718,7 +818,7 @@
 			//ZoozzLog(text);
 			
 			//[picker setMessageBody:[self getMessage] isHTML:YES];
-			picker.body = [self getMessage];
+			picker.body = [self pasteMessageToPasteboard];
 			
 			[self presentModalViewController:picker animated:YES];
 			[picker release];
@@ -812,5 +912,7 @@
 	[theConnection release];
 }
 */
+
+
 
 @end

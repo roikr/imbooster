@@ -30,6 +30,6 @@
 - (id)initWithSectionNumber:(int)sec;
 - (IBAction)changePage:(id)sender;
 - (void)clear;
-- (void)cancelLoadOfCategory:(NSUInteger)cat;
+//- (void)cancelLoadOfCategory:(NSUInteger)cat;
 
 @end

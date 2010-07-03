@@ -181,7 +181,7 @@
 	if (pageControl.currentPage == page || page < 0 || page >= numberOfPages) 
 		return;
     
-	[self cancelLoadOfPage:pageControl.currentPage];
+	//[self cancelLoadOfPage:pageControl.currentPage];
 	
     pageControl.currentPage = page;
 	
@@ -257,6 +257,7 @@
 	ZoozzLog(@"SubCategoryViewController - setCurrentPage: %u (sec: %u)",page,sectionNumber);
 }
 
+/*
 - (void)cancelLoadOfPage:(NSUInteger)page {
 	KeyboardViewController *keyboard = [viewControllers objectAtIndex:page];
 	if ((NSNull *)keyboard != [NSNull null]) {
@@ -267,5 +268,6 @@
 	
 	
 }
+ */
 
 @end

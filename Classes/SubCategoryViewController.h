@@ -40,6 +40,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 //- (void)populateAndViewWithPage:(int)page;
 - (void)clear;
-- (void)cancelLoadOfPage:(NSUInteger)page;
+//- (void)cancelLoadOfPage:(NSUInteger)page;
 
 @end

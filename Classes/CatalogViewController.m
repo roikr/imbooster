@@ -17,7 +17,7 @@
 
 
 @interface CatalogViewController (PrivateMethods) 
-- (void)cancelLoadOfSection:(NSUInteger)sec;
+//- (void)cancelLoadOfSection:(NSUInteger)sec;
 @end
 
 @implementation CatalogViewController
@@ -29,6 +29,7 @@
 @synthesize actionItem;
 @synthesize catalogView;
 @synthesize toolbar;
+@synthesize adView;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -73,6 +74,8 @@
 		 
 	self.currentSection = self.currentSection; // need for reload subviews after unload - memory warning
 	// so on first gotoGallery will be called twice
+	
+	//[self hideAd];
 }
 		 
 - (void)selectSection:(id)sender {
@@ -108,6 +111,7 @@
 	self.actionButton = nil;
 	self.catalogView = nil;
 	self.toolbar = nil;
+	self.adView = nil;
 }
 
 - (void)dealloc {
@@ -118,19 +122,27 @@
 	[selectedButton	release];
 	[catalogView release];
 	[toolbar release];
+	[adView release];
 	[super dealloc];
 }
 
+- (void)hideAd {
+	adView.hidden = YES;
+	catalogView.frame = CGRectMake(0, 0, 320, 372);
+}
+
+/*
 - (void)cancelLoadOfSection:(NSUInteger)sec {
 	ServiceViewController *controller = [viewControllers objectAtIndex:sec];
     if ((NSNull *)controller != [NSNull null]) {
 		[controller cancelLoadOfCategory:controller.currentCategory];
 	}
 }
+ */
 
 - (void)setCurrentSection:(NSUInteger)sec {
 	
-	[self cancelLoadOfSection:currentSection];
+	//[self cancelLoadOfSection:currentSection];
 		
 	currentSection = sec;	
 	
@@ -203,7 +215,7 @@
 		//[appDelegate purchaseWithProduct:selectedAsset.productIdentifier];
 	
 	} else {
-		[self cancelLoadOfSection:currentSection];
+		//[self cancelLoadOfSection:currentSection];
 		[self.navigationController popToRootViewControllerAnimated:YES];
 		
 		appDelegate.messages.currentSection = currentSection;
@@ -238,7 +250,7 @@
 }
 
 -(IBAction)gotoKeyboard:(id)sender {
-	[self cancelLoadOfSection:currentSection];
+	//[self cancelLoadOfSection:currentSection];
 	IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate gotoKeyboard];
 	

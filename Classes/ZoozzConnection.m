@@ -28,9 +28,10 @@
 		
 		self.delegate = theDelegate;
 		self.requestType = aRequestType;
-		IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+		//IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
 		
 		switch (requestType) {
+			/*
 			case ZoozzLogin: 
 			case ZoozzAuthenticateTransaction:
 			case ZoozzAuthenticateTrial: {
@@ -63,15 +64,18 @@
 				[request setHTTPMethod:@"GET"];
 				
 			} break;
+			 */
 			case ZoozzAsset: {
 				
-				self.request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kZoozzSecuredURL,string]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5];
-				[request setAllHTTPHeaderFields:[ZoozzConnection requestHeaderWithSessionID:appDelegate.localStorage.sessionID]]; 
+				//self.request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kZoozzSecuredURL,string]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5];
+				self.request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kZoozzURL,string]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+				
+				//[request setAllHTTPHeaderFields:[ZoozzConnection requestHeaderWithSessionID:appDelegate.localStorage.sessionID]]; 
 				[request setHTTPMethod:@"GET"];
 				//ZoozzLog(@"ZoozzConnection: %@\n%@",[request URL],[[request allHTTPHeaderFields] description]);
 				
 			} break;
-				
+			/*
 			case ZoozzEvents: {
 				self.request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:
 							[kZoozzSecuredURL stringByAppendingPathComponent:@"events"]] 
@@ -83,17 +87,19 @@
 				if (string) // events
 					[request setHTTPBody:[string dataUsingEncoding:NSASCIIStringEncoding]];
 			}
-			
+			*/
 							
 			default:
 				break;
 		}
 		
-		if (requestType != ZoozzAsset) {
+		
+		if (requestType == ZoozzAsset) {
 			NSString * body = [[NSString alloc] initWithData:[request HTTPBody] encoding:NSASCIIStringEncoding];
 			ZoozzLog(@"ZoozzConnection:%@\nheader: %@\nbody: %@",[request URL],[[request allHTTPHeaderFields] description],body);
 			[body release];
 		}
+		 
 		
 		
 		/* create the NSMutableData instance that will hold the received data */
@@ -126,7 +132,7 @@
 	return self;
 }
 
-
+/*
 + (NSDictionary *)requestLoginHeaderWithSessionID:(NSString *)sid withAPNToken:(NSString *)token		 
 {
 	NSURL * url = [NSURL URLWithString:kZoozzSecuredURL];
@@ -172,7 +178,7 @@
 	return [NSHTTPCookie requestHeaderFieldsWithCookies:arr];
 }
 
-
+*/
 
 #pragma mark NSURLConnection delegate methods
 
@@ -192,7 +198,9 @@
 		self.theResponse = (NSHTTPURLResponse*)response;
 		NSDictionary *headers = [theResponse allHeaderFields];
 		NSInteger statusCode = [theResponse statusCode];
+		/*
 		IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+		
 		
 		if (requestType==ZoozzLogin && ( statusCode==HTTPStatusCodeOK || statusCode == HTTPStatusCodeNoContent)) {
 			if (!appDelegate.bLoggedIn) {
@@ -212,6 +220,7 @@
 			}
 			
 		}
+		 */
 		
 		switch (requestType) {
 			case ZoozzLogin: 

@@ -68,6 +68,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 @interface IminentAppDelegate (PrivateMethods)
 
++ (void)unzipUpdate;
 //- (void)login;
 //- (void)loginDidFailed;
 //- (void)loadLibraryWithTransaction:(SKPaymentTransaction *)transaction;
@@ -138,11 +139,14 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	enableEmoji();
 	
 	[LocalStorage unzipPrecache];
-		
+	
+
+/*		
 #ifdef _ADMOB
 	[self performSelectorInBackground:@selector(reportAppOpenToAdMob) withObject:nil];
 	ZoozzLog(@"admod started");
 #endif
+ */
 	
 	[window makeKeyAndVisible];
 	
@@ -169,6 +173,14 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	self.localStorage = [LocalStorage localStorage];
 	
+	[self parseLibrary];
+	
+	if (![CacheResource doesAssetCachedWithResourceType:CacheResourceUpdate withIdentifier:nil])
+		[[CacheResource alloc] initWithResouceType:CacheResourceUpdate withObject:nil delegate:self];	
+	
+	return YES;
+	/*
+	
 #ifdef _SETTINGS
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"delete_purchases_identifier"]) {
 		localStorage.purchases = nil;
@@ -176,13 +188,13 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	}
 #endif
 	
+	
 	// if I got no library but libraryDate valid
 	if (![CacheResource doesAssetCachedWithResourceType:CacheResourceLibrary withIdentifier:nil]) {
 		localStorage.libraryDate = nil;
 		[localStorage archive];
 	}
-	
-	/*
+	 
 	if (isConnected() && !localStorage.cookieInstalled) {  
 		localStorage.cookieInstalled = YES;
 		[localStorage archive];
@@ -191,8 +203,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		
 		return YES;
 	}
-	*/
-/*
+	
 #ifdef _IMBoosterFree
 	if (!localStorage.firstLaunch) {
 		firstLaunchAlert();
@@ -200,12 +211,12 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		[localStorage archive];
 	}
 #endif
-*/
+
 	
 	
-	//videoPlayer = [[VideoPlayer alloc] init];
+	videoPlayer = [[VideoPlayer alloc] init];
 		
-	/*
+	
 	NSURL * url = (NSURL *)[launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
 	if (url && [[url host] isEqualToString:@"reply"]) {
 		
@@ -256,10 +267,32 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		
 	}
 	*/
-	[self parseLibrary];
-	return YES;
+	
 	
 }
+
++ (void)unzipUpdate {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	if (!documentsDirectory) {
+		ZoozzLog(@"Documents directory not found!");
+		return ;
+	}
+	
+	NSString * update = [documentsDirectory stringByAppendingPathComponent:@"update.zip"];
+	
+	if ([[NSFileManager defaultManager] fileExistsAtPath:update]) { 
+		
+		ZoozzLog(@"unzipping update");
+		[LocalStorage unzip:update to:documentsDirectory];
+		
+		
+	}
+}
+
+
 
 /*
 - (void)notificationWithAction:(ZoozzNotificationActionType)action {
@@ -446,11 +479,12 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
  */
 
 
-/*
+
 #pragma mark CacheResource delegate methods
 
 - (void)CacheResourceDidFailLoading:(CacheResource *)cacheResource {
 	switch (cacheResource.resourceType) {
+		/*
 		case CacheResourceLibrary: {
 			[self loginDidFailed];
 		} break;
@@ -458,6 +492,11 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		case CacheResourceWink: {
 			[cachingWinks removeObject:cacheResource];
 		} break;
+		*/
+		case CacheResourceUpdate:
+			ZoozzLog(@"CacheResourceDidFailLoading CacheResourceUpdate");
+			break;
+
 			
 		default:
 			break;
@@ -472,6 +511,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 - (void)CacheResourceDidFinishLoading:(CacheResource *)cacheResource {
 	
 	switch (cacheResource.resourceType) {
+		/*
 		case CacheResourceLibrary: {
 			
 			if (cacheResource.transaction) {
@@ -515,6 +555,15 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 				[catalog updateWinksViews];
 			
 		} break;
+		 
+		 */
+			
+		case CacheResourceUpdate: {
+			[IminentAppDelegate unzipUpdate];
+			[self parseLibrary];
+			
+		} break;
+
 			
 		default:
 			break;
@@ -524,7 +573,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[cacheResource release];
 }
-*/
+
 
 -(void) parseLibrary {
 	[[XMLParser alloc] parse:[NSData dataWithContentsOfFile:[CacheResource cacheResourcePathWithResourceType:CacheResourceLibrary WithIdentifier:nil]] withDelegate:self];

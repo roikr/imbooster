@@ -31,7 +31,7 @@ extern NSString *const kUpgradeProductIdentifier;
 
 
 
-@interface IminentAppDelegate : NSObject <UIApplicationDelegate,XMLParserDelegate,UINavigationControllerDelegate> { //AuthenticateConnectionDelegate,SKPaymentTransactionObserver,CacheResourceDelegate
+@interface IminentAppDelegate : NSObject <UIApplicationDelegate,XMLParserDelegate,UINavigationControllerDelegate,CacheResourceDelegate> { //AuthenticateConnectionDelegate,SKPaymentTransactionObserver,CacheResourceDelegate
 	UIWindow *window;
 	
 	UINavigationController *navigationController;

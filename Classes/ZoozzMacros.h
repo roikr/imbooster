@@ -7,7 +7,7 @@
 //
 
 
-//#define _DEVELOPMENT_SERVER
+#define _DEVELOPMENT_SERVER
 //#define _ADMOB
 
 #ifdef _Debug

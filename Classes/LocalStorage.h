@@ -43,14 +43,19 @@
 
 
 + (LocalStorage*) localStorage;
+
++ (void)unzip:(NSString *)src to:(NSString *)dest;
 + (void)unzipPrecache;
 + (void)initCache;
 + (void)clearCache;
+	
 - (void)arrangeAssets:(NSArray *)assets;
 - (NSString *)token;
 //- (void)removeAssets;
 - (BOOL)archive;
 + (void)delete;
 - (NSArray *)productAssetsWithIdentifier:(NSString *)identifier;
+
++ (NSString *)bundleVersion;
 
 @end

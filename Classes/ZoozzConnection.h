@@ -16,7 +16,7 @@ enum {
 	ZoozzAuthenticateTrial = 3,
     ZoozzLibrary = 4,
 	ZoozzAsset = 5,
-	ZoozzEvents = 6,
+	ZoozzEvents = 6
 };
 
 typedef NSUInteger ZoozzRequestType; 
@@ -57,9 +57,9 @@ typedef NSUInteger HTTPStatusCode;
 
 
 - (id)initWithRequestType:(NSUInteger)aRequestType withString:(NSString*)string delegate:(id<ZoozzConnectionDelegate>) theDelegate;
-+ (NSDictionary *)requestHeaderWithSessionID:(NSString *)sid;
-+ (NSDictionary *)requestLoginHeaderWithSessionID:(NSString *)sid withAPNToken:(NSString *)token;
-- (void)cancel;
+//+ (NSDictionary *)requestHeaderWithSessionID:(NSString *)sid;
+//+ (NSDictionary *)requestLoginHeaderWithSessionID:(NSString *)sid withAPNToken:(NSString *)token;
+//- (void)cancel;
 
 @end
 

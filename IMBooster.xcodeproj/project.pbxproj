@@ -38,7 +38,6 @@
 		E429397A10B432F600ECB3E5 /* LocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E429397910B432F600ECB3E5 /* LocalStorage.m */; };
 		E42B4F5910BCA6DA0081C43F /* keyboard-background.png in Resources */ = {isa = PBXBuildFile; fileRef = E42B4F5710BCA6DA0081C43F /* keyboard-background.png */; };
 		E42B4F5A10BCA6DA0081C43F /* keyboard-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = E42B4F5810BCA6DA0081C43F /* keyboard-overlay.png */; };
-		E43D862E10B4BE9100FF1252 /* ZoozzConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E43D85E410B4AAFD00FF1252 /* ZoozzConnection.m */; };
 		E43E2FD6109476CC009D1FF7 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E2FD5109476CC009D1FF7 /* GalleryViewController.m */; };
 		E448ED5B10F141EE003C61A0 /* ZoozzEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E448ED5A10F141EE003C61A0 /* ZoozzEvent.m */; };
 		E4491EB011BB7E1200BD26EE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4491EAF11BB7E1200BD26EE /* Icon.png */; };
@@ -102,7 +101,6 @@
 		E464A5FA10F4F509009B8C61 /* Yellow pin-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E42788B510C61111009E6321 /* Yellow pin-selected.png */; };
 		E464A5FB10F4F509009B8C61 /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = E49E15F010DE8B8600DFF5DE /* new.png */; };
 		E464A5FE10F4F509009B8C61 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A6A86A10C437DE00913CF8 /* StoreViewController.m */; };
-		E464A5FF10F4F509009B8C61 /* ZoozzConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E43D85E410B4AAFD00FF1252 /* ZoozzConnection.m */; };
 		E464A60010F4F509009B8C61 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E462356C109CE32100B890F8 /* ServiceViewController.m */; };
 		E464A60110F4F509009B8C61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		E464A60210F4F509009B8C61 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MessagesViewController.m */; };
@@ -256,6 +254,7 @@
 		E4C2FC2E11204FC100BD2FB6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E8F81910C0802400603DA6 /* AudioToolbox.framework */; };
 		E4C2FC2F11204FC100BD2FB6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A237010C151170028F730 /* SystemConfiguration.framework */; };
 		E4D258A010A8D8C10057C07C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D2589F10A8D8C10057C07C /* StoreKit.framework */; };
+		E4DD7F7911E31AB400C8F418 /* ZoozzConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DD7F7811E31AB400C8F418 /* ZoozzConnection.m */; };
 		E4DEF2EF109AFCF6000A7E5F /* CatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DEF2EE109AFCF6000A7E5F /* CatalogViewController.m */; };
 		E4DEF343109B2217000A7E5F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DEF342109B2217000A7E5F /* MediaPlayer.framework */; };
 		E4DEF357109B22BE000A7E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DEF356109B22BE000A7E5F /* MessageUI.framework */; };
@@ -322,8 +321,6 @@
 		E429397910B432F600ECB3E5 /* LocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorage.m; sourceTree = "<group>"; };
 		E42B4F5710BCA6DA0081C43F /* keyboard-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-background.png"; sourceTree = "<group>"; };
 		E42B4F5810BCA6DA0081C43F /* keyboard-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-overlay.png"; sourceTree = "<group>"; };
-		E43D85E310B4AAFD00FF1252 /* ZoozzConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoozzConnection.h; sourceTree = "<group>"; };
-		E43D85E410B4AAFD00FF1252 /* ZoozzConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoozzConnection.m; sourceTree = "<group>"; };
 		E43E2F7B1094743D009D1FF7 /* IMBooster_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBooster_Prefix.pch; sourceTree = "<group>"; };
 		E43E2FA41094754B009D1FF7 /* IMBooster-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMBooster-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		E43E2FD4109476CC009D1FF7 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryViewController.h; path = Classes/GalleryViewController.h; sourceTree = "<group>"; };
@@ -394,6 +391,8 @@
 		E4C2FC3411204FC100BD2FB6 /* IMBoosterPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMBoosterPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C2FC3A1120507200BD2FB6 /* IMBoosterPlus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMBoosterPlus-Info.plist"; sourceTree = "<group>"; };
 		E4D2589F10A8D8C10057C07C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E4DD7F7711E31AB400C8F418 /* ZoozzConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoozzConnection.h; sourceTree = "<group>"; };
+		E4DD7F7811E31AB400C8F418 /* ZoozzConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoozzConnection.m; sourceTree = "<group>"; };
 		E4DEF2ED109AFCF6000A7E5F /* CatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatalogViewController.h; path = Classes/CatalogViewController.h; sourceTree = "<group>"; };
 		E4DEF2EE109AFCF6000A7E5F /* CatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatalogViewController.m; path = Classes/CatalogViewController.m; sourceTree = "<group>"; };
 		E4DEF342109B2217000A7E5F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -483,8 +482,8 @@
 		071F20E0107D129200100E46 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				E43D85E310B4AAFD00FF1252 /* ZoozzConnection.h */,
-				E43D85E410B4AAFD00FF1252 /* ZoozzConnection.m */,
+				E4DD7F7711E31AB400C8F418 /* ZoozzConnection.h */,
+				E4DD7F7811E31AB400C8F418 /* ZoozzConnection.m */,
 				E4E4D83610DA7D1800458BA9 /* CacheResource.h */,
 				E4E0358110B5E22C00548313 /* CacheResource.m */,
 				E4E4D85D10DA83EA00458BA9 /* CacheAsset.h */,
@@ -1030,7 +1029,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E44D6FF110EA499200964A59 /* StoreViewController.m in Sources */,
-				E43D862E10B4BE9100FF1252 /* ZoozzConnection.m in Sources */,
 				E47521DB10AF18AA0028F229 /* ServiceViewController.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MessagesViewController.m in Sources */,
@@ -1064,7 +1062,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E464A5FE10F4F509009B8C61 /* StoreViewController.m in Sources */,
-				E464A5FF10F4F509009B8C61 /* ZoozzConnection.m in Sources */,
 				E464A60010F4F509009B8C61 /* ServiceViewController.m in Sources */,
 				E464A60110F4F509009B8C61 /* main.m in Sources */,
 				E464A60210F4F509009B8C61 /* MessagesViewController.m in Sources */,
@@ -1121,6 +1118,7 @@
 				E4DF646811D6749B00A14CC2 /* unzip.c in Sources */,
 				E4DF646911D6749B00A14CC2 /* zip.c in Sources */,
 				E4DF646A11D6749B00A14CC2 /* ZipArchive.mm in Sources */,
+				E4DD7F7911E31AB400C8F418 /* ZoozzConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

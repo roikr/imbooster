@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "ZoozzConnection.h"
+#import "ZoozzConnection.h"
 
 @protocol CacheResourceDelegate;
 
@@ -16,24 +16,25 @@ enum {
 	CacheResourceThumb = 2,
     CacheResourceEmoticon = 3,
 	CacheResourceWink = 4,
-	CacheResourceStreaming = 5
+	CacheResourceStreaming = 5,
+	CacheResourceUpdate = 6,
 };
 typedef NSUInteger CacheResourceType; 
 
 @class SKPaymentTransaction;
-@interface CacheResource : NSObject { // <ZoozzConnectionDelegate>
+@interface CacheResource : NSObject<ZoozzConnectionDelegate> { 
 //@private
 	CacheResourceType resourceType;
 	id <CacheResourceDelegate> delegate;
 	NSString * filePath;
-	//ZoozzConnection *connection;
+	ZoozzConnection *connection;
 	NSString *identifier;
 	//SKPaymentTransaction *transaction;
 }
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, retain) NSString * filePath;
-//@property (nonatomic, retain) ZoozzConnection *connection;
+@property (nonatomic, retain) ZoozzConnection *connection;
 @property (nonatomic, retain) NSString *identifier;
 //@property (nonatomic, retain) SKPaymentTransaction *transaction;
 
@@ -45,7 +46,7 @@ typedef NSUInteger CacheResourceType;
 //+ (void) copyWithResourceType:(CacheResourceType)aResourceType withIdentifier:(NSString*)identifier;
 + (BOOL) doesAssetCachedWithResourceType:(CacheResourceType)aResourceType withIdentifier:(NSString*)identifier;
 
-//- (id) initWithResouceType:(CacheResourceType)aResourceType withObject:(id)object delegate:(id<CacheResourceDelegate>)theDelegate;
+- (id) initWithResouceType:(CacheResourceType)aResourceType withObject:(id)object delegate:(id<CacheResourceDelegate>)theDelegate;
 //- (void)cancel;
 @end
 

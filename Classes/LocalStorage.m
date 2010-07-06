@@ -14,7 +14,6 @@
 #import "ZoozzMacros.h"
 #import "ZipArchive.h"
 
-
 @implementation LocalStorage
 
 @synthesize sessionID;
@@ -33,6 +32,14 @@
 @synthesize assetsByUnichar;
 @synthesize assetsByIdentifier;
 
++ (void) unzip:(NSString *)src to:(NSString *)dest {
+	ZipArchive *zip = [[ZipArchive alloc] init];
+	[zip UnzipOpenFile:src];
+	[zip UnzipFileTo:dest overWrite:YES];
+	[zip UnzipCloseFile];
+}
+
+	
 
 + (void)unzipPrecache {
 	
@@ -45,18 +52,14 @@
 		return ;
 	}
 	
-	
-	
 	if (![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"]]) { // roikr: first time run check for release
 		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"zip" inDirectory:@"precache"];
 		
 		if (precache) {
 			ZoozzLog(@"unzipping precache");
+			[self unzip:precache to:documentsDirectory];
 			
-			ZipArchive *zip = [[ZipArchive alloc] init];
-			[zip UnzipOpenFile:precache];
-			[zip UnzipFileTo:[paths objectAtIndex:0] overWrite:YES];
-			[zip UnzipCloseFile];
+			
 		} 
 		/*
 		 else {
@@ -468,6 +471,16 @@
 		return nil;
 		
 	return [self encode:self.sessionID number:self.tokenNumber];
+}
+
++ (NSString *)bundleVersion {
+	
+	NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+	NSString *str = [dict objectForKey:(NSString*)kCFBundleVersionKey];
+	
+	//ZoozzLog(@"bundle version: %@",str);
+	return str;
+	
 }
 
 

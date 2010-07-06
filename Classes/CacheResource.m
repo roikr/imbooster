@@ -21,16 +21,17 @@
 @synthesize delegate;
 @synthesize filePath;
 @synthesize resourceType;
-//@synthesize connection;
+@synthesize connection;
 @synthesize identifier;
 //@synthesize transaction;
 
-/*
+
 - (id) initWithResouceType:(CacheResourceType)aResourceType withObject:(id)object delegate:(id<CacheResourceDelegate>)theDelegate {
 	if (self = [super init]) {
 		self.delegate = theDelegate;
 		resourceType = aResourceType;
 		
+		/*
 		switch (resourceType) {
 			case CacheResourceThumb:
 			case CacheResourceEmoticon:
@@ -40,18 +41,21 @@
 			case CacheResourceLibrary:
 				self.transaction = object;
 				break;
+			
 			default:
 				break;
 		}
+		 */
 		
 		
 		
-		NSString *relativePath = [CacheResource resourceRelativePathWithResourceType:aResourceType WithIdentifier:identifier];
-		
-				
+		//NSString *relativePath = [CacheResource resourceRelativePathWithResourceType:aResourceType WithIdentifier:identifier];
 		self.filePath = [CacheResource cacheResourcePathWithResourceType:aResourceType WithIdentifier:identifier];
+				
+		
 		
 		switch (resourceType) {
+			/*
 			case CacheResourceThumb:
 			case CacheResourceEmoticon:
 			case CacheResourceWink:
@@ -60,6 +64,10 @@
 			case CacheResourceLibrary:
 				self.connection = [[ZoozzConnection alloc] initWithRequestType:ZoozzLibrary withString:nil delegate:self];
 				break;
+			*/
+			case CacheResourceUpdate:
+				
+				self.connection = [[ZoozzConnection alloc] initWithRequestType:ZoozzAsset withString:[NSString stringWithFormat:@"data_%@.zip",[LocalStorage bundleVersion]] delegate:self];
 			default:
 				break;
 		}
@@ -68,7 +76,7 @@
 	
 	return self;
 }
-*/
+
 
 /*
 
@@ -170,7 +178,9 @@
 			theFilePath = [NSString stringWithFormat:@"%@/data/content/%@.gif",[paths objectAtIndex:0],identifier];
 			//theFilePath = [path stringByAppendingPathComponent:[@"content" stringByAppendingPathComponent:identifier]];
 			break;
-			
+		case CacheResourceUpdate:
+			theFilePath = [NSString stringWithFormat:@"%@/data_%@.zip",[paths objectAtIndex:0],[LocalStorage bundleVersion]];
+			ZoozzLog(@"cacheResourcePathWithResourceType CacheResourceUpdate %@",theFilePath);
 		default:
 			break;
 	}
@@ -221,10 +231,10 @@
 
 
 
-/*
- ------------------------------------------------------------------------
- URLCacheConnectionDelegate protocol methods
- ------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------
+// URLCacheConnectionDelegate protocol methods
+// ------------------------------------------------------------------------
  
 
 #pragma mark -
@@ -249,7 +259,7 @@
 	
 	switch (theConnection.requestType) {
 			
-			
+		/*
 		case ZoozzLibrary: {
 			switch (statusCode) {
 				case HTTPStatusCodeOK:
@@ -266,18 +276,18 @@
 			}
 			
 		} break;
+		*/	
 			
+		case ZoozzAsset: {
+			switch (statusCode) {
+				case HTTPStatusCodeOK:
+					ZoozzLog(@"connectionDidFinish - ZoozzAsset: HTTPStatusCodeOK, data length: %u",[theConnection.receivedData length]);
+					break;
+				default:
+					break;
+			}
 			
-			 //case ZoozzAsset: {
-//			 switch (statusCode) {
-//			 case HTTPStatusCodeOK:
-//			 ZoozzLog(@"connectionDidFinish - ZoozzAsset: HTTPStatusCodeOK, data length: %u",[receivedData length]);
-//			 break;
-//			 default:
-//			 break;
-//			 }
-//			 
-//			 }
+		}
 			
 		default:
 			break;
@@ -286,19 +296,22 @@
 	
 	// the resource is cached if it is an asset or ( it is a new library )
 	if (statusCode == HTTPStatusCodeOK) {
-		[[NSFileManager defaultManager] createFileAtPath:filePath contents:theConnection.receivedData  attributes:nil];
 		
-		if (resourceType==CacheResourceLibrary) {
-			NSString * date = [[theConnection.theResponse allHeaderFields] objectForKey:@"Z-Date"];
-			IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
-			appDelegate.localStorage.libraryDate = date;
-			[appDelegate.localStorage archive];
-			ZoozzLog(@"CacheResource - connectionDidFinish - CacheResourceLibrary - Z-Date: %@",date);
-		}
+		
+		[[NSFileManager defaultManager] createFileAtPath:filePath contents:theConnection.receivedData  attributes:nil];
+//		
+//		if (resourceType==CacheResourceLibrary) {
+//			NSString * date = [[theConnection.theResponse allHeaderFields] objectForKey:@"Z-Date"];
+//			IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
+//			appDelegate.localStorage.libraryDate = date;
+//			[appDelegate.localStorage archive];
+//			ZoozzLog(@"CacheResource - connectionDidFinish - CacheResourceLibrary - Z-Date: %@",date);
+//		}
+		 
 		
 	}
 	
-	//else if ([theConnection.theResponse statusCode] != HTTPStatusCodeNotModified) {
+//	else if ([theConnection.theResponse statusCode] != HTTPStatusCodeNotModified) {
 //		if ([[NSFileManager defaultManager] fileExistsAtPath:filePath] == YES) {
 //			NSError * error = nil;
 //			if (![[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]) {
@@ -314,7 +327,7 @@
 	self.connection = nil;
 	
 }
-
+/*
 - (void)cancel {
 	if (connection) {
 		[connection cancel];
@@ -326,9 +339,9 @@
 */
 - (void)dealloc {
 	//no need to release connection because it released on its delegate ?
-	//if (connection) {
-//		connection.delegate = nil;
-//	}
+	if (connection) {
+		connection.delegate = nil;
+	}
 	[filePath release];
 	[identifier release];
 	//[transaction release];

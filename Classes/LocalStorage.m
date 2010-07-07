@@ -16,13 +16,13 @@
 
 @implementation LocalStorage
 
-@synthesize sessionID;
-@synthesize libraryDate;
-@synthesize tried;
+//@synthesize sessionID;
+//@synthesize libraryDate;
+//@synthesize tried;
 @synthesize message;
-@synthesize tokenNumber;
-@synthesize firstLaunch;
-@synthesize cookieInstalled;
+//@synthesize tokenNumber;
+//@synthesize firstLaunch;
+//@synthesize cookieInstalled;
 @synthesize purchases;
 @synthesize events;
 
@@ -41,53 +41,17 @@
 
 	
 
-+ (void)unzipPrecache {
-	
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	
-	if (!documentsDirectory) {
-		ZoozzLog(@"Documents directory not found!");
-		return ;
-	}
-	
-	if (![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"]]) { // roikr: first time run check for release
-		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"zip" inDirectory:@"precache"];
-		
-		if (precache) {
-			ZoozzLog(@"unzipping precache");
-			[self unzip:precache to:documentsDirectory];
-			
-			
-		} 
-		/*
-		 else {
-		 NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"data"];
-		 NSError * error = nil;
-		 if (![[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]) {
-		 URLCacheAlertWithError(error);
-		 return;
-		 }
-		 
-		 
-		 }
-		 */
-		
-		
-	}
-}
 
 
 + (LocalStorage*) localStorage 
 {
 	
-	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	//NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
-#ifdef _SETTINGS
-	if ([defaults boolForKey:@"clear_cache_identifier"]) 
-		[LocalStorage clearCache];
-#endif 
+//#ifdef _SETTINGS
+//	if ([defaults boolForKey:@"clear_cache_identifier"]) 
+//		[LocalStorage clearCache];
+//#endif 
 	
 	[LocalStorage initCache];
 	/*	
@@ -107,7 +71,7 @@
 		return NULL;
 	}
 	
-	NSString * appFile = [documentsDirectory stringByAppendingPathComponent:@"data"];
+	NSString * appFile = [documentsDirectory stringByAppendingPathComponent:@"local"];
 	
 	retVal = (LocalStorage *)[NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
 	
@@ -160,7 +124,7 @@
 		return NO;
 	}
 	
-	NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"data"];
+	NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"local"];
 	return [NSKeyedArchiver archiveRootObject:self toFile:appFile];
 }
 	
@@ -177,7 +141,7 @@
 	
 	
 	NSError * error = nil;
-	NSString * appFile = [documentsDirectory stringByAppendingPathComponent:@"data"];
+	NSString * appFile = [documentsDirectory stringByAppendingPathComponent:@"local"];
 	
 	if ([[NSFileManager defaultManager] fileExistsAtPath:appFile]) {
 		if (![[NSFileManager defaultManager] removeItemAtPath:appFile error:&error]) 
@@ -195,9 +159,9 @@
 	if (self = [super init]) {
 		
 		backgroundLoad = NO;
-		tokenNumber = 1;
-		firstLaunch = NO;
-		cookieInstalled = NO;
+		//tokenNumber = 1;
+		//firstLaunch = NO;
+		//cookieInstalled = NO;
 		//tried = NO;
 	}
 	return self;
@@ -209,12 +173,12 @@
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super init];
 	if (self != nil) {
-		self.sessionID = [coder decodeObjectForKey:@"sessionID"];
-		self.libraryDate = [coder decodeObjectForKey:@"libraryDate"];
+		//self.sessionID = [coder decodeObjectForKey:@"sessionID"];
+		//self.libraryDate = [coder decodeObjectForKey:@"libraryDate"];
 		self.message = [coder decodeObjectForKey:@"message"];
-		self.tokenNumber = [coder decodeIntegerForKey:@"tokenNumber"];
-		self.firstLaunch = [coder decodeBoolForKey:@"firstLaunch"];
-		self.cookieInstalled = [coder decodeBoolForKey:@"cookieInstalled"];
+		//self.tokenNumber = [coder decodeIntegerForKey:@"tokenNumber"];
+		//self.firstLaunch = [coder decodeBoolForKey:@"firstLaunch"];
+		//self.cookieInstalled = [coder decodeBoolForKey:@"cookieInstalled"];
 		//self.tried = [coder decodeBoolForKey:@"tried"];
 		self.purchases = [coder decodeObjectForKey:@"purchases"];
 		//self.events	= [coder decodeObjectForKey:@"events"]; // doesn't archive events
@@ -229,7 +193,7 @@
 {
 	[assetsByUnichar release];
 	[assetsByIdentifier release];
-	[sessionID release];
+	//[sessionID release];
 	[message release];
 	[purchases release];
 	[sections release];
@@ -238,12 +202,12 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.sessionID forKey:@"sessionID"];
-	[coder encodeObject:self.libraryDate forKey:@"libraryDate"];
+    //[coder encodeObject:self.sessionID forKey:@"sessionID"];
+	//[coder encodeObject:self.libraryDate forKey:@"libraryDate"];
 	[coder encodeObject:self.message forKey:@"message"];
-	[coder encodeInteger:self.tokenNumber forKey:@"tokenNumber"];
-	[coder encodeBool:self.firstLaunch forKey:@"firstLaunch"];
-	[coder encodeBool:self.cookieInstalled forKey:@"cookieInstalled"];
+	//[coder encodeInteger:self.tokenNumber forKey:@"tokenNumber"];
+	//[coder encodeBool:self.firstLaunch forKey:@"firstLaunch"];
+	//[coder encodeBool:self.cookieInstalled forKey:@"cookieInstalled"];
 	//[coder encodeBool:self.tried forKey:@"tried"];
 	[coder encodeObject:self.purchases forKey:@"purchases"];
 	//[coder encodeObject:self.events forKey:@"events"]; // // doesn't archive events
@@ -306,19 +270,21 @@
 
 /* removes every file in the cache directory */
 
-+ (void) clearCache
-{
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString * dataPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"URLCache"]; 
-	NSError * error = nil;
-	
-	/* remove the cache directory and its contents */
-	if (![[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error]) {
-		URLCacheAlertWithError(error);
-		return;
-	}
-	
-}	
+
+//+ (void) clearCache
+//{
+//	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//	NSString * dataPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"URLCache"]; 
+//	NSError * error = nil;
+//	
+//	/* remove the cache directory and its contents */
+//	if (![[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error]) {
+//		URLCacheAlertWithError(error);
+//		return;
+//	}
+//	
+//}	
+
 
 
 
@@ -465,6 +431,7 @@
     return  [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
 }
 
+/*
 - (NSString *)token {
 	ZoozzLog(@"create token for sessionID: %@",self.sessionID);
 	if (self.sessionID== nil) 
@@ -472,7 +439,7 @@
 		
 	return [self encode:self.sessionID number:self.tokenNumber];
 }
-
+*/
 + (NSString *)bundleVersion {
 	
 	NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];

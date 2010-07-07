@@ -75,7 +75,9 @@
 	self.currentSection = self.currentSection; // need for reload subviews after unload - memory warning
 	// so on first gotoGallery will be called twice
 	
-	//[self hideAd];
+	if ([appDelegate checkPurchases]) {
+		[self hideAd];
+	}
 }
 		 
 - (void)selectSection:(id)sender {

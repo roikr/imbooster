@@ -64,7 +64,7 @@
 
 - (IBAction)restore:(id)sender {
 	IminentAppDelegate *appDelegate = (IminentAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate restorePurchases];
+	[appDelegate restoreTransactions];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {

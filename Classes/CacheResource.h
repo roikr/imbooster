@@ -15,9 +15,9 @@ enum {
     CacheResourceLibrary = 1,
 	CacheResourceThumb = 2,
     CacheResourceEmoticon = 3,
-	CacheResourceWink = 4,
-	CacheResourceStreaming = 5,
-	CacheResourceUpdate = 6,
+	//CacheResourceWink = 4,
+	//CacheResourceStreaming = 5,
+	CacheResourceUpdate = 6
 };
 typedef NSUInteger CacheResourceType; 
 

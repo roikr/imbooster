@@ -39,9 +39,9 @@ enum {
 			case IminentEmoticon:
 				contentType = CacheResourceEmoticon;
 				break;
-			case IminentWink: 
-				contentType = CacheResourceWink;
-				break;
+//			case IminentWink: 
+//				contentType = CacheResourceWink;
+//				break;
 			default:
 				ZoozzLog(@"Asset - initWithNumber error - error asset type");
 				break;

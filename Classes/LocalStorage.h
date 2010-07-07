@@ -14,26 +14,27 @@
 	NSMutableDictionary * assetsByUnichar;
 	NSMutableDictionary * assetsByIdentifier;
 	
-	NSString *sessionID;
-	NSString *libraryDate;
+	//NSString *sessionID;
+	//NSString *libraryDate;
 	NSString *message;
-	NSInteger tokenNumber;
-	BOOL firstLaunch;
-	BOOL cookieInstalled;
-	BOOL tried;
-	NSString *purchases;
+	//NSInteger tokenNumber;
+	//BOOL firstLaunch;
+	//BOOL cookieInstalled;
+	//BOOL tried;
+	NSMutableArray *purchases; // used to be NSString
+	
 	
 	NSMutableArray *events;
 }
 
-@property (retain, nonatomic) NSString * sessionID;
-@property (retain, nonatomic) NSString * libraryDate;
+//@property (retain, nonatomic) NSString * sessionID;
+//@property (retain, nonatomic) NSString * libraryDate;
 @property (retain, nonatomic) NSString *message;
-@property NSInteger tokenNumber;
-@property BOOL firstLaunch;
-@property BOOL cookieInstalled;
-@property BOOL tried;
-@property (retain, nonatomic) NSString * purchases;
+//@property NSInteger tokenNumber;
+//@property BOOL firstLaunch;
+//@property BOOL cookieInstalled;
+//@property BOOL tried;
+@property (retain, nonatomic) NSMutableArray * purchases;
 @property (retain, nonatomic) NSMutableArray *events;
 
 @property BOOL backgroundLoad;
@@ -45,12 +46,11 @@
 + (LocalStorage*) localStorage;
 
 + (void)unzip:(NSString *)src to:(NSString *)dest;
-+ (void)unzipPrecache;
 + (void)initCache;
-+ (void)clearCache;
+//+ (void)clearCache;
 	
 - (void)arrangeAssets:(NSArray *)assets;
-- (NSString *)token;
+//- (NSString *)token;
 //- (void)removeAssets;
 - (BOOL)archive;
 + (void)delete;

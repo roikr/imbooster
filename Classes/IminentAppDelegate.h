@@ -31,7 +31,7 @@ extern NSString *const kUpgradeProductIdentifier;
 
 
 
-@interface IminentAppDelegate : NSObject <UIApplicationDelegate,XMLParserDelegate,UINavigationControllerDelegate,CacheResourceDelegate> { //AuthenticateConnectionDelegate,SKPaymentTransactionObserver,CacheResourceDelegate
+@interface IminentAppDelegate : NSObject <UIApplicationDelegate,XMLParserDelegate,UINavigationControllerDelegate,CacheResourceDelegate,SKPaymentTransactionObserver> { //AuthenticateConnectionDelegate,CacheResourceDelegate
 	UIWindow *window;
 	
 	UINavigationController *navigationController;
@@ -66,8 +66,11 @@ extern NSString *const kUpgradeProductIdentifier;
 	//NSString *notifiedProduct;
 	
 	//NSString * lastNotificationIdentifier;
+	
+	UIActivityIndicatorView *activityIndicator;
 }
 
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
@@ -104,20 +107,19 @@ extern NSString *const kUpgradeProductIdentifier;
 - (void)bringHelp;
 - (void)gotoGallery;
 - (void)gotoKeyboard;
-- (void)restorePurchases;
 
 
 //- (BOOL) launchVideo:(NSURL *)theUrl;
 
 //- (void)purchaseWithProduct:(NSString *)identifier;
 //- (void)closeStore;
-//- (void)restoreTransactions;
+- (void)restoreTransactions;
 
 - (void)addEvent:(ZoozzEvent*)event;
 //- (void)sendEvents;
 
 //- (ZoozzViewType) getCurrentView;
 //- (void)notificationWithAction:(ZoozzNotificationActionType)action;
-
+- (BOOL)checkPurchases;
 
 @end

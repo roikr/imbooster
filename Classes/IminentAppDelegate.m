@@ -33,7 +33,7 @@
 // DEVELOPMENT
 NSString * const kZoozzHost=@"dev.zoozzmedia.com";
 NSString * const kZoozzURL = @"http://dev.zoozzmedia.com";
-NSString * const kZoozzSecuredURL = @"http://dev.zoozzmedia.com";
+//NSString * const kZoozzSecuredURL = @"http://dev.zoozzmedia.com";
 //NSString * const kZoozzHost=@"192.168.15.144";
 //NSString * const kZoozzURL = @"http://192.168.15.144";
 //NSString * const kZoozzSecuredURL = @"http://192.168.15.144";
@@ -41,8 +41,10 @@ NSString * const kZoozzSecuredURL = @"http://dev.zoozzmedia.com";
 #else
 // PRODUCTION
 NSString * const kZoozzHost=@"imbooster.zoozzmedia.com";
-NSString * const kZoozzURL = @"http://imbooster.zoozzmedia.com";
-NSString * const kZoozzSecuredURL = @"https://imbooster.zoozzmedia.com";
+//NSString * const kZoozzURL = @"http://imbooster.zoozzmedia.com";
+NSString * const kZoozzURL = @"http://zoozz.emoji.s3.amazonaws.com";
+
+//NSString * const kZoozzSecuredURL = @"https://imbooster.zoozzmedia.com";
 #endif
 
 
@@ -68,7 +70,8 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 @interface IminentAppDelegate (PrivateMethods)
 
-+ (void)unzipUpdate;
+- (void)unzipPrecache;
+- (void)unzipUpdate;
 //- (void)login;
 //- (void)loginDidFailed;
 //- (void)loadLibraryWithTransaction:(SKPaymentTransaction *)transaction;
@@ -85,11 +88,14 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 - (void)authenticateTrial:(NSString *)identifier;
 */
 
+- (void) testPurchase;
+- (void) continueLaunching;
 @end
 
 @implementation IminentAppDelegate
 
 @synthesize window;
+@synthesize activityIndicator;
 @synthesize navigationController;
 @synthesize catalog;
 @synthesize messages;
@@ -138,45 +144,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
     
 	enableEmoji();
 	
-	[LocalStorage unzipPrecache];
-	
-
-/*		
-#ifdef _ADMOB
-	[self performSelectorInBackground:@selector(reportAppOpenToAdMob) withObject:nil];
-	ZoozzLog(@"admod started");
-#endif
- */
 	
 	[window makeKeyAndVisible];
-	
-	//bLoggedIn = NO;
-	//bDisplayed = NO;
-	//bStoreObserved = NO;
-	
-	//notificationAlert = NO; // just to know if the alert is previewed to avoid store on notification on startup
-	
-	
-	
-	/* By default, the Cocoa URL loading system uses a small shared memory cache. 
-	 We don't need this cache, so we set it to zero when the application launches. */
-	
-	/* turn off the NSURLCache shared cache */
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 
-                                                            diskCapacity:0 
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
-    [sharedCache release];
-	
-	/* prepare to use our own on-disk cache */
-	
-	
-	self.localStorage = [LocalStorage localStorage];
-	
-	[self parseLibrary];
-	
-	if (![CacheResource doesAssetCachedWithResourceType:CacheResourceUpdate withIdentifier:nil])
-		[[CacheResource alloc] initWithResouceType:CacheResourceUpdate withObject:nil delegate:self];	
+		[self performSelectorInBackground:@selector(unzipPrecache) withObject:nil];
 	
 	return YES;
 	/*
@@ -271,7 +241,11 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 }
 
-+ (void)unzipUpdate {
+
+- (void)unzipPrecache {
+	
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	
 	NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -281,7 +255,84 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		return ;
 	}
 	
-	NSString * update = [documentsDirectory stringByAppendingPathComponent:@"update.zip"];
+	if (![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"]]) { // roikr: first time run check for release
+		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data_2.0.0" ofType:@"zip" inDirectory:@"precache"];
+		
+		if (precache) {
+			ZoozzLog(@"unzipping precache");
+			[LocalStorage unzip:precache to:documentsDirectory];
+			
+			
+		} 
+	}
+	
+	[self performSelectorOnMainThread:@selector(continueLaunching) withObject:nil waitUntilDone:NO];
+	[pool release];
+}
+
+
+- (void) continueLaunching {
+	[self.activityIndicator stopAnimating];
+	
+	
+	
+	/*		
+	 #ifdef _ADMOB
+	 [self performSelectorInBackground:@selector(reportAppOpenToAdMob) withObject:nil];
+	 ZoozzLog(@"admod started");
+	 #endif
+	 */
+	
+	
+	
+	//bLoggedIn = NO;
+	//bDisplayed = NO;
+	//bStoreObserved = NO;
+	
+	//notificationAlert = NO; // just to know if the alert is previewed to avoid store on notification on startup
+	
+	
+	
+	/* By default, the Cocoa URL loading system uses a small shared memory cache. 
+	 We don't need this cache, so we set it to zero when the application launches. */
+	
+	/* turn off the NSURLCache shared cache */
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 
+                                                            diskCapacity:0 
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    [sharedCache release];
+	
+	/* prepare to use our own on-disk cache */
+	
+	
+	self.localStorage = [LocalStorage localStorage];
+	
+	[[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+	//[self testPurchase];
+	
+	
+	
+	[self parseLibrary];
+	
+	if (![[LocalStorage bundleVersion] isEqualToString:@"2.0.0"] && ![CacheResource doesAssetCachedWithResourceType:CacheResourceUpdate withIdentifier:nil]) {
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+		[[CacheResource alloc] initWithResouceType:CacheResourceUpdate withObject:nil delegate:self];	
+	} 
+	
+}
+
+- (void)unzipUpdate {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	if (!documentsDirectory) {
+		ZoozzLog(@"Documents directory not found!");
+		return ;
+	}
+	
+	NSString * update = [CacheResource cacheResourcePathWithResourceType:CacheResourceUpdate WithIdentifier:nil];
 	
 	if ([[NSFileManager defaultManager] fileExistsAtPath:update]) { 
 		
@@ -494,6 +545,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		} break;
 		*/
 		case CacheResourceUpdate:
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 			ZoozzLog(@"CacheResourceDidFailLoading CacheResourceUpdate");
 			break;
 
@@ -559,7 +611,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		 */
 			
 		case CacheResourceUpdate: {
-			[IminentAppDelegate unzipUpdate];
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+			ZoozzLog(@"CacheResourceDidFinishLoading CacheResourceUpdate");
+			[self unzipUpdate];
 			[self parseLibrary];
 			
 		} break;
@@ -602,6 +656,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		//[secondaryThread start];
 	
 		[window addSubview:[navigationController view]];
+		
 		
 		
 //#ifdef _SETTINGS
@@ -775,9 +830,10 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 */
 
 
-/*
+
 #pragma mark Store
 
+/*
 - (void)purchaseWithProduct:(NSString *)identifier
 {
 		
@@ -808,7 +864,14 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	[store loadContent];
 	self.imageView.image = viewImage;
 }
+*/
 
+- (void)testPurchase {
+	SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"com.iminent.IMBoosterPlus.CuteBabes"];
+	[[SKPaymentQueue defaultQueue] addPayment:payment];
+	ZoozzLog(@"testPurchase");
+		
+}
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
@@ -822,18 +885,38 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchased:
+				ZoozzLog(@"SKPaymentTransactionStatePurchased");
+				//[self authenticateTransaction:transaction];
+				[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+				break;
 			case SKPaymentTransactionStateRestored:
-				[self authenticateTransaction:transaction];
+				if (!localStorage.purchases) {
+					localStorage.purchases = [NSMutableArray array];
+				}
+				ZoozzLog(@"SKPaymentTransactionStateRestored: @s",transaction.transactionIdentifier);
+
+				[localStorage.purchases addObject:transaction.transactionIdentifier];
+				[localStorage archive];
+				[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+				
 				break;
             case SKPaymentTransactionStateFailed:
-                [self failedTransaction:transaction];
+				ZoozzLog(@"SKPaymentTransactionStateFailed");
+                //[self failedTransaction:transaction];
+				[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+                break;
+			case SKPaymentTransactionStatePurchasing:
+				ZoozzLog(@"SKPaymentTransactionStatePurchasing");
+                //[self failedTransaction:transaction];
                 break;
 			default:
                 break;
         }
+		
     }
 }
 
+/*
 - (void) failedTransaction: (SKPaymentTransaction *)transaction
 {
 	ZoozzLog(@"failedTransaction: %@",[transaction.error localizedDescription]);
@@ -842,6 +925,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
         // Optionally, display an error here.
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+	
 	
 	if (store) {
 		if ([store.productIdentifier isEqualToString:transaction.payment.productIdentifier]) {
@@ -862,9 +946,9 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[[AuthenticateConnection alloc] initWithTransaction:transaction delegate:self];
 }
-*/
 
-/*
+
+
 - (void)completeTransactions {
 	NSArray *array = [localStorage.purchases componentsSeparatedByString:@"\n"];
 	for (NSString *str in array) {
@@ -892,20 +976,38 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 */
 
-/*
+
 
 - (void)restoreTransactions {
-	localStorage.libraryDate = nil; // hack for ensure that server always return update library (even if we ONLY removed products)
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	ZoozzLog(@"restoreTransactions");
+	//localStorage.libraryDate = nil; // hack for ensure that server always return update library (even if we ONLY removed products)
 	[[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
+ 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	ZoozzLog(@"restoreCompletedTransactionsFailedWithError");
 }
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
-	
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	ZoozzLog(@"paymentQueueRestoreCompletedTransactionsFinished");
+	if ([self checkPurchases]) {
+		[messages hideAd];
+		if (catalog!=nil)
+			[catalog hideAd];
+	};
 }
 
+- (BOOL)checkPurchases {
+	return localStorage.purchases!=nil && [localStorage.purchases count]>0;
+}
+
+
+
+/*
 - (void)authenticateTrial:(NSString *)identifier {
 	[[AuthenticateConnection alloc] initWithProductIdentifier:identifier delegate:self];
 }
@@ -1066,38 +1168,31 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 }
 
 */
-
-#pragma mark AppStore
-- (void)restorePurchases {
-	ZoozzLog(@"restore purchases here");
-	[messages hideAd];
-	//[catalog hideAd];
-}
 	
 
-#pragma mark AddMob
-
-- (void)reportAppOpenToAdMob {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // we're in a new thread here, so we need our own autorelease pool
-	// Have we already reported an app open?
-	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *appOpenPath = [documentsDirectory stringByAppendingPathComponent:@"admob_app_open"];
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	if(![fileManager fileExistsAtPath:appOpenPath]) {
-		// Not yet reported -- report now
-		NSString *appOpenEndpoint = 
-		[NSString stringWithFormat:@"http://a.admob.com/f0?isu=%@&app_id=%@", 
-		 [[UIDevice currentDevice] uniqueIdentifier], kZoozzAppID];
-		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:appOpenEndpoint]];
-		NSURLResponse *response;
-		NSError *error;
-		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-		if((!error) && ([(NSHTTPURLResponse *)response statusCode] == 200) && ([responseData length] > 0)) {
-			[fileManager createFileAtPath:appOpenPath contents:nil attributes:nil]; // successful report, mark it as such
-		}
-	}
-	[pool release];
-}
+//#pragma mark AddMob
+//
+//- (void)reportAppOpenToAdMob {
+//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // we're in a new thread here, so we need our own autorelease pool
+//	// Have we already reported an app open?
+//	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//	NSString *appOpenPath = [documentsDirectory stringByAppendingPathComponent:@"admob_app_open"];
+//	NSFileManager *fileManager = [NSFileManager defaultManager];
+//	if(![fileManager fileExistsAtPath:appOpenPath]) {
+//		// Not yet reported -- report now
+//		NSString *appOpenEndpoint = 
+//		[NSString stringWithFormat:@"http://a.admob.com/f0?isu=%@&app_id=%@", 
+//		 [[UIDevice currentDevice] uniqueIdentifier], kZoozzAppID];
+//		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:appOpenEndpoint]];
+//		NSURLResponse *response;
+//		NSError *error;
+//		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//		if((!error) && ([(NSHTTPURLResponse *)response statusCode] == 200) && ([responseData length] > 0)) {
+//			[fileManager createFileAtPath:appOpenPath contents:nil attributes:nil]; // successful report, mark it as such
+//		}
+//	}
+//	[pool release];
+//}
 
 
 @end

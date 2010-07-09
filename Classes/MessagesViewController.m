@@ -29,7 +29,7 @@
 - (NSString*)fix:(NSString*)str;
 
 - (NSString *) getMessage;
-- (NSString *) pasteMessageToPasteboard;
+//- (NSString *) pasteMessageToPasteboard;
 
 
 @end
@@ -540,8 +540,12 @@
 	deleteMode = NO;
 }
 
+#pragma mark -
+#pragma mark Compose Mail
 
 -(void)action:(id)sender {
+	
+	[self sendEMail];
 	
 	/*
 	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -554,15 +558,16 @@
 		else 
 			NoInternetAlert();
 	} else {
+	 }
 		*/
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"MMS",@"Email",nil];
-		[actionSheet showInView:self.view];
-		[actionSheet release];
-	//}
+//	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"MMS",@"Email",nil];
+//	[actionSheet showInView:self.view];
+//	[actionSheet release];
+	
 }
 
 
-
+/*
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
 		case 0:
@@ -574,9 +579,8 @@
 		default:
 			break;
 	}
-	
-	
 }
+*/
 
 - (NSString *) getMessage {
 	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -601,7 +605,7 @@
 			switch (asset.contentType) {
 				case CacheResourceEmoticon: 
 					//text = [text stringByAppendingString:[NSString stringWithFormat:@"<a href='%@/reply?%@'><img border='0' src='%@/content/%@?%@'/></a>",kZoozzURL,token,kZoozzURL,asset.identifier,token]];
-					text = [text stringByAppendingString:[NSString stringWithFormat:@"<a href='%@/reply'><img border='0' src='%@/content/%@'/></a>",kZoozzURL,kZoozzURL,asset.identifier]];
+					text = [text stringByAppendingString:[NSString stringWithFormat:@"<img border='0' src='%@/content/%@.gif'/>",kZoozzURL,asset.identifier]];
 					
 					break;
 //				case CacheResourceWink: {
@@ -637,94 +641,12 @@
 	}
 	
 	//text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply?%@'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL,token]];
-	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL]];
+	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply'>Click here to reply with your own emoticons and winks!</a></font>",kEmojiAppURL]];
 	
 	return text;
 }
 
--(NSString *) pasteMessageToPasteboard {
-	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
-	
-	NSString * str = appDelegate.localStorage.message;// messagesView.text;
-	if (!str)
-		str=@"";
-	
-	//NSString * token = [appDelegate.localStorage token];
-	
-	str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"];
-	NSArray * arr = [str componentsSeparatedByCharactersInSet:emoji];
-	NSString * text = @"<font>";
-	
-	NSMutableArray *parr = [NSMutableArray array];
-	
-	if ([arr count] >0 ) {
-		int j = 0;
-		NSString * temp = [arr objectAtIndex:0];
-		text = [text stringByAppendingString:temp];
-		j+= [temp length];
-		
-		for (int i=1; i<[arr count]; i++) {
-			Asset * asset = [appDelegate.localStorage.assetsByUnichar objectForKey:[NSString stringWithFormat:@"%u",[str characterAtIndex:j]]];
-			
-			switch (asset.contentType) {
-				case CacheResourceEmoticon: {
-					//text = [text stringByAppendingString:[NSString stringWithFormat:@"<a href='%@/reply?%@'><img border='0' src='%@/content/%@?%@'/></a>",kZoozzURL,token,kZoozzURL,asset.identifier,token]];
-					
-					NSString *path = [CacheResource cacheResourcePathWithResourceType:CacheResourceEmoticon WithIdentifier:asset.identifier];
-					
-					
-					[parr addObject:[NSDictionary dictionaryWithObject:[UIImage imageWithContentsOfFile:path] forKey:(NSString *)kUTTypeGIF]];
-					
-					
-					
-					 
-					
-				}break;
-//				case CacheResourceWink: {
-//					
-//					NSString *content = [NSString stringWithFormat:@"%@/content/%@?%@#IWBACNT%@",kZoozzURL,asset.identifier,token,asset.originalID];
-//					NSString *thumb = [NSString stringWithFormat:@"%@/content/t/%@?%@",kZoozzURL,asset.identifier,token];
-//					uint k = arc4random() % 3 + 1;
-//					NSString *topImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-top.png' style='display: block; margin: 0'/>",kZoozzURL,k];
-//					NSString *leftImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-left.png' style='display: block; margin: 0'/>",kZoozzURL,k];
-//					NSString *contentLink = [NSString stringWithFormat:@"<a href='%@' style='display: block'><img border='0' style='display: block; width: 50px; height: 50px' src='%@' alt='click to play animation!'/></a>",content,thumb]; 
-//					NSString *rightImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-right.png' style='display: block; margin: 0'/>",kZoozzURL,k];
-//					NSString *bottomLink = [NSString stringWithFormat:@"<a href='%@' style='display: block'><img border='0' src='%@/pages/imbooster/img/email-pins-%u-bottom.png' style='display: block; margin: 0'/></a>",content,kZoozzURL,k];
-//					NSString *wink = [NSString stringWithFormat:@"<table width='80' height='104' cellpadding='0' cellspacing='0'><tr height='25'><td colspan='3'>%@</td></tr><tr height='50'><td width='11'>%@</td><td width='50'>%@</td><td width='19'>%@</td></tr><tr height='29'><td colspan='3'>%@</td></tr></table>",
-//														topImage,leftImage,contentLink,rightImage,bottomLink];
-//					
-//					text = [text stringByAppendingString:wink];
-//					
-//					
-//					
-//				}
-//					break;
-				default:
-					break;
-			}
-			
-			j++;
-			NSString * temp = [arr objectAtIndex:i];
-			
-			text = [text stringByAppendingString:temp];
-			j+= [temp length];
-			
-			//[parr addObject:[NSDictionary dictionaryWithObject:[[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"] forKey:(NSString *)kUTTypePNG]];
-			
-		}
-		
-	}
-	
-	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-	pasteboard.items = parr;
-	
-	//text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply?%@'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL,token]];
-	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL]];
-	return text;
-}
 
-#pragma mark -
-#pragma mark Compose Mail
 
 - (void)sendEMail {
 	//appDelegate.toolbar.hidden = YES;
@@ -803,9 +725,94 @@
 }
 
 
-
+/*
 #pragma mark -
 #pragma mark Compose Message 
+
+
+-(NSString *) pasteMessageToPasteboard {
+	IminentAppDelegate *appDelegate = (IminentAppDelegate*)[[UIApplication sharedApplication] delegate];
+	
+	NSString * str = appDelegate.localStorage.message;// messagesView.text;
+	if (!str)
+		str=@"";
+	
+	//NSString * token = [appDelegate.localStorage token];
+	
+	str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"];
+	NSArray * arr = [str componentsSeparatedByCharactersInSet:emoji];
+	NSString * text = @"<font>";
+	
+	NSMutableArray *parr = [NSMutableArray array];
+	
+	if ([arr count] >0 ) {
+		int j = 0;
+		NSString * temp = [arr objectAtIndex:0];
+		text = [text stringByAppendingString:temp];
+		j+= [temp length];
+		
+		for (int i=1; i<[arr count]; i++) {
+			Asset * asset = [appDelegate.localStorage.assetsByUnichar objectForKey:[NSString stringWithFormat:@"%u",[str characterAtIndex:j]]];
+			
+			switch (asset.contentType) {
+				case CacheResourceEmoticon: {
+					//text = [text stringByAppendingString:[NSString stringWithFormat:@"<a href='%@/reply?%@'><img border='0' src='%@/content/%@?%@'/></a>",kZoozzURL,token,kZoozzURL,asset.identifier,token]];
+					
+					NSString *path = [CacheResource cacheResourcePathWithResourceType:CacheResourceEmoticon WithIdentifier:asset.identifier];
+					
+					
+					[parr addObject:[NSDictionary dictionaryWithObject:[UIImage imageWithContentsOfFile:path] forKey:(NSString *)kUTTypeGIF]];
+					
+					
+					
+					
+					
+				}break;
+					//				case CacheResourceWink: {
+					//					
+					//					NSString *content = [NSString stringWithFormat:@"%@/content/%@?%@#IWBACNT%@",kZoozzURL,asset.identifier,token,asset.originalID];
+					//					NSString *thumb = [NSString stringWithFormat:@"%@/content/t/%@?%@",kZoozzURL,asset.identifier,token];
+					//					uint k = arc4random() % 3 + 1;
+					//					NSString *topImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-top.png' style='display: block; margin: 0'/>",kZoozzURL,k];
+					//					NSString *leftImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-left.png' style='display: block; margin: 0'/>",kZoozzURL,k];
+					//					NSString *contentLink = [NSString stringWithFormat:@"<a href='%@' style='display: block'><img border='0' style='display: block; width: 50px; height: 50px' src='%@' alt='click to play animation!'/></a>",content,thumb]; 
+					//					NSString *rightImage = [NSString stringWithFormat:@"<img src='%@/pages/imbooster/img/email-pins-%u-right.png' style='display: block; margin: 0'/>",kZoozzURL,k];
+					//					NSString *bottomLink = [NSString stringWithFormat:@"<a href='%@' style='display: block'><img border='0' src='%@/pages/imbooster/img/email-pins-%u-bottom.png' style='display: block; margin: 0'/></a>",content,kZoozzURL,k];
+					//					NSString *wink = [NSString stringWithFormat:@"<table width='80' height='104' cellpadding='0' cellspacing='0'><tr height='25'><td colspan='3'>%@</td></tr><tr height='50'><td width='11'>%@</td><td width='50'>%@</td><td width='19'>%@</td></tr><tr height='29'><td colspan='3'>%@</td></tr></table>",
+					//														topImage,leftImage,contentLink,rightImage,bottomLink];
+					//					
+					//					text = [text stringByAppendingString:wink];
+					//					
+					//					
+					//					
+					//				}
+					//					break;
+				default:
+					break;
+			}
+			
+			j++;
+			NSString * temp = [arr objectAtIndex:i];
+			
+			text = [text stringByAppendingString:temp];
+			j+= [temp length];
+			
+			//[parr addObject:[NSDictionary dictionaryWithObject:[[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"] forKey:(NSString *)kUTTypePNG]];
+			
+		}
+		
+	}
+	
+	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+	pasteboard.items = parr;
+	
+	//text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply?%@'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL,token]];
+	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL]];
+	return text;
+}
+
+
+
 
 - (void)sendText {
 	//appDelegate.toolbar.hidden = YES;
@@ -858,11 +865,11 @@
 			break;
 		
 		case MessageComposeResultSent: {
-			/*
-			 [[ZoozzConnection alloc] initWithRequestType:ZoozzEvents withString:[NSString stringWithFormat:
-			 @"<?xml version='1.0' encoding='utf-8'?><events><e msg='Token' props='token:%@'/></events>",appDelegate.localStorage.token] 
-			 delegate:nil];
-			 */
+			
+//			 [[ZoozzConnection alloc] initWithRequestType:ZoozzEvents withString:[NSString stringWithFormat:
+//			 @"<?xml version='1.0' encoding='utf-8'?><events><e msg='Token' props='token:%@'/></events>",appDelegate.localStorage.token] 
+//			 delegate:nil];
+			 
 //			[appDelegate addEvent:[ZoozzEvent sendWithToken:[appDelegate.localStorage token]]];
 //			appDelegate.localStorage.tokenNumber=(appDelegate.localStorage.tokenNumber)%255+1; // cyclic from 1 to 255 (include)
 			//message.text = @"Result: sent";
@@ -878,7 +885,7 @@
 	[self dismissModalViewControllerAnimated:YES];
 	//[[ (IminentAppDelegate *)[[UIApplication sharedApplication] delegate] navBar ]setHidden:NO];
 }
-
+*/
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	CGRect frame = webView.frame;

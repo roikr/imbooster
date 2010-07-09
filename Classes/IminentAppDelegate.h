@@ -17,12 +17,14 @@
 #import "ZoozzEvent.h"
 
 
-extern NSString * const kZoozzSecuredURL;
+//extern NSString * const kZoozzSecuredURL;
 extern NSString * const kZoozzURL;
-extern NSString *const kAppVersionID;
-extern NSString *const kPaidAppVersionID;
+extern NSString * const kEmojiAppURL;
 
-extern NSString *const kUpgradeProductIdentifier;
+//extern NSString *const kAppVersionID;
+//extern NSString *const kPaidAppVersionID;
+
+//extern NSString *const kUpgradeProductIdentifier;
 
 
 @class Asset,XMLParser,LocalStorage,MyOverlayView,VideoPlayer;

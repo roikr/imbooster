@@ -285,11 +285,11 @@
 								<reference key="IBUINormalTitleShadowColor" ref="68122748"/>
 								<object class="NSCustomResource" key="IBUISelectedImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">button-wink-selected.png</string>
+									<string key="NSResourceName">button-NEW-selected.png</string>
 								</object>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">button-wink.png</string>
+									<string key="NSResourceName">button-NEW.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="235709147">
@@ -1046,6 +1046,8 @@
 				<string>AddContentToMessage-Normal.png</string>
 				<string>Back.png</string>
 				<string>Send-content-to-composer-disable.png</string>
+				<string>button-NEW-selected.png</string>
+				<string>button-NEW.png</string>
 				<string>button-emoticones-happy-selected.png</string>
 				<string>button-emoticones-happy.png</string>
 				<string>button-emoticones-moody-selected.png</string>
@@ -1060,8 +1062,6 @@
 				<string>button-joke.png</string>
 				<string>button-love-selected.png</string>
 				<string>button-love.png</string>
-				<string>button-wink-selected.png</string>
-				<string>button-wink.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>

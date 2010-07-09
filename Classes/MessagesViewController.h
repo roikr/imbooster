@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
-#import <MessageUI/MFMessageComposeViewController.h>
+//#import <MessageUI/MFMessageComposeViewController.h>
 
 
 //#import "ZoozzConnection.h"
@@ -16,7 +16,7 @@
 
 @class CatalogViewController,Asset;
 
-@interface MessagesViewController : UIViewController<UINavigationBarDelegate,UITextViewDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UIScrollViewDelegate,UIActionSheetDelegate> {
+@interface MessagesViewController : UIViewController<UINavigationBarDelegate,UITextViewDelegate,MFMailComposeViewControllerDelegate,UIScrollViewDelegate,UIActionSheetDelegate> { //MFMessageComposeViewControllerDelegate
 	
 	
 	
@@ -65,7 +65,7 @@
 - (void)selectSection:(id)sender;
 - (void)loadAssetInMessage;
 - (void)sendEMail;
-- (void)sendText;
+//- (void)sendText;
 - (void)addEmoticon:(id)sender;
 - (void)clearView;
 

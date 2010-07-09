@@ -37,7 +37,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="774585933">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">301</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -46,6 +46,7 @@
 						<int key="NSvFlags">306</int>
 						<string key="NSFrameSize">{320, 50}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -70,6 +71,7 @@
 								<int key="NSvFlags">276</int>
 								<string key="NSFrameSize">{320, 150}</string>
 								<reference key="NSSuperview" ref="510277978"/>
+								<reference key="NSWindow"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="509801465">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -104,6 +106,7 @@
 								<int key="NSvFlags">276</int>
 								<string key="NSFrameSize">{320, 150}</string>
 								<reference key="NSSuperview" ref="510277978"/>
+								<reference key="NSWindow"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -117,6 +120,7 @@
 						</object>
 						<string key="NSFrame">{{0, 50}, {320, 150}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -131,6 +135,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 200}, {320, 172}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -147,6 +152,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 200}, {320, 172}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
@@ -162,6 +168,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 372}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -185,6 +192,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{2, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -219,6 +227,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{82, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -247,6 +256,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{42, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -275,6 +285,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{202, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -302,6 +313,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{122, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -330,6 +342,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{162, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -358,6 +371,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{242, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -371,11 +385,11 @@
 								<reference key="IBUINormalTitleShadowColor" ref="511262520"/>
 								<object class="NSCustomResource" key="IBUISelectedImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">button-wink-selected.png</string>
+									<string key="NSResourceName">button-NEW-selected.png</string>
 								</object>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">button-wink.png</string>
+									<string key="NSResourceName">button-NEW.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="205235842">
@@ -383,6 +397,7 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{282, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -406,6 +421,7 @@
 						</object>
 						<string key="NSFrame">{{0, 372}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
@@ -419,6 +435,8 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 416}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC42IDAuNiAwLjYgMC42AA</bytes>
@@ -686,7 +704,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{0, 845}, {320, 150}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{390, 367}, {320, 416}}</string>
+					<string>{{472, 313}, {320, 416}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1101,6 +1119,8 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>button-NEW-selected.png</string>
+				<string>button-NEW.png</string>
 				<string>button-emoticones-happy-selected.png</string>
 				<string>button-emoticones-happy.png</string>
 				<string>button-emoticones-moody-selected.png</string>
@@ -1115,8 +1135,6 @@
 				<string>button-joke.png</string>
 				<string>button-love-selected.png</string>
 				<string>button-love.png</string>
-				<string>button-wink-selected.png</string>
-				<string>button-wink.png</string>
 				<string>keyboard-background.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">

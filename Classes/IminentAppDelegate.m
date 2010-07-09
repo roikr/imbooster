@@ -31,8 +31,8 @@
 
 #ifdef _DEVELOPMENT_SERVER
 // DEVELOPMENT
-NSString * const kZoozzHost=@"dev.zoozzmedia.com";
-NSString * const kZoozzURL = @"http://dev.zoozzmedia.com";
+//NSString * const kZoozzHost=@"dev.zoozzmedia.com";
+//NSString * const kZoozzURL = @"http://dev.zoozzmedia.com";
 //NSString * const kZoozzSecuredURL = @"http://dev.zoozzmedia.com";
 //NSString * const kZoozzHost=@"192.168.15.144";
 //NSString * const kZoozzURL = @"http://192.168.15.144";
@@ -40,15 +40,16 @@ NSString * const kZoozzURL = @"http://dev.zoozzmedia.com";
 
 #else
 // PRODUCTION
-NSString * const kZoozzHost=@"imbooster.zoozzmedia.com";
+//NSString * const kZoozzHost=@"imbooster.zoozzmedia.com";
 //NSString * const kZoozzURL = @"http://imbooster.zoozzmedia.com";
 NSString * const kZoozzURL = @"http://zoozz.emoji.s3.amazonaws.com";
 
 //NSString * const kZoozzSecuredURL = @"https://imbooster.zoozzmedia.com";
 #endif
 
+NSString *const kEmojiAppURL = @"http://itunes.apple.com/us/app/emoji-2010/id347615983?mt=8";
 
-
+/*
 NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.UpgradeToIMBooster";
 
 
@@ -67,7 +68,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	NSString * const kZoozzAppID = @"347615983"; // plus
 #endif
 
-
+*/
 @interface IminentAppDelegate (PrivateMethods)
 
 - (void)unzipPrecache;

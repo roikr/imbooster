@@ -16,6 +16,12 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D7ACF80DDB3853001CB0EB /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MessagesViewController.m */; };
 		E4046CF810B880260023DB0F /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E4046CF710B880260023DB0F /* VideoPlayer.m */; };
+		E40C800911E706E5005AAE1A /* button-NEW-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E40C800711E706E5005AAE1A /* button-NEW-selected.png */; };
+		E40C800A11E706E5005AAE1A /* button-NEW.png in Resources */ = {isa = PBXBuildFile; fileRef = E40C800811E706E5005AAE1A /* button-NEW.png */; };
+		E40C800B11E706E5005AAE1A /* button-NEW-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E40C800711E706E5005AAE1A /* button-NEW-selected.png */; };
+		E40C800C11E706E5005AAE1A /* button-NEW.png in Resources */ = {isa = PBXBuildFile; fileRef = E40C800811E706E5005AAE1A /* button-NEW.png */; };
+		E40C800D11E706E5005AAE1A /* button-NEW-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E40C800711E706E5005AAE1A /* button-NEW-selected.png */; };
+		E40C800E11E706E5005AAE1A /* button-NEW.png in Resources */ = {isa = PBXBuildFile; fileRef = E40C800811E706E5005AAE1A /* button-NEW.png */; };
 		E40E5B6A10C01F3B00E0C0E4 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40E5B6910C01F3B00E0C0E4 /* HelpViewController.m */; };
 		E410C842109E16FD007B8615 /* button-hey-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E410C836109E16FD007B8615 /* button-hey-selected.png */; };
 		E410C843109E16FD007B8615 /* button-hey.png in Resources */ = {isa = PBXBuildFile; fileRef = E410C837109E16FD007B8615 /* button-hey.png */; };
@@ -188,8 +194,6 @@
 		E4C2FBDF11204FC100BD2FB6 /* Yellow pin.png in Resources */ = {isa = PBXBuildFile; fileRef = E4BE521310A9D15400EDA49C /* Yellow pin.png */; };
 		E4C2FBE011204FC100BD2FB6 /* button-help-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1276710B745690092B453 /* button-help-selected.png */; };
 		E4C2FBE111204FC100BD2FB6 /* button-help.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1276810B745690092B453 /* button-help.png */; };
-		E4C2FBE211204FC100BD2FB6 /* button-wink-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1276910B745690092B453 /* button-wink-selected.png */; };
-		E4C2FBE311204FC100BD2FB6 /* button-wink.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1276A10B745690092B453 /* button-wink.png */; };
 		E4C2FBE411204FC100BD2FB6 /* Send-content-to-composer-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1277A10B745690092B453 /* Send-content-to-composer-disable.png */; };
 		E4C2FBE511204FC100BD2FB6 /* Toggle-Emos-touched.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1277F10B745690092B453 /* Toggle-Emos-touched.png */; };
 		E4C2FBE611204FC100BD2FB6 /* Toggle-Emos.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C1278010B745690092B453 /* Toggle-Emos.png */; };
@@ -220,7 +224,6 @@
 		E4C2FBFF11204FC100BD2FB6 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07E10C5763000A8E357 /* HelpViewController.xib */; };
 		E4C2FC0111204FC100BD2FB6 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB08010C5763000A8E357 /* MessagesViewController.xib */; };
 		E4C2FC0211204FC100BD2FB6 /* ServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB08110C5763000A8E357 /* ServiceViewController.xib */; };
-		E4C2FC0311204FC100BD2FB6 /* StoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB08210C5763000A8E357 /* StoreViewController.xib */; };
 		E4C2FC0411204FC100BD2FB6 /* SubCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB08310C5763000A8E357 /* SubCategoryViewController.xib */; };
 		E4C2FC0511204FC100BD2FB6 /* Blue pin-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E42788B210C61111009E6321 /* Blue pin-selected.png */; };
 		E4C2FC0611204FC100BD2FB6 /* Green2 pin-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E42788B310C61111009E6321 /* Green2 pin-selected.png */; };
@@ -295,6 +298,8 @@
 		E40109F110EB769800111696 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E4046CF610B880260023DB0F /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoPlayer.h; path = Classes/VideoPlayer.h; sourceTree = "<group>"; };
 		E4046CF710B880260023DB0F /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoPlayer.m; path = Classes/VideoPlayer.m; sourceTree = "<group>"; };
+		E40C800711E706E5005AAE1A /* button-NEW-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-NEW-selected.png"; sourceTree = "<group>"; };
+		E40C800811E706E5005AAE1A /* button-NEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-NEW.png"; sourceTree = "<group>"; };
 		E40E5B6810C01F3B00E0C0E4 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		E40E5B6910C01F3B00E0C0E4 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		E410C836109E16FD007B8615 /* button-hey-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-hey-selected.png"; sourceTree = "<group>"; };
@@ -656,6 +661,8 @@
 		E4DEF1FE1099AC3F000A7E5F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E40C800711E706E5005AAE1A /* button-NEW-selected.png */,
+				E40C800811E706E5005AAE1A /* button-NEW.png */,
 				E49E15F010DE8B8600DFF5DE /* new.png */,
 				E42788B210C61111009E6321 /* Blue pin-selected.png */,
 				E42788B310C61111009E6321 /* Green2 pin-selected.png */,
@@ -893,6 +900,8 @@
 				E42788B810C61111009E6321 /* Red pin-selected.png in Resources */,
 				E42788B910C61111009E6321 /* Yellow pin-selected.png in Resources */,
 				E49E15F110DE8B8600DFF5DE /* new.png in Resources */,
+				E40C800B11E706E5005AAE1A /* button-NEW-selected.png in Resources */,
+				E40C800C11E706E5005AAE1A /* button-NEW.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,6 +963,8 @@
 				E464A5F910F4F509009B8C61 /* Red pin-selected.png in Resources */,
 				E464A5FA10F4F509009B8C61 /* Yellow pin-selected.png in Resources */,
 				E464A5FB10F4F509009B8C61 /* new.png in Resources */,
+				E40C800D11E706E5005AAE1A /* button-NEW-selected.png in Resources */,
+				E40C800E11E706E5005AAE1A /* button-NEW.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,8 +987,6 @@
 				E4C2FBDF11204FC100BD2FB6 /* Yellow pin.png in Resources */,
 				E4C2FBE011204FC100BD2FB6 /* button-help-selected.png in Resources */,
 				E4C2FBE111204FC100BD2FB6 /* button-help.png in Resources */,
-				E4C2FBE211204FC100BD2FB6 /* button-wink-selected.png in Resources */,
-				E4C2FBE311204FC100BD2FB6 /* button-wink.png in Resources */,
 				E4C2FBE411204FC100BD2FB6 /* Send-content-to-composer-disable.png in Resources */,
 				E4C2FBE511204FC100BD2FB6 /* Toggle-Emos-touched.png in Resources */,
 				E4C2FBE611204FC100BD2FB6 /* Toggle-Emos.png in Resources */,
@@ -1008,7 +1017,6 @@
 				E4C2FBFF11204FC100BD2FB6 /* HelpViewController.xib in Resources */,
 				E4C2FC0111204FC100BD2FB6 /* MessagesViewController.xib in Resources */,
 				E4C2FC0211204FC100BD2FB6 /* ServiceViewController.xib in Resources */,
-				E4C2FC0311204FC100BD2FB6 /* StoreViewController.xib in Resources */,
 				E4C2FC0411204FC100BD2FB6 /* SubCategoryViewController.xib in Resources */,
 				E4C2FC0511204FC100BD2FB6 /* Blue pin-selected.png in Resources */,
 				E4C2FC0611204FC100BD2FB6 /* Green2 pin-selected.png in Resources */,
@@ -1017,6 +1025,8 @@
 				E4C2FC0911204FC100BD2FB6 /* new.png in Resources */,
 				E4491EB011BB7E1200BD26EE /* Icon.png in Resources */,
 				E4491EB711BB804500BD26EE /* Default.png in Resources */,
+				E40C800911E706E5005AAE1A /* button-NEW-selected.png in Resources */,
+				E40C800A11E706E5005AAE1A /* button-NEW.png in Resources */,
 				E4DF63FC11D63C8900A14CC2 /* precache in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

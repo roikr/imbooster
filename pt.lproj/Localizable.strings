@@ -11,7 +11,7 @@
 "StoreConfirmationTitle" = "Confirmação";
 "StoreConfirmationMessage" = "Sua compra foi efetuada!";
 
-"WelcomeTitle" = "Bem-vindo ao IMBooster Lite Edition";
+"WelcomeTitle" = "Bem-vindo ao Emoji2010";
 "WelcomeMessage" = "Você pode obter um conteúdo ainda maior, a cada semana, baixando a versão completa.";
 
 "NoInternetTitle" = "Sem conexão de Internet";
@@ -24,3 +24,5 @@
 "RestoreMessage" = "Your purchases are being restored and will appear shortly.";
 
 "NotificationTitle" = "New from IMBooster";
+
+"BuyersMessage" = "We've opened all content for free and placed ads. Since you've bought content, we're giving you the ad free version. Thanks for your support!";

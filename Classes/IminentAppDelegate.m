@@ -147,7 +147,10 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	
 	[window makeKeyAndVisible];
-		[self performSelectorInBackground:@selector(unzipPrecache) withObject:nil];
+	
+	self.localStorage = [LocalStorage localStorage];
+	
+	[self performSelectorInBackground:@selector(unzipPrecache) withObject:nil];
 	
 	return YES;
 	/*
@@ -256,7 +259,11 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		return ;
 	}
 	
-	if (![[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"]]) { // roikr: first time run check for release
+	BOOL isDir;
+	BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"] isDirectory:&isDir];
+			
+	
+	if (!fileExist || (fileExist && !isDir)) { // no data or just a file
 		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data_2.0.0" ofType:@"zip" inDirectory:@"precache"];
 		
 		if (precache) {
@@ -307,7 +314,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	/* prepare to use our own on-disk cache */
 	
 	
-	self.localStorage = [LocalStorage localStorage];
+	
 	
 	[[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 	//[self testPurchase];
@@ -891,12 +898,12 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 				[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 				break;
 			case SKPaymentTransactionStateRestored:
-				if (!localStorage.purchases) {
-					localStorage.purchases = [NSMutableArray array];
+				if (!localStorage.transactions) {
+					localStorage.transactions = [NSMutableArray array];
 				}
 				ZoozzLog(@"SKPaymentTransactionStateRestored: @s",transaction.transactionIdentifier);
 
-				[localStorage.purchases addObject:transaction.transactionIdentifier];
+				[localStorage.transactions addObject:transaction.transactionIdentifier];
 				[localStorage archive];
 				[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 				
@@ -1003,7 +1010,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 }
 
 - (BOOL)checkPurchases {
-	return localStorage.purchases!=nil && [localStorage.purchases count]>0;
+	return localStorage.transactions!=nil && [localStorage.transactions count]>0;
 }
 
 

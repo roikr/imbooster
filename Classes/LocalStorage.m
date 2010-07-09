@@ -24,6 +24,7 @@
 //@synthesize firstLaunch;
 //@synthesize cookieInstalled;
 @synthesize purchases;
+@synthesize transactions;
 @synthesize events;
 
 @synthesize backgroundLoad;
@@ -53,7 +54,7 @@
 //		[LocalStorage clearCache];
 //#endif 
 	
-	[LocalStorage initCache];
+	//[LocalStorage initCache];
 	/*	
 	 if ([defaults boolForKey:@"delete_user_identifier"]) 
 	 [LocalStorage delete];
@@ -71,12 +72,60 @@
 		return NULL;
 	}
 	
+	
+	
+	
+	
 	NSString * appFile = [documentsDirectory stringByAppendingPathComponent:@"local"];
 	
 	retVal = (LocalStorage *)[NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
 	
-	if (!retVal) 
-		retVal= [[[self alloc] init] autorelease];
+	if (!retVal) {
+		NSString *oldFile = [documentsDirectory stringByAppendingPathComponent:@"data"];
+		BOOL isDir;
+		if ([[NSFileManager defaultManager] fileExistsAtPath:oldFile isDirectory:&isDir] && !isDir) {
+			
+			ZoozzLog(@"LocalStorage: no archive, trying old one");
+			
+			retVal = (LocalStorage *)[NSKeyedUnarchiver unarchiveObjectWithFile:oldFile];
+			
+			if (retVal.purchases) {
+				ZoozzLog(@"old purchases: %@",retVal.purchases);
+				if (!retVal.transactions) {
+					retVal.transactions = [NSMutableArray array];
+				}
+				 
+				
+				[retVal.transactions addObject:retVal.purchases];
+				[retVal archive];
+				
+				
+				
+				
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WelcomeTitle",@"Welcome to Emoji2010";)
+																message:NSLocalizedString(@"BuyersMessage",@"Welcome to Emoji2010 update, you will enjoy no ad")
+															   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];	
+				[alert show];
+				[alert release];
+				
+								
+				
+			}
+			
+			ZoozzLog(@"deleting old archive");
+
+			
+			NSError * error = nil;
+			if (![[NSFileManager defaultManager] removeItemAtPath:oldFile error:&error]) {
+				URLCacheAlertWithError(error);
+				ZoozzLog(@"deleting old archive - failed");
+			} 
+			 
+			
+			
+		} else
+			retVal= [[[self alloc] init] autorelease];
+	}
 	
 	
 	
@@ -181,6 +230,7 @@
 		//self.cookieInstalled = [coder decodeBoolForKey:@"cookieInstalled"];
 		//self.tried = [coder decodeBoolForKey:@"tried"];
 		self.purchases = [coder decodeObjectForKey:@"purchases"];
+		self.transactions = [coder decodeObjectForKey:@"transactions"];
 		//self.events	= [coder decodeObjectForKey:@"events"]; // doesn't archive events
 		backgroundLoad = NO;
 	}
@@ -196,6 +246,7 @@
 	//[sessionID release];
 	[message release];
 	[purchases release];
+	[transactions release];
 	[sections release];
 	[events release];
 	[super dealloc];
@@ -210,6 +261,7 @@
 	//[coder encodeBool:self.cookieInstalled forKey:@"cookieInstalled"];
 	//[coder encodeBool:self.tried forKey:@"tried"];
 	[coder encodeObject:self.purchases forKey:@"purchases"];
+	[coder encodeObject:self.transactions forKey:@"transactions"];
 	//[coder encodeObject:self.events forKey:@"events"]; // // doesn't archive events
 }
 
@@ -220,23 +272,26 @@
 }
  */
 
+/*
+
+
 + (void) initCache
 {
-	/* create path to cache directory inside the application's Documents directory */
+	// create path to cache directory inside the application's Documents directory 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString * dataPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"URLCache"]; 
 	
 	
-	/*
-	 NSString * xmlPath = [dataPath stringByAppendingPathComponent:@"library.xml"];
-	 if (![[NSFileManager defaultManager] removeItemAtPath:xmlPath error:&error]) {
-	 URLCacheAlertWithError(error);
-	 return;
-	 }
-	 */
+	
+//	NSString * xmlPath = [dataPath stringByAppendingPathComponent:@"library.xml"];
+//	if (![[NSFileManager defaultManager] removeItemAtPath:xmlPath error:&error]) {
+//		URLCacheAlertWithError(error);
+//		return;
+//	} 
+	 
 	
 	NSError * error = nil;
-	/* check for existence of cache directory */
+	// check for existence of cache directory 
 	if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
 		if (![[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]) {
 			URLCacheAlertWithError(error);
@@ -266,7 +321,7 @@
 	}
 	
 }
-
+*/
 
 /* removes every file in the cache directory */
 
@@ -343,6 +398,7 @@
 	ZoozzLog(@"arrangeAssets ended");
 }
 
+/*
 - (NSArray *)productAssetsWithIdentifier:(NSString *)identifier {
 	NSMutableArray *assets;
 	assets = [NSMutableArray array];
@@ -358,10 +414,8 @@
 	}
 				 
 	return assets;
-	
-	
 }
-
+*/
 
 /*
 - (void)removeAssets{

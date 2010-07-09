@@ -21,7 +21,8 @@
 	//BOOL firstLaunch;
 	//BOOL cookieInstalled;
 	//BOOL tried;
-	NSMutableArray *purchases; // used to be NSString
+	NSMutableArray *transactions; 
+	NSString *purchases;
 	
 	
 	NSMutableArray *events;
@@ -34,7 +35,8 @@
 //@property BOOL firstLaunch;
 //@property BOOL cookieInstalled;
 //@property BOOL tried;
-@property (retain, nonatomic) NSMutableArray * purchases;
+@property (retain, nonatomic) NSString *purchases;
+@property (retain, nonatomic) NSMutableArray *transactions;
 @property (retain, nonatomic) NSMutableArray *events;
 
 @property BOOL backgroundLoad;
@@ -46,7 +48,7 @@
 + (LocalStorage*) localStorage;
 
 + (void)unzip:(NSString *)src to:(NSString *)dest;
-+ (void)initCache;
+//+ (void)initCache;
 //+ (void)clearCache;
 	
 - (void)arrangeAssets:(NSArray *)assets;
@@ -54,7 +56,7 @@
 //- (void)removeAssets;
 - (BOOL)archive;
 + (void)delete;
-- (NSArray *)productAssetsWithIdentifier:(NSString *)identifier;
+//- (NSArray *)productAssetsWithIdentifier:(NSString *)identifier;
 
 + (NSString *)bundleVersion;
 

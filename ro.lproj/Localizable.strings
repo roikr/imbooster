@@ -12,7 +12,7 @@
 "StoreConfirmationMessage" = "Comanda dumneavoastra a fost trimisa cu succes!";
 
 "WelcomeTitle" = "Bine ai venit pe Emoji2010";
-"WelcomeMessage" = "Poti obtine continut nou oricand doresti daca descarci versiunea completa.";
+//"WelcomeMessage" = "Poti obtine continut nou oricand doresti daca descarci versiunea completa.";
 
 "NoInternetTitle" = "Lipsa conexiune Internet";
 "NoInternetMessage" = "Te rugam sa te asiguri ca esti conectat la Internet";

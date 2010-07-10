@@ -12,7 +12,7 @@
 "StoreConfirmationMessage" = "¡La compra se ha realizado con éxito!";
 
 "WelcomeTitle" = "Bienvenido Emoji2010";
-"WelcomeMessage" = "Usted puede obtener más contenido en cualquier momento mediante la versión the full";
+//"WelcomeMessage" = "Usted puede obtener más contenido en cualquier momento mediante la versión the full";
 
 "NoInternetTitle" = "No hay conexión a Internet";
 "NoInternetMessage" = "Por favor, asegúrese de que está conectado a Internet";

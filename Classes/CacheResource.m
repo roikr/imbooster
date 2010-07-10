@@ -67,7 +67,7 @@
 			*/
 			case CacheResourceUpdate:
 				
-				self.connection = [[ZoozzConnection alloc] initWithRequestType:ZoozzAsset withString:[NSString stringWithFormat:@"data_%@.zip",[LocalStorage bundleVersion]] delegate:self];
+				self.connection = [[ZoozzConnection alloc] initWithRequestType:ZoozzAsset withString:[NSString stringWithFormat:@"zip/data_%@.zip",[LocalStorage bundleVersion]] delegate:self];
 			default:
 				break;
 		}

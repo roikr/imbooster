@@ -12,7 +12,7 @@
 "StoreConfirmationMessage" = "Your purchase has completed successfully!";
 
 "WelcomeTitle" = "Welcome to Emoji2010";
-"WelcomeMessage" = "You can get more content any time by downloading the full version.";
+//"WelcomeMessage" = "You can get more content any time by downloading the full version.";
 
 "NoInternetTitle" = "No internet connection";
 "NoInternetMessage" = "Please make sure you are connected to the internet.";
@@ -25,4 +25,5 @@
 
 "NotificationTitle" = "New from IMBooster";
 
-"BuyersMessage" = "We've opened all content for free and placed ads. Since you've bought content, we're giving you the ad free version. Thanks for your support!";
+"BuyersMessage" = "We've opened all content for free and placed ads. Since you've bought content, we're giving you the ad free version. Thanks for your support!, btw, first launch will take several hours...";
+"WelcomeMessage" = "First time in Emoji2010 ? please be patient as we unziping all these french boring emoticons.";

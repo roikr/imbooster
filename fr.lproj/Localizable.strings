@@ -12,7 +12,7 @@
 "StoreConfirmationMessage" = "Votre achat à été effectué!";
 
 "WelcomeTitle" = "Bienvenue sur Emoji2010";
-"WelcomeMessage" = "Decouvrez toujours plus de contenu, chaque semaine, en telechargeant la version complète!";
+//"WelcomeMessage" = "Decouvrez toujours plus de contenu, chaque semaine, en telechargeant la version complète!";
 
 "NoInternetTitle" = "Non connecté à Internet";
 "NoInternetMessage" = "Assurez vous que vous êtes connecté à Internet";

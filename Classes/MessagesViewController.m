@@ -641,8 +641,11 @@
 	}
 	
 	//text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply?%@'>Click here to reply with your own emoticons and winks!</a></font>",kZoozzURL,token]];
-	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply'>Click here to reply with your own emoticons and winks!</a></font>",kEmojiAppURL]];
+	//text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@/reply'>Click here to reply with your own emoticons and winks!</a></font>",kEmojiAppURL]];
+	text = [text stringByAppendingString:[NSString stringWithFormat:@"<br/><br/><a href='%@'>Get tons of emoticons for your iPhone, iPad or iPod!</a></font>",kEmojiAppURL]];
 	
+	
+
 	return text;
 }
 

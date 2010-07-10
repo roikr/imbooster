@@ -81,6 +81,9 @@
 	retVal = (LocalStorage *)[NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
 	
 	if (!retVal) {
+		
+		NSString *message = NSLocalizedString(@"WelcomeMessage",@"please wait...");
+		
 		NSString *oldFile = [documentsDirectory stringByAppendingPathComponent:@"data"];
 		BOOL isDir;
 		if ([[NSFileManager defaultManager] fileExistsAtPath:oldFile isDirectory:&isDir] && !isDir) {
@@ -89,6 +92,7 @@
 			
 			retVal = (LocalStorage *)[NSKeyedUnarchiver unarchiveObjectWithFile:oldFile];
 			
+		
 			if (retVal.purchases) {
 				ZoozzLog(@"old purchases: %@",retVal.purchases);
 				if (!retVal.transactions) {
@@ -100,18 +104,11 @@
 				[retVal archive];
 				
 				
-				
-				
-				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WelcomeTitle",@"Welcome to Emoji2010";)
-																message:NSLocalizedString(@"BuyersMessage",@"Welcome to Emoji2010 update, you will enjoy no ad")
-															   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];	
-				[alert show];
-				[alert release];
-				
-								
-				
-			}
+				message = NSLocalizedString(@"BuyersMessage",@"Welcome to Emoji2010 update, you will enjoy no ad");
 			
+			} 
+			
+						
 			ZoozzLog(@"deleting old archive");
 
 			
@@ -125,6 +122,9 @@
 			
 		} else
 			retVal= [[[self alloc] init] autorelease];
+		
+		alert(NSLocalizedString(@"WelcomeTitle",@"Welcome to Emoji2010"), message);
+		
 	}
 	
 	

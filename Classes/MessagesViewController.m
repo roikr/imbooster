@@ -605,8 +605,8 @@
 			switch (asset.contentType) {
 				case CacheResourceEmoticon: 
 					//text = [text stringByAppendingString:[NSString stringWithFormat:@"<a href='%@/reply?%@'><img border='0' src='%@/content/%@?%@'/></a>",kZoozzURL,token,kZoozzURL,asset.identifier,token]];
-					text = [text stringByAppendingString:[NSString stringWithFormat:@"<img border='0' src='%@/content/%@.gif'/>",kZoozzURL,asset.identifier]];
-					
+					text = [text stringByAppendingString:[NSString stringWithFormat:@"<img border='0' src='%@/data/content/%@.gif'/>",kZoozzURL,asset.identifier]];
+					ZoozzLog(@"<img border='0' src='%@/data/content/%@.gif'/>",kZoozzURL,asset.identifier);
 					break;
 //				case CacheResourceWink: {
 //					

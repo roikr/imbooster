@@ -31,21 +31,22 @@
 		self.delegate = theDelegate;
 		resourceType = aResourceType;
 		
-		/*
+		
 		switch (resourceType) {
 			case CacheResourceThumb:
 			case CacheResourceEmoticon:
-			case CacheResourceWink:
+			//case CacheResourceWink:
+			case CacheResourceUpdate:
 				self.identifier = object;
 				break;
-			case CacheResourceLibrary:
-				self.transaction = object;
-				break;
+			//case CacheResourceLibrary:
+			//	self.transaction = object;
+			//	break;
 			
 			default:
 				break;
 		}
-		 */
+		 
 		
 		
 		
@@ -67,7 +68,7 @@
 			*/
 			case CacheResourceUpdate:
 				
-				self.connection = [[ZoozzConnection alloc] initWithRequestType:ZoozzAsset withString:[NSString stringWithFormat:@"zip/data_%@.zip",[LocalStorage bundleVersion]] delegate:self];
+				self.connection = [[ZoozzConnection alloc] initWithRequestType:ZoozzAsset withString:[NSString stringWithFormat:@"zip/data_%@.zip",identifier] delegate:self];
 			default:
 				break;
 		}
@@ -179,7 +180,7 @@
 			//theFilePath = [path stringByAppendingPathComponent:[@"content" stringByAppendingPathComponent:identifier]];
 			break;
 		case CacheResourceUpdate:
-			theFilePath = [NSString stringWithFormat:@"%@/data_%@.zip",[paths objectAtIndex:0],[LocalStorage bundleVersion]];
+			theFilePath = [NSString stringWithFormat:@"%@/data_%@.zip",[paths objectAtIndex:0],identifier];
 			ZoozzLog(@"cacheResourcePathWithResourceType CacheResourceUpdate %@",theFilePath);
 		default:
 			break;

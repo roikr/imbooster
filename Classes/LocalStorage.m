@@ -25,7 +25,8 @@
 //@synthesize cookieInstalled;
 @synthesize purchases;
 @synthesize transactions;
-@synthesize events;
+//@synthesize events;
+@synthesize lastUpdate;
 
 @synthesize backgroundLoad;
 
@@ -122,6 +123,8 @@
 			
 		} else
 			retVal= [[[self alloc] init] autorelease];
+		
+		
 		
 		alert(NSLocalizedString(@"WelcomeTitle",@"Welcome to Emoji2010"), message);
 		
@@ -231,6 +234,7 @@
 		//self.tried = [coder decodeBoolForKey:@"tried"];
 		self.purchases = [coder decodeObjectForKey:@"purchases"];
 		self.transactions = [coder decodeObjectForKey:@"transactions"];
+		self.lastUpdate = [coder decodeObjectForKey:@"lastUpdate"];
 		//self.events	= [coder decodeObjectForKey:@"events"]; // doesn't archive events
 		backgroundLoad = NO;
 	}
@@ -248,7 +252,8 @@
 	[purchases release];
 	[transactions release];
 	[sections release];
-	[events release];
+	[lastUpdate release];
+	//[events release];
 	[super dealloc];
 }
 
@@ -263,6 +268,7 @@
 	[coder encodeObject:self.purchases forKey:@"purchases"];
 	[coder encodeObject:self.transactions forKey:@"transactions"];
 	//[coder encodeObject:self.events forKey:@"events"]; // // doesn't archive events
+	[coder encodeObject:self.lastUpdate forKey:@"lastUpdate"];
 }
 
 

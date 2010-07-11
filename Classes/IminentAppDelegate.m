@@ -259,17 +259,19 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		return ;
 	}
 	
-	BOOL isDir;
-	BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"] isDirectory:&isDir];
+	//BOOL isDir;
+	//BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:[documentsDirectory stringByAppendingPathComponent:@"data"] isDirectory:&isDir];
 			
 	
-	if (!fileExist || (fileExist && !isDir)) { // no data or just a file
-		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data_2.0.0" ofType:@"zip" inDirectory:@"precache"];
+	if (!localStorage.lastUpdate) { // no data or just a file !fileExist || (fileExist && !isDir )
+		NSString * precache = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"zip" inDirectory:@"precache"];
 		
 		if (precache) {
 			ZoozzLog(@"unzipping precache");
 			[LocalStorage unzip:precache to:documentsDirectory];
-			
+			// only when finishing to zip, will update the version
+			localStorage.lastUpdate = @"2.0.0";
+			[localStorage archive];
 			
 		} 
 	}
@@ -323,10 +325,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	[self parseLibrary];
 	
-	if (![[LocalStorage bundleVersion] isEqualToString:@"2.0.0"] && ![CacheResource doesAssetCachedWithResourceType:CacheResourceUpdate withIdentifier:nil]) {
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-		[[CacheResource alloc] initWithResouceType:CacheResourceUpdate withObject:nil delegate:self];	
-	} 
+	
 	
 }
 
@@ -340,13 +339,14 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 		return ;
 	}
 	
-	NSString * update = [CacheResource cacheResourcePathWithResourceType:CacheResourceUpdate WithIdentifier:nil];
+	NSString * update = [CacheResource cacheResourcePathWithResourceType:CacheResourceUpdate WithIdentifier:localStorage.lastUpdate];
 	
 	if ([[NSFileManager defaultManager] fileExistsAtPath:update]) { 
 		
 		ZoozzLog(@"unzipping update");
 		[LocalStorage unzip:update to:documentsDirectory];
-		
+		localStorage.lastUpdate = [LocalStorage bundleVersion];
+		[localStorage archive];
 		
 	}
 }
@@ -665,6 +665,10 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 		[window addSubview:[navigationController view]];
 		
+		if (![[LocalStorage bundleVersion] isEqualToString:localStorage.lastUpdate] && ![CacheResource doesAssetCachedWithResourceType:CacheResourceUpdate withIdentifier:localStorage.lastUpdate]) {
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+			[[CacheResource alloc] initWithResouceType:CacheResourceUpdate withObject:localStorage.lastUpdate delegate:self];	
+		} 
 		
 		
 //#ifdef _SETTINGS

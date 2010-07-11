@@ -129,7 +129,6 @@
 		E464A61310F4F509009B8C61 /* KeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E4D9AC10DAB6EE00458BA9 /* KeyView.m */; };
 		E464A61410F4F509009B8C61 /* AssetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E4D9AF10DAB70400458BA9 /* AssetView.m */; };
 		E464A61510F4F509009B8C61 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E44D706610EA71BB00964A59 /* ContentView.m */; };
-		E464A61610F4F509009B8C61 /* AuthenticateConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E466B5A410EE6CC700BC36CB /* AuthenticateConnection.m */; };
 		E464A61710F4F509009B8C61 /* ZoozzEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E448ED5A10F141EE003C61A0 /* ZoozzEvent.m */; };
 		E464A61910F4F509009B8C61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		E464A61A10F4F509009B8C61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -139,7 +138,6 @@
 		E464A61E10F4F509009B8C61 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D2589F10A8D8C10057C07C /* StoreKit.framework */; };
 		E464A61F10F4F509009B8C61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E8F81910C0802400603DA6 /* AudioToolbox.framework */; };
 		E464A62010F4F509009B8C61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44A237010C151170028F730 /* SystemConfiguration.framework */; };
-		E466B5A510EE6CC700BC36CB /* AuthenticateConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E466B5A410EE6CC700BC36CB /* AuthenticateConnection.m */; };
 		E47521DB10AF18AA0028F229 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E462356C109CE32100B890F8 /* ServiceViewController.m */; };
 		E4772B2910BB1B9100A07EB0 /* AddContentToMessage--Touched.png in Resources */ = {isa = PBXBuildFile; fileRef = E4772B1710BB1B9100A07EB0 /* AddContentToMessage--Touched.png */; };
 		E4772B2A10BB1B9100A07EB0 /* AddContentToMessage-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = E4772B1810BB1B9100A07EB0 /* AddContentToMessage-Normal.png */; };
@@ -343,8 +341,6 @@
 		E464A3F410F4ADC8009B8C61 /* ZoozzMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoozzMacros.h; sourceTree = "<group>"; };
 		E464A62510F4F509009B8C61 /* IMBoosterFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMBoosterFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E464A63210F4F9A1009B8C61 /* IMBoosterFree-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMBoosterFree-Info.plist"; sourceTree = "<group>"; };
-		E466B5A310EE6CC600BC36CB /* AuthenticateConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateConnection.h; sourceTree = "<group>"; };
-		E466B5A410EE6CC700BC36CB /* AuthenticateConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateConnection.m; sourceTree = "<group>"; };
 		E4772B1710BB1B9100A07EB0 /* AddContentToMessage--Touched.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddContentToMessage--Touched.png"; sourceTree = "<group>"; };
 		E4772B1810BB1B9100A07EB0 /* AddContentToMessage-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddContentToMessage-Normal.png"; sourceTree = "<group>"; };
 		E4772B1910BB1B9100A07EB0 /* GoToGalery-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoToGalery-Normal.png"; sourceTree = "<group>"; };
@@ -508,8 +504,6 @@
 			children = (
 				071F20EB107D1DAF00100E46 /* IminentAppDelegate.h */,
 				071F20EC107D1DAF00100E46 /* IminentAppDelegate.m */,
-				E466B5A310EE6CC600BC36CB /* AuthenticateConnection.h */,
-				E466B5A410EE6CC700BC36CB /* AuthenticateConnection.m */,
 				E4BE64CC10CEB61D00041F7C /* Utilities.h */,
 				E4BE64CD10CEB61D00041F7C /* Utilities.m */,
 				E448ED5910F141EE003C61A0 /* ZoozzEvent.h */,
@@ -1061,7 +1055,6 @@
 				E4E4D9AD10DAB6EE00458BA9 /* KeyView.m in Sources */,
 				E4E4D9B010DAB70400458BA9 /* AssetView.m in Sources */,
 				E44D706710EA71BB00964A59 /* ContentView.m in Sources */,
-				E466B5A510EE6CC700BC36CB /* AuthenticateConnection.m in Sources */,
 				E448ED5B10F141EE003C61A0 /* ZoozzEvent.m in Sources */,
 				E4DFA71110FE22DE00603A09 /* ZoozzAlert.m in Sources */,
 			);
@@ -1094,7 +1087,6 @@
 				E464A61310F4F509009B8C61 /* KeyView.m in Sources */,
 				E464A61410F4F509009B8C61 /* AssetView.m in Sources */,
 				E464A61510F4F509009B8C61 /* ContentView.m in Sources */,
-				E464A61610F4F509009B8C61 /* AuthenticateConnection.m in Sources */,
 				E464A61710F4F509009B8C61 /* ZoozzEvent.m in Sources */,
 				E4DFA71210FE22DE00603A09 /* ZoozzAlert.m in Sources */,
 			);

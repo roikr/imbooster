@@ -24,8 +24,9 @@
 	NSMutableArray *transactions; 
 	NSString *purchases;
 	
+	NSString *lastUpdate;
 	
-	NSMutableArray *events;
+	//NSMutableArray *events;
 }
 
 //@property (retain, nonatomic) NSString * sessionID;
@@ -37,7 +38,8 @@
 //@property BOOL tried;
 @property (retain, nonatomic) NSString *purchases;
 @property (retain, nonatomic) NSMutableArray *transactions;
-@property (retain, nonatomic) NSMutableArray *events;
+@property (retain, nonatomic) NSString *lastUpdate;
+//@property (retain, nonatomic) NSMutableArray *events;
 
 @property BOOL backgroundLoad;
 @property (nonatomic ,retain) NSMutableArray *sections;

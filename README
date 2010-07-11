@@ -1,0 +1,6 @@
+files server mechanism:
+1. each update file is named as the diff from the last update
+example: data_2.0.0 always will be updated to contain the diff from the initial ver
+	data_2.8.0 wlways will be updated to contain the diff from version 2.8.0
+2. first time - checking for lastUpdate - if (!localStorage.lastUpdate) than unzipping the content, after that, setting lastUpdate as 2.0.0, so next time we won't unzip
+3. now, while parsing the library, we test if (![[LocalStorage bundleVersion] isEqualToString:localStorage.lastUpdate] && ![CacheResource doesAssetCachedWithResourceType:CacheResourceUpdate withIdentifier:localStorage.lastUpdate]) so if the current version diff from lastUpdate, we downloading the diff named as lastUpdate. after unzipping, updating the lastUpdate as the current version.

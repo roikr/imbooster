@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
+#import "ZoozzADBannerView.h"
 
 @class Asset;
 
-@interface CatalogViewController : UIViewController {
+@interface CatalogViewController : UIViewController<ZoozzADBannerViewDelegate> {
 		
 	NSMutableArray *viewControllers;
 	
@@ -27,7 +27,7 @@
 	UIView *catalogView;
 	UIView *toolbar;
 	
-	ADBannerView *adView;
+	ZoozzADBannerView *adView;
 }
 
 
@@ -38,7 +38,7 @@
 @property NSUInteger currentSection;
 @property (nonatomic, retain) IBOutlet UIView * catalogView;
 @property (nonatomic, retain) IBOutlet UIView * toolbar;
-@property (nonatomic, retain) IBOutlet ADBannerView *adView;
+@property (nonatomic, retain) IBOutlet ZoozzADBannerView *adView;
 
 - (IBAction)action:(id)sender;
 - (IBAction)gotoKeyboard:(id)sender;
@@ -48,5 +48,7 @@
 - (void)selectSection:(id)sender;
 - (void)clearView;
 - (void)updateWinksViews;
-- (void)hideAd;
+- (void)removeBanner;
+- (void)showBanner:(ZoozzADBannerView *)bannerView;
+- (void)hideBanner:(ZoozzADBannerView *)bannerView;
 @end

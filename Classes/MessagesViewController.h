@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
 //#import <MessageUI/MFMessageComposeViewController.h>
+#import "ZoozzADBannerView.h"
 
 
 //#import "ZoozzConnection.h"
-#import <iAd/iAd.h>
 
 @class CatalogViewController,Asset;
 
-@interface MessagesViewController : UIViewController<UINavigationBarDelegate,UITextViewDelegate,MFMailComposeViewControllerDelegate,UIScrollViewDelegate,UIActionSheetDelegate> { //MFMessageComposeViewControllerDelegate
+@interface MessagesViewController : UIViewController<UINavigationBarDelegate,UITextViewDelegate,MFMailComposeViewControllerDelegate,UIScrollViewDelegate,UIActionSheetDelegate,ZoozzADBannerViewDelegate> { //MFMessageComposeViewControllerDelegate
 	
 	
 	
@@ -35,7 +35,7 @@
 	
 	BOOL deleteMode;
 	
-	ADBannerView *adView;
+	ZoozzADBannerView *adView;
 	
 	UITextView *messagesView;
 	UIWebView  *webView;
@@ -56,7 +56,7 @@
 @property (nonatomic, retain) NSCharacterSet *emoji;
 @property NSUInteger currentSection;
 @property (nonatomic, retain) IBOutlet UIView * toolbar;
-@property (nonatomic, retain) IBOutlet ADBannerView *adView;
+@property (nonatomic, retain) IBOutlet ZoozzADBannerView *adView;
 
 - (IBAction)keybToEmos:(id)sender;
 - (IBAction)action:(id)sender;
@@ -69,7 +69,9 @@
 - (void)addEmoticon:(id)sender;
 - (void)clearView;
 
-- (void)hideAd;
+- (void)removeBanner;
+- (void)showBanner:(ZoozzADBannerView *)bannerView;
+- (void)hideBanner:(ZoozzADBannerView *)bannerView;
 
 @end
 

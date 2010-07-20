@@ -16,6 +16,7 @@
 #import "ZoozzEvent.h"
 
 
+
 @interface CatalogViewController (PrivateMethods) 
 //- (void)cancelLoadOfSection:(NSUInteger)sec;
 @end
@@ -75,8 +76,8 @@
 	self.currentSection = self.currentSection; // need for reload subviews after unload - memory warning
 	// so on first gotoGallery will be called twice
 	
-	if ([appDelegate checkPurchases]) {
-		[self hideAd];
+	if (![appDelegate checkPurchases]) {
+		self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
 	}
 }
 		 
@@ -128,10 +129,29 @@
 	[super dealloc];
 }
 
-- (void)hideAd {
-	adView.hidden = YES;
+- (void)removeBanner {
+	[self hideBanner:adView];
+	[adView release];
+	self.adView = nil;
+	
+}
+
+- (void)showBanner:(ZoozzADBannerView *)bannerView {
+	if (bannerView!=nil) {
+		[self.view addSubview:bannerView];
+	}
+	
+	catalogView.frame = CGRectMake(0, 50, 320, 322);
+	
+}
+
+- (void)hideBanner:(ZoozzADBannerView *)bannerView {
+	if (bannerView!=nil) {
+		[bannerView removeFromSuperview]; 
+	}
 	catalogView.frame = CGRectMake(0, 0, 320, 372);
 }
+
 
 /*
 - (void)cancelLoadOfSection:(NSUInteger)sec {

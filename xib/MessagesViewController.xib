@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -41,26 +42,6 @@
 				<int key="NSvFlags">301</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBADBannerView" id="256701020">
-						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">306</int>
-						<string key="NSFrameSize">{320, 50}</string>
-						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSMutableSet" key="IBADRequiredContentSizeIdentifiers">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="NSArray" key="set.sortedObjects">
-								<bool key="EncodedWithXMLCoder">YES</bool>
-								<string>ADBannerContentSize320x50</string>
-								<string>ADBannerContentSize480x32</string>
-							</object>
-						</object>
-					</object>
 					<object class="IBUIView" id="510277978">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
@@ -69,9 +50,8 @@
 							<object class="IBUITextView" id="294301630">
 								<reference key="NSNextResponder" ref="510277978"/>
 								<int key="NSvFlags">276</int>
-								<string key="NSFrameSize">{320, 150}</string>
+								<string key="NSFrameSize">{320, 200}</string>
 								<reference key="NSSuperview" ref="510277978"/>
-								<reference key="NSWindow"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="509801465">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -104,9 +84,8 @@
 							<object class="IBUIWebView" id="507987134">
 								<reference key="NSNextResponder" ref="510277978"/>
 								<int key="NSvFlags">276</int>
-								<string key="NSFrameSize">{320, 150}</string>
+								<string key="NSFrameSize">{320, 200}</string>
 								<reference key="NSSuperview" ref="510277978"/>
-								<reference key="NSWindow"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEgMAA</bytes>
@@ -118,9 +97,8 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 50}, {320, 150}}</string>
+						<string key="NSFrameSize">{320, 200}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -135,7 +113,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 200}, {320, 172}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -152,7 +129,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 200}, {320, 172}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
@@ -168,7 +144,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 372}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -192,7 +167,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{2, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -227,7 +201,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{82, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -256,7 +229,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{42, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -285,7 +257,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{202, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -313,7 +284,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{122, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -342,7 +312,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{162, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -371,7 +340,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{242, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -397,7 +365,6 @@
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{282, 2}, {37, 40}}</string>
 								<reference key="NSSuperview" ref="621828965"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIAutoresizesSubviews">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -421,7 +388,6 @@
 						</object>
 						<string key="NSFrame">{{0, 372}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MSAwAA</bytes>
@@ -436,7 +402,6 @@
 				</object>
 				<string key="NSFrameSize">{320, 416}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC42IDAuNiAwLjYgMC42AA</bytes>
@@ -475,14 +440,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">adView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="256701020"/>
-					</object>
-					<int key="connectionID">335</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">webView</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="507987134"/>
@@ -512,14 +469,6 @@
 						<reference key="destination" ref="510277978"/>
 					</object>
 					<int key="connectionID">343</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="256701020"/>
-						<reference key="destination" ref="372490531"/>
-					</object>
-					<int key="connectionID">344</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -551,7 +500,6 @@
 							<reference ref="183770694"/>
 							<reference ref="621828965"/>
 							<reference ref="286992415"/>
-							<reference ref="256701020"/>
 							<reference ref="510277978"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -631,11 +579,6 @@
 						<reference key="parent" ref="774585933"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">334</int>
-						<reference key="object" ref="256701020"/>
-						<reference key="parent" ref="774585933"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">336</int>
 						<reference key="object" ref="510277978"/>
 						<object class="NSMutableArray" key="children">
@@ -676,7 +619,6 @@
 					<string>330.IBPluginDependency</string>
 					<string>331.IBPluginDependency</string>
 					<string>332.IBPluginDependency</string>
-					<string>334.IBPluginDependency</string>
 					<string>336.IBEditorWindowLastContentRect</string>
 					<string>336.IBPluginDependency</string>
 					<string>6.IBEditorWindowLastContentRect</string>
@@ -701,10 +643,9 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{0, 845}, {320, 150}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{472, 313}, {320, 416}}</string>
+					<string>{{263, 371}, {320, 416}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -726,7 +667,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">344</int>
+			<int key="maxID">347</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -801,7 +742,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>ADBannerView</string>
+							<string>ZoozzADBannerView</string>
 							<string>UIView</string>
 							<string>UIButton</string>
 							<string>UIView</string>
@@ -826,7 +767,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">adView</string>
-								<string key="candidateClassName">ADBannerView</string>
+								<string key="candidateClassName">ZoozzADBannerView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">containerView</string>
@@ -859,17 +800,28 @@
 						<string key="minorKey">Classes/MessagesViewController.h</string>
 					</object>
 				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ZoozzADBannerView</string>
+					<string key="superclassName">UIView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">delegate</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">delegate</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/ZoozzADBannerView.h</string>
+					</object>
+				</object>
 			</object>
 			<object class="NSMutableArray" key="referencedPartialClassDescriptionsV3.2+">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">ADBannerView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">iAd.framework/Headers/ADBannerView.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

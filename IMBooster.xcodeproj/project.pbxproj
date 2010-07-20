@@ -153,6 +153,7 @@
 		E49E1C2210C48C2D00E00BE4 /* navigator.png in Resources */ = {isa = PBXBuildFile; fileRef = E49E1C2110C48C2D00E00BE4 /* navigator.png */; };
 		E49E1D4510C4A56E00E00BE4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E49E1D4310C4A56E00E00BE4 /* Localizable.strings */; };
 		E4B442B611DFCF6D006C0D26 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B442B511DFCF6D006C0D26 /* iAd.framework */; };
+		E4B67D5511F5785A0092BBC7 /* ZoozzADBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B67D5411F5785A0092BBC7 /* ZoozzADBannerView.m */; };
 		E4BBB08410C5763000A8E357 /* CatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07C10C5763000A8E357 /* CatalogViewController.xib */; };
 		E4BBB08510C5763000A8E357 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07D10C5763000A8E357 /* GalleryViewController.xib */; };
 		E4BBB08610C5763000A8E357 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BBB07E10C5763000A8E357 /* HelpViewController.xib */; };
@@ -357,6 +358,8 @@
 		E4A6A86910C437DE00913CF8 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		E4A6A86A10C437DE00913CF8 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		E4B442B511DFCF6D006C0D26 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		E4B67D5311F5785A0092BBC7 /* ZoozzADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoozzADBannerView.h; sourceTree = "<group>"; };
+		E4B67D5411F5785A0092BBC7 /* ZoozzADBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoozzADBannerView.m; sourceTree = "<group>"; };
 		E4BBB07C10C5763000A8E357 /* CatalogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogViewController.xib; sourceTree = "<group>"; };
 		E4BBB07D10C5763000A8E357 /* GalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 		E4BBB07E10C5763000A8E357 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 				E464A3F410F4ADC8009B8C61 /* ZoozzMacros.h */,
 				E4DFA70F10FE22DE00603A09 /* ZoozzAlert.h */,
 				E4DFA71010FE22DE00603A09 /* ZoozzAlert.m */,
+				E4B67D5311F5785A0092BBC7 /* ZoozzADBannerView.h */,
+				E4B67D5411F5785A0092BBC7 /* ZoozzADBannerView.m */,
 				E429397B10B4330F00ECB3E5 /* Store */,
 				071F20E0107D129200100E46 /* Cache */,
 				E4FF3C5C10BABBC70094FBA7 /* model */,
@@ -1121,6 +1126,7 @@
 				E4DF646911D6749B00A14CC2 /* zip.c in Sources */,
 				E4DF646A11D6749B00A14CC2 /* ZipArchive.mm in Sources */,
 				E4DD7F7911E31AB400C8F418 /* ZoozzConnection.m in Sources */,
+				E4B67D5511F5785A0092BBC7 /* ZoozzADBannerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

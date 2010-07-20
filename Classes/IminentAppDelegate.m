@@ -1007,9 +1007,13 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	ZoozzLog(@"paymentQueueRestoreCompletedTransactionsFinished");
 	if ([self checkPurchases]) {
-		[messages hideAd];
-		if (catalog!=nil)
-			[catalog hideAd];
+		if (messages.adView!=nil) {
+			[messages removeBanner];
+		}
+			
+		if (catalog!=nil && catalog.adView!=nil) {
+			[catalog removeBanner];
+		}
 	};
 }
 

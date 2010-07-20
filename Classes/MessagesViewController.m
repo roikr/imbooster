@@ -127,9 +127,9 @@
 	
 	self.currentSection = self.currentSection; // // need for reload current subviews after unload - for memory warning, currentSection will call setCurrentPage;
 	
-	if ([appDelegate checkPurchases]) 
-		[self hideAd];
-	
+	if (![appDelegate checkPurchases]) {
+		self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
+	}
 }
 
 
@@ -172,10 +172,29 @@
 	[super dealloc];
 }
 
-- (void)hideAd {
-	adView.hidden = YES;
+
+- (void)removeBanner {
+	[self hideBanner:adView];
+	[adView release];
+	self.adView = nil;
+	
+}
+
+- (void)showBanner:(ZoozzADBannerView *)bannerView {
+	if (bannerView!=nil) {
+		[self.view addSubview:bannerView];
+	}
+	containerView.frame = CGRectMake(0, 50, 320, 200);
+	
+}
+
+- (void)hideBanner:(ZoozzADBannerView *)bannerView {
+	if (bannerView!=nil) {
+		[bannerView removeFromSuperview]; 
+	}
 	containerView.frame = CGRectMake(0, 0, 320, 200);
 }
+
 
 - (void)selectSection:(id)sender {
 	UIButton * button = (UIButton *)sender;

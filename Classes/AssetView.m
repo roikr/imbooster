@@ -124,6 +124,7 @@
 					UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(13, 24, 50, 50)];
 					webView.opaque = NO;
 					webView.backgroundColor = [UIColor clearColor];
+					
 					self.preview = webView;
 					[webView release];
 					[self addSubview:preview];

@@ -1108,6 +1108,7 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 
 - (void)bringHelp {
 	
+	
 	[self addEvent:[ZoozzEvent gotoHelpView]];	
 	if (help == nil) {
 		help = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
@@ -1115,6 +1116,16 @@ NSString * const kUpgradeProductIdentifier = @"com.iminent.IMBoosterFree.Upgrade
 	
 	help.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self.navigationController presentModalViewController:help animated:YES];
+	
+	
+	//if (messages.adView!=nil) {
+//		
+//		[messages hideBanner:messages.adView];
+//	}
+//	
+//	if (catalog!=nil && catalog.adView!=nil) {
+//		[catalog hideBanner:catalog.adView];
+//	}
 	
 	
 }

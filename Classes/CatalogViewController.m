@@ -76,8 +76,12 @@
 	self.currentSection = self.currentSection; // need for reload subviews after unload - memory warning
 	// so on first gotoGallery will be called twice
 	
+	self.catalogView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background galery -  simple.png"]];
+	
+	
 	if (![appDelegate checkPurchases]) {
 		self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
+		[self.view addSubview:adView.adBannerView];
 	}
 }
 		 
@@ -129,28 +133,30 @@
 	[super dealloc];
 }
 
+
 - (void)removeBanner {
-	[self hideBanner:adView];
-	[adView release];
-	self.adView = nil;
 	
+	if (adView!=nil) {
+		[self hideBanner:adView];
+		[adView.adBannerView removeFromSuperview]; 
+		self.adView = nil;
+	}
 }
 
 - (void)showBanner:(ZoozzADBannerView *)bannerView {
-	if (bannerView!=nil) {
-		[self.view addSubview:bannerView];
-	}
 	
 	catalogView.frame = CGRectMake(0, 50, 320, 322);
 	
 }
 
 - (void)hideBanner:(ZoozzADBannerView *)bannerView {
-	if (bannerView!=nil) {
-		[bannerView removeFromSuperview]; 
-	}
+	
 	catalogView.frame = CGRectMake(0, 0, 320, 372);
 }
+
+
+
+
 
 
 /*

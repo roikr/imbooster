@@ -67,6 +67,7 @@
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.scrollsToTop = NO;
     scrollView.delegate = self;
+	scrollView.directionalLockEnabled = YES;
 	
 	//[self populateAndViewWithPage:0];
 	int page = 0;
@@ -90,7 +91,9 @@
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
 	
-    // a page is the width of the scroll view
+	
+
+	
 }
 
 

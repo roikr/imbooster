@@ -41,6 +41,7 @@
 	[webView loadRequest:[NSURLRequest requestWithURL:url]];
 	
 	self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
+	[self.view addSubview:adView.adBannerView];
 	
 }
 
@@ -97,22 +98,16 @@
 	//[appDelegate restoreTransactions];
 }
 
+
 - (void)showBanner:(ZoozzADBannerView *)bannerView {
-	if (bannerView!=nil) {
-		[self.view addSubview:bannerView];
-	}
 	
-	webView.frame = CGRectMake(0, 50, 320, 366);
-	
+	webView.frame = CGRectMake(0, 50, 320, 366);	
 }
 
 - (void)hideBanner:(ZoozzADBannerView *)bannerView {
-	if (bannerView!=nil) {
-		[bannerView removeFromSuperview]; 
-	}
+	
 	webView.frame = CGRectMake(0, 0, 320, 416);
 }
-
 
 
 @end

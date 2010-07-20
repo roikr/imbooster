@@ -12,7 +12,7 @@
 @protocol ZoozzADBannerViewDelegate;
 
 
-@interface ZoozzADBannerView : UIView<ADBannerViewDelegate> {
+@interface ZoozzADBannerView:NSObject<ADBannerViewDelegate> {
 	id<ZoozzADBannerViewDelegate> delegate;
 	ADBannerView *adBannerView;
 	BOOL bannerIsVisible;
@@ -21,6 +21,7 @@
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic,retain) ADBannerView *adBannerView;
+//@property BOOL bannerIsVisible;
 
 - (id)initWithDelegate:(id <ZoozzADBannerViewDelegate>)theDelegate;
 

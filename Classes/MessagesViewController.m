@@ -129,6 +129,8 @@
 	
 	if (![appDelegate checkPurchases]) {
 		self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
+		[self.view addSubview:adView.adBannerView];	
+		
 	}
 }
 
@@ -174,24 +176,22 @@
 
 
 - (void)removeBanner {
-	[self hideBanner:adView];
-	[adView release];
-	self.adView = nil;
 	
+	if (adView!=nil) {
+		[self hideBanner:adView];
+		[adView.adBannerView removeFromSuperview]; 
+		self.adView = nil;
+	}
 }
 
 - (void)showBanner:(ZoozzADBannerView *)bannerView {
-	if (bannerView!=nil) {
-		[self.view addSubview:bannerView];
-	}
+	
 	containerView.frame = CGRectMake(0, 50, 320, 200);
 	
 }
 
 - (void)hideBanner:(ZoozzADBannerView *)bannerView {
-	if (bannerView!=nil) {
-		[bannerView removeFromSuperview]; 
-	}
+	
 	containerView.frame = CGRectMake(0, 0, 320, 200);
 }
 

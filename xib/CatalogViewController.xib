@@ -39,12 +39,12 @@
 			</object>
 			<object class="IBUIView" id="429795166">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">310</int>
+				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIView" id="668169957">
 						<reference key="NSNextResponder" ref="429795166"/>
-						<int key="NSvFlags">306</int>
+						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 372}</string>
 						<reference key="NSSuperview" ref="429795166"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -60,7 +60,7 @@
 					</object>
 					<object class="IBUIToolbar" id="518780549">
 						<reference key="NSNextResponder" ref="429795166"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 372}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="429795166"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -77,7 +77,7 @@
 					</object>
 					<object class="IBUIView" id="383643873">
 						<reference key="NSNextResponder" ref="429795166"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">292</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIButton" id="571503349">
@@ -320,12 +320,6 @@
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIAutoresizesSubviews">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
-					<int key="IBUIStatusBarStyle">2</int>
-				</object>
-				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
-					<bool key="IBUIPrompted">NO</bool>
-				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIBarButtonItem" id="700737379">
@@ -482,9 +476,9 @@
 						<reference key="object" ref="429795166"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="668169957"/>
 							<reference ref="518780549"/>
 							<reference ref="383643873"/>
-							<reference ref="668169957"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -623,7 +617,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{270, 388}, {320, 480}}</string>
+					<string>{{183, 551}, {320, 416}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

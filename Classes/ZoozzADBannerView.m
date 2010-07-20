@@ -14,27 +14,35 @@
 
 @synthesize adBannerView;
 @synthesize delegate;
+//@synthesize bannerIsVisible;
 
 
 - (id)initWithDelegate:(id <ZoozzADBannerViewDelegate>)theDelegate {
 	if ((self = [super init])) {
 		delegate = theDelegate;
-		adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+		self.adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+		adBannerView.frame = CGRectOffset(adBannerView.frame, 0, -50);
+		adBannerView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
 		adBannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
 		adBannerView.delegate = self;
-		[self addSubview:adBannerView];
+		
 		bannerIsVisible = NO;
     }
     return self;
 	
 }
 
-- (id)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
-        // Initialization code
-    }
-    return self;
-}
+
+
+
+
+//- (id)initWithFrame:(CGRect)frame {
+//    if ((self = [super initWithFrame:frame])) {
+//        // Initialization code
+//    }
+//    return self;
+//}
+ 
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -49,16 +57,19 @@
     [super dealloc];
 }
 
+
+
+
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
     ZoozzLog(@"bannerViewDidLoadAd");
 	if (!bannerIsVisible)
     {
 		[delegate showBanner:self];
-//		[UIView beginAnimations:@"animateAdBannerOn" context:NULL];
-//		// assumes the banner view is offset 50 pixels so that it is not visible.
-//        banner.frame = CGRectOffset(banner.frame, 0, 50);
-//        [UIView commitAnimations];
+		[UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+		// assumes the banner view is offset 50 pixels so that it is not visible.
+        banner.frame = CGRectOffset(banner.frame, 0, 50);
+        [UIView commitAnimations];
         bannerIsVisible = YES;
     }
 }
@@ -69,10 +80,10 @@
 
 	if (bannerIsVisible)
     {
-//        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
-//		// assumes the banner view is at the top of the screen.
-//        banner.frame = CGRectOffset(banner.frame, 0, -50);
-//        [UIView commitAnimations];
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+		// assumes the banner view is at the top of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, -50);
+        [UIView commitAnimations];
 		[delegate hideBanner:self];
 		bannerIsVisible = NO;
     }

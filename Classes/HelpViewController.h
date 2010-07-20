@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "ZoozzADBannerView.h"
 
+
 @interface HelpViewController : UIViewController<UIWebViewDelegate,UIAlertViewDelegate,ZoozzADBannerViewDelegate>
 {
 	UIWebView *webView;

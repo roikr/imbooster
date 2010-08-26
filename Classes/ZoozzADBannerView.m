@@ -10,6 +10,8 @@
 #include "ZoozzMacros.h"
 
 
+
+
 @implementation ZoozzADBannerView
 
 @synthesize adBannerView;
@@ -20,11 +22,15 @@
 - (id)initWithDelegate:(id <ZoozzADBannerViewDelegate>)theDelegate {
 	if ((self = [super init])) {
 		delegate = theDelegate;
-		self.adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-		adBannerView.frame = CGRectOffset(adBannerView.frame, 0, -50);
-		adBannerView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
-		adBannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
-		adBannerView.delegate = self;
+
+		static NSString * const kADBannerViewClass = @"ADBannerView";
+		if (NSClassFromString(kADBannerViewClass) != nil) {
+			self.adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+			adBannerView.frame = CGRectOffset(adBannerView.frame, 0, -50);
+			adBannerView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
+			adBannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
+			adBannerView.delegate = self;
+		}
 		
 		bannerIsVisible = NO;
     }

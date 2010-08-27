@@ -41,9 +41,9 @@
 	};
 	071F20EC107D1DAF00100E46 /* IminentAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1538, 15873}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1391, 16263}}";
 			sepNavSelRange = "{18012, 48}";
-			sepNavVisRange = "{17740, 1725}";
+			sepNavVisRange = "{1, 1491}";
 			sepNavWindowFrame = "{{335, 86}, {918, 708}}";
 		};
 	};
@@ -70,7 +70,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = E4C2FC3511204FC100BD2FB6 /* IMBoosterPlus */;
 		activeSDKPreference = iphoneos4.1;
 		activeTarget = E4C2FBD011204FC100BD2FB6 /* IMBoosterPlus */;
@@ -224,8 +224,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 304527212;
-			PBXWorkspaceStateSaveDate = 304527212;
+			PBXPerProjectTemplateStateSaveDate = 304581792;
+			PBXWorkspaceStateSaveDate = 304581792;
 		};
 		perUserProjectItems = {
 			E40C801F11E70D91005AAE1A /* PBXBookmark */ = E40C801F11E70D91005AAE1A /* PBXBookmark */;
@@ -310,14 +310,13 @@
 			E4B67D9711F595070092BBC7 /* PBXTextBookmark */ = E4B67D9711F595070092BBC7 /* PBXTextBookmark */;
 			E4B67D9A11F595070092BBC7 /* PBXTextBookmark */ = E4B67D9A11F595070092BBC7 /* PBXTextBookmark */;
 			E4B67D9C11F595070092BBC7 /* PBXTextBookmark */ = E4B67D9C11F595070092BBC7 /* PBXTextBookmark */;
+			E4B77EF712278CF20001B43B /* PBXTextBookmark */ = E4B77EF712278CF20001B43B /* PBXTextBookmark */;
+			E4B77EF812278CF20001B43B /* PBXTextBookmark */ = E4B77EF812278CF20001B43B /* PBXTextBookmark */;
 			E4C5E4F81226B9F9004115B5 /* PlistBookmark */ = E4C5E4F81226B9F9004115B5 /* PlistBookmark */;
 			E4C5E4F91226B9F9004115B5 /* PBXTextBookmark */ = E4C5E4F91226B9F9004115B5 /* PBXTextBookmark */;
-			E4C5E4FA1226B9F9004115B5 /* PBXTextBookmark */ = E4C5E4FA1226B9F9004115B5 /* PBXTextBookmark */;
-			E4C5E4FB1226B9F9004115B5 /* PBXTextBookmark */ = E4C5E4FB1226B9F9004115B5 /* PBXTextBookmark */;
 			E4C70BD21226A96700CCCF2D /* PBXTextBookmark */ = E4C70BD21226A96700CCCF2D /* PBXTextBookmark */;
 			E4C70C101226B2DB00CCCF2D /* PBXTextBookmark */ = E4C70C101226B2DB00CCCF2D /* PBXTextBookmark */;
 			E4C70C111226B2DB00CCCF2D /* PBXTextBookmark */ = E4C70C111226B2DB00CCCF2D /* PBXTextBookmark */;
-			E4C70C121226B2DB00CCCF2D /* PBXTextBookmark */ = E4C70C121226B2DB00CCCF2D /* PBXTextBookmark */;
 			E4C70C291226B54C00CCCF2D /* PBXTextBookmark */ = E4C70C291226B54C00CCCF2D /* PBXTextBookmark */;
 			E4C70C351226B60700CCCF2D /* PBXTextBookmark */ = E4C70C351226B60700CCCF2D /* PBXTextBookmark */;
 			E4C70C571226B70E00CCCF2D /* PBXTextBookmark */ = E4C70C571226B70E00CCCF2D /* PBXTextBookmark */;
@@ -329,6 +328,7 @@
 			E4D4A3AB11FDBF1100C92628 /* PBXBookmark */ = E4D4A3AB11FDBF1100C92628 /* PBXBookmark */;
 			E4D4A46611FDD23100C92628 /* PBXTextBookmark */ = E4D4A46611FDD23100C92628 /* PBXTextBookmark */;
 			E4D4A46811FDD23100C92628 /* PBXTextBookmark */ = E4D4A46811FDD23100C92628 /* PBXTextBookmark */;
+			E4D7C7E41227881700CE8D43 /* PBXTextBookmark */ = E4D7C7E41227881700CE8D43 /* PBXTextBookmark */;
 			E4DEF3E6109C6CCF000A7E5F /* PBXTextBookmark */ = E4DEF3E6109C6CCF000A7E5F /* PBXTextBookmark */;
 			E4DF654911D6853400A14CC2 /* PBXTextBookmark */ = E4DF654911D6853400A14CC2 /* PBXTextBookmark */;
 			E4DF654C11D6853400A14CC2 /* PBXTextBookmark */ = E4DF654C11D6853400A14CC2 /* PBXTextBookmark */;
@@ -832,9 +832,9 @@
 	};
 	E464A3F410F4ADC8009B8C61 /* ZoozzMacros.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1118, 669}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1118, 682}}";
 			sepNavSelRange = "{188, 0}";
-			sepNavVisRange = "{0, 658}";
+			sepNavVisRange = "{0, 657}";
 			sepNavWindowFrame = "{{15, 312}, {970, 711}}";
 		};
 	};
@@ -1233,6 +1233,26 @@
 		vrLen = 749;
 		vrLoc = 0;
 	};
+	E4B77EF712278CF20001B43B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 071F20EC107D1DAF00100E46 /* IminentAppDelegate.m */;
+		name = "IminentAppDelegate.m: 647";
+		rLen = 48;
+		rLoc = 18012;
+		rType = 0;
+		vrLen = 1491;
+		vrLoc = 1;
+	};
+	E4B77EF812278CF20001B43B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 071F20EC107D1DAF00100E46 /* IminentAppDelegate.m */;
+		name = "IminentAppDelegate.m: 647";
+		rLen = 48;
+		rLoc = 18012;
+		rType = 0;
+		vrLen = 1491;
+		vrLoc = 1;
+	};
 	E4BBB08C10C5767E00A8E357 /* es */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1860, 378}}";
@@ -1356,7 +1376,7 @@
 		);
 		name = "/Users/roikr/Developer/Emoji2010_git/IMBoosterPlus-Info.plist";
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	E4C5E4F91226B9F9004115B5 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1367,26 +1387,6 @@
 		rType = 0;
 		vrLen = 1642;
 		vrLoc = 991;
-	};
-	E4C5E4FA1226B9F9004115B5 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 071F20EC107D1DAF00100E46 /* IminentAppDelegate.m */;
-		name = "IminentAppDelegate.m: 624";
-		rLen = 11;
-		rLoc = 17658;
-		rType = 0;
-		vrLen = 1969;
-		vrLoc = 8694;
-	};
-	E4C5E4FB1226B9F9004115B5 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 071F20EC107D1DAF00100E46 /* IminentAppDelegate.m */;
-		name = "IminentAppDelegate.m: 647";
-		rLen = 48;
-		rLoc = 18012;
-		rType = 0;
-		vrLen = 1725;
-		vrLoc = 17740;
 	};
 	E4C70BD21226A96700CCCF2D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1430,16 +1430,6 @@
 		rLoc = 391;
 		rType = 0;
 		vrLen = 530;
-		vrLoc = 0;
-	};
-	E4C70C121226B2DB00CCCF2D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E464A3F410F4ADC8009B8C61 /* ZoozzMacros.h */;
-		name = "ZoozzMacros.h: 13";
-		rLen = 0;
-		rLoc = 188;
-		rType = 0;
-		vrLen = 658;
 		vrLoc = 0;
 	};
 	E4C70C291226B54C00CCCF2D /* PBXTextBookmark */ = {
@@ -1549,6 +1539,16 @@
 		rType = 0;
 		vrLen = 827;
 		vrLoc = 311;
+	};
+	E4D7C7E41227881700CE8D43 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E464A3F410F4ADC8009B8C61 /* ZoozzMacros.h */;
+		name = "ZoozzMacros.h: 13";
+		rLen = 0;
+		rLoc = 188;
+		rType = 0;
+		vrLen = 657;
+		vrLoc = 0;
 	};
 	E4DD7F7711E31AB400C8F418 /* ZoozzConnection.h */ = {
 		uiCtxt = {

@@ -1361,7 +1361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Roee Kremer (G22F3GL4MN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IMINENT";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = IMBooster_Prefix.pch;
@@ -1373,7 +1373,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = $TARGET_NAME;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DF57F28A-BD02-4C3B-AEC7-4BDF08CBB7F1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "968BE395-D36D-4BE8-A94D-944F9CF6CF00";
 			};
 			name = Distribution;
 		};

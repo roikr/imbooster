@@ -8,19 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
+#import "AdMobDelegateProtocol.h"
 
 @protocol ZoozzADBannerViewDelegate;
 
 
-@interface ZoozzADBannerView:NSObject<ADBannerViewDelegate> {
+@interface ZoozzADBannerView:NSObject<ADBannerViewDelegate,AdMobDelegate> {
 	id<ZoozzADBannerViewDelegate> delegate;
-	ADBannerView *adBannerView;
+	id zoozzAdView;
 	BOOL bannerIsVisible;
-	
+		
 }
 
 @property (nonatomic, assign) id delegate;
-@property (nonatomic,retain) ADBannerView *adBannerView;
+@property (nonatomic,retain) id zoozzAdView;
+
 //@property BOOL bannerIsVisible;
 
 - (id)initWithDelegate:(id <ZoozzADBannerViewDelegate>)theDelegate;

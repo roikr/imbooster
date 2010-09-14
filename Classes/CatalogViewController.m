@@ -81,7 +81,7 @@
 	
 	if (![appDelegate checkPurchases]) {
 		self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
-		[self.view addSubview:adView.adBannerView];
+		[self.view addSubview:adView.zoozzAdView];
 	}
 }
 		 
@@ -138,7 +138,7 @@
 	
 	if (adView!=nil) {
 		[self hideBanner:adView];
-		[adView.adBannerView removeFromSuperview]; 
+		[adView.zoozzAdView removeFromSuperview]; 
 		self.adView = nil;
 	}
 }

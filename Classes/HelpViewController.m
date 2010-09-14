@@ -41,7 +41,7 @@
 	[webView loadRequest:[NSURLRequest requestWithURL:url]];
 	
 	self.adView = [[ZoozzADBannerView alloc] initWithDelegate:self];
-	[self.view addSubview:adView.adBannerView];
+	[self.view addSubview:adView.zoozzAdView];
 	
 }
 

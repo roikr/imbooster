@@ -36,7 +36,7 @@
 	
 	//NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pages/imbooster/help?l=%@",kZoozzURL,[[NSLocale currentLocale] localeIdentifier]]];
 	//NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/help/%@?l=%@",kZoozzURL,kAppVersionID,[[NSLocale preferredLanguages] objectAtIndex:0]]];
-	NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/help.html",kZoozzURL]];
+	NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/help_adfree.html",kZoozzURL]];
 	
 	[webView loadRequest:[NSURLRequest requestWithURL:url]];
 	

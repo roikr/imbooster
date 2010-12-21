@@ -11,7 +11,7 @@
 "StoreConfirmationTitle" = "Confirmation";
 "StoreConfirmationMessage" = "Votre achat à été effectué!";
 
-"WelcomeTitle" = "Bienvenue sur Emoji2010";
+"WelcomeTitle" = "Bienvenue sur Emoji2011";
 //"WelcomeMessage" = "Decouvrez toujours plus de contenu, chaque semaine, en telechargeant la version complète!";
 
 "NoInternetTitle" = "Non connecté à Internet";
@@ -25,5 +25,5 @@
 
 "NotificationTitle" = "New from IMBooster";
 
-"BuyersMessage" = "Our content is now available for free!  Starting this version, Emoji 2010 will serve ads . Since you've bought content, we're giving you the ad-free version. Thanks for your support! Please wait for few moments, while downloading the content."; 
-"WelcomeMessage" = "New with Emoji 2010? Welcome! Please wait for few moments while downloading the content.";
+"BuyersMessage" = "Our content is now available for free!  Starting this version, Emoji 2011 will serve ads . Since you've bought content, we're giving you the ad-free version. Thanks for your support! Please wait for few moments, while downloading the content."; 
+"WelcomeMessage" = "New with Emoji 2011? Welcome! Please wait for few moments while downloading the content.";

@@ -26,23 +26,23 @@
 	if ((self = [super init])) {
 		delegate = theDelegate;
 
-		static NSString * const kADBannerViewClass = @"ADBannerView";
-		
-		if (NSClassFromString(kADBannerViewClass) != nil) {
-			ADBannerView * adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-			adBannerView.frame = CGRectOffset(adBannerView.frame, 0, -50);
-			adBannerView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
-			adBannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
-			adBannerView.delegate = self;
-			self.zoozzAdView = adBannerView;
-		}
-		
-		if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iPhoneOS_4_0) {
-			// Request an ad
-			AdMobView * adMobAd = [AdMobView requestAdWithDelegate:self]; // start a new ad request
-			adMobAd.frame = CGRectMake(0, -48, 320, 48);
-			self.zoozzAdView = adMobAd; // this will be released when it loads (or fails to load)
-		}
+//		static NSString * const kADBannerViewClass = @"ADBannerView";
+//		
+//		if (NSClassFromString(kADBannerViewClass) != nil) {
+//			ADBannerView * adBannerView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+//			adBannerView.frame = CGRectOffset(adBannerView.frame, 0, -50);
+//			adBannerView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
+//			adBannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
+//			adBannerView.delegate = self;
+//			self.zoozzAdView = adBannerView;
+//		}
+//		
+//		if (kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iPhoneOS_4_0) {
+//			// Request an ad
+//			AdMobView * adMobAd = [AdMobView requestAdWithDelegate:self]; // start a new ad request
+//			adMobAd.frame = CGRectMake(0, -48, 320, 48);
+//			self.zoozzAdView = adMobAd; // this will be released when it loads (or fails to load)
+//		}
 		
 		bannerIsVisible = NO;
 		

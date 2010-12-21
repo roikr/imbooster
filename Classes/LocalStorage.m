@@ -105,7 +105,7 @@
 				[retVal archive];
 				
 				
-				message = NSLocalizedString(@"BuyersMessage",@"Welcome to Emoji2010 update, you will enjoy no ad");
+				message = NSLocalizedString(@"BuyersMessage",@"Welcome to Emoji2011 update, you will enjoy no ad");
 			
 			} 
 			
@@ -126,7 +126,7 @@
 		
 		
 		
-		alert(NSLocalizedString(@"WelcomeTitle",@"Welcome to Emoji2010"), message);
+		alert(NSLocalizedString(@"WelcomeTitle",@"Welcome to Emoji2011"), message);
 		
 	}
 	
